@@ -2,38 +2,34 @@ var render_pdb = {};
 
 (function () {
 
-            function transferase() {
-                load('sh2');
+            function initialize_left() {
+                load('sh2',viewer_left);
                 viewer_left.spin(1);
-                // viewer_left.se
-                viewer_right.spin(-1);
+            }
+            function initialize_right() {
+                load('sh2',viewer_right);
+                viewer_right.spin(1);
             }
 
-            function cartoon() {
-                viewer_left.clear();
-                viewer_right.clear();
-                var go = viewer_left.cartoon('structure', structure, {
-                    color: color.ssSuccession(),
-                    showRelated: '1',
-                });
-                var go = viewer_right.cartoon('structure', structure, {
+            function cartoon(viewer) {
+                viewer.clear();
+                var go = viewer.cartoon('structure', structure, {
                     color: color.ssSuccession(),
                     showRelated: '1',
                 });
                 var rotation = viewpoint.principalAxes(go);
-                viewer_left.setRotation(rotation)
-                viewer_right.setRotation(rotation)
+                viewer.setRotation(rotation)
             }
 
-            function load(pdb_id) {
+            function load(pdb_id,viewer) {
                 $.ajax({
                     url: 'pdbs/' + pdb_id + '.pdb',
                     success: function(data) {
                         structure = io.pdb(data);
                         //mol.assignHelixSheet(structure);
-                        cartoon();
-                        viewer_left.autoZoom();
-                        viewer_right.autoZoom();
+                        cartoon(viewer);
+                        viewer.autoZoom();
+                        viewer.autoZoom();
                     }
                 });
             }
@@ -59,8 +55,8 @@ var render_pdb = {};
                 animateTime: 500,
             });
 
-            viewer_left.addListener('viewerReady', transferase);
-            viewer_right.addListener('viewerReady', transferase);
+            viewer_left.addListener('viewerReady', initialize_left);
+            viewer_right.addListener('viewerReady', initialize_right);
             };
 })();
 
