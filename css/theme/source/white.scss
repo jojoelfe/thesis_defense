@@ -29,11 +29,7 @@ $headingTextShadow: none;
 $headingLetterSpacing: normal;
 $headingTextTransform: none;
 $headingFontWeight: 700;
-<<<<<<< HEAD
 $linkColor: #0E4D8F;
-=======
-$linkColor: #2a76dd;
->>>>>>> a7b23622052f4e27f961bf39e4168a1b70c948e9
 $linkColorHover: lighten( $linkColor, 15% );
 $selectionBackgroundColor: lighten( $linkColor, 25% );
 
@@ -52,7 +48,6 @@ section.has-dark-background {
 	        font-size: 0.6em;
 	
 }
-<<<<<<< HEAD
 
 .reveal header {
 	position:absolute;
@@ -131,48 +126,6 @@ section.has-dark-background {
   fill: none;
     stroke: #222;
 stroke-width: 1.0px;
-=======
-
-.reveal header {
-	position:absolute;
-	top:0px;
-	left:0px;
-	z-index:5;
-	background-color:  #0E4D8F ;
-	font-size:1.6em;
-	font-weight: 700;
-	color: #eee;
-	width: 100%;
-	text-align: left;
-	height: 150px;
-	padding: 5px;
-	border-color: #0E4D8F;
-	border-style: solid;
-}
-
-.reveal header:before {
-	content: "";
-	position: absolute;
-	top: 40%;
-	left: 0%;
-	background: #eee;
-	border: 18px solid #eee;
-	border-radius:50%;
-	width: 200%;
-	height: 150px;
-}
-.reveal header #logo {
-	background-image: url(../../img/sprite.png);
-	background-position: left -453px;
-	background-repeat: no-repeat;
-	width: 75px;
-	height: 100%;
-	float:left;
-}
-
-.reveal .slides section {
-	padding: 120px 0px 0px 0px;
->>>>>>> a7b23622052f4e27f961bf39e4168a1b70c948e9
 }
 // Theme template ------------------------------
 @import "../template/theme";

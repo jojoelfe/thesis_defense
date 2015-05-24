@@ -32,11 +32,7 @@ section.has-dark-background, section.has-dark-background h1, section.has-dark-ba
   content: "";
   position: absolute;
   top: 40%;
-<<<<<<< HEAD
   left: -5%;
-=======
-  left: 0%;
->>>>>>> a7b23622052f4e27f961bf39e4168a1b70c948e9
   background: #eee;
   border: 18px solid #eee;
   border-radius: 50%;
@@ -52,7 +48,6 @@ section.has-dark-background, section.has-dark-background h1, section.has-dark-ba
   float: left; }
 
 .reveal .slides section {
-<<<<<<< HEAD
   padding: 0px 0px 0px 0px; }
 
 .reveal .slide-number {
@@ -83,9 +78,6 @@ section.has-dark-background, section.has-dark-background h1, section.has-dark-ba
   fill: none;
   stroke: #222;
   stroke-width: 1px; }
-=======
-  padding: 120px 0px 0px 0px; }
->>>>>>> a7b23622052f4e27f961bf39e4168a1b70c948e9
 
 /*********************************************
  * GLOBAL STYLES
