@@ -97,6 +97,15 @@ var tree_render = {};
             calculate_r(n, num_tip);
         });
     }
+
+    function assign_family(n, family_list, family) {
+        if (n.uid in family_list) 
+            family = family_list[n.uid];
+        n.family = family;
+        if (n.children) n.children.forEach(function(n) {
+            assign_family(n, family_list, family);
+        });
+    }
     
     tree_render.render_subtilase_tree = function() {
         d3.text("data/PF00082_converted.nhx", function(text) {
@@ -110,6 +119,15 @@ var tree_render = {};
             var maxdist = d3.max(dists);
             count_children(nodes[0], maxdist, 0);
             calculate_r(nodes[0], nodes[0].y);
+            var family_list = {
+                261 : "Kexin/PC",
+                9299 : "Subtilisin",
+                3179 : "Cucumulisin/Pyrolisin",
+                6245 : "Sedolisin",
+                7352 : "Proteinase K"
+            };
+            assign_family(nodes[0],family_list,"");
+            tree_render.nodes = nodes;
             var link = vis.selectAll("path.link")
                 .data(cluster.links(nodes))
                 .enter().append("path")
@@ -154,7 +172,8 @@ var tree_render = {};
                 "P06873": "Proteinase K",
                 "Q63JI2": "Sedolisin",
             }
-            var label = vis.selectAll("text")
+            
+     /*       var label = vis.selectAll("text")
                 .data(nodes.filter(function(d) {
                     return d.x !== undefined && !d.children;
                 }))
@@ -169,7 +188,7 @@ var tree_render = {};
                 .text(function(d) {
                     return protein_list[d.name.replace(/_/g, ' ')];
                 });
-            var label = vis.selectAll("text.label")
+            var label_temp = vis.selectAll("text.label")
                 .data(nodes.filter(function(d) {
                     return d.x !== undefined && d.children;
                 }))
@@ -185,9 +204,14 @@ var tree_render = {};
                 .text(function(d) {
                     if (d.y < 150) return d.uid;
                     else return "";
-                });
+                });*/
+                tree_render.vis = vis;
+                tree_render.link = link;
         });
     };
-}());
+    tree_render.highlight_family = function (family) {
+        tree_render.link.attr("class", function (d) { if (d.target.family == family ) return "highlight link"; else return "link";});
+    };
+})();
 
 tree_render.render_subtilase_tree();

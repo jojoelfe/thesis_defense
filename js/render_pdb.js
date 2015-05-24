@@ -62,7 +62,7 @@ var render_pdb = {};
             viewer_left.addListener('viewerReady', transferase);
             viewer_right.addListener('viewerReady', transferase);
             };
-}());
+})();
 
 render_pdb.render_title_page()
 

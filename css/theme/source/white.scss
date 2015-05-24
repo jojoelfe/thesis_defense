@@ -127,6 +127,10 @@ section.has-dark-background {
     stroke: #222;
 stroke-width: 1.0px;
 }
+.link.highlight {
+	fill: none;
+	stroke-width: 4.0px;
+}
 // Theme template ------------------------------
 @import "../template/theme";
 // ---------------------------------------------
