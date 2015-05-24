@@ -47,18 +47,18 @@ var tree_render = {};
     }
 
     var wrap = d3.select("#vis").append("svg")
-        .attr("width", 600)
-        .attr("height", 600)
+        .attr("width", 650)
+        .attr("height", 650)
         .style("-webkit-backface-visibility", "hidden");
 
     // Catch mouse events in Safari.
     wrap.append("rect")
-        .attr("width", 600)
-        .attr("height", 600)
+        .attr("width", 650)
+        .attr("height", 650)
         .attr("fill", "none")
 
     var vis = wrap.append("g")
-        .attr("transform", "translate(" + 300 + "," + 300 + ")");
+        .attr("transform", "translate(" + 325 + "," + 325 + ")");
 
     var start = null,
         rotate = 0;
@@ -98,13 +98,25 @@ var tree_render = {};
         });
     }
 
-    function assign_family(n, family_list, family) {
+    function assign_family(n, family_list, family_angles, family) {
         if (n.uid in family_list) 
             family = family_list[n.uid];
         n.family = family;
         if (n.children) n.children.forEach(function(n) {
-            assign_family(n, family_list, family);
-        });
+            assign_family(n, family_list, family_angles, family);
+        }); else {
+            if (family != "") {
+                if (family in family_angles) {
+                    if (n.x < family_angles[family].min) family_angles[family].min = n.x;
+                    if (n.x > family_angles[family].max) family_angles[family].max = n.x;
+                } else {
+                    family_angles[family] = {}
+                    family_angles[family].min = n.x
+                    family_angles[family].max = n.x
+                }
+            }
+        }
+
     }
     
     tree_render.render_subtilase_tree = function() {
@@ -122,11 +134,13 @@ var tree_render = {};
             var family_list = {
                 261 : "Kexin/PC",
                 9299 : "Subtilisin",
-                3179 : "Cucumulisin/Pyrolisin",
+                3170 : "Cucumulisin/Pyrolisin",
                 6245 : "Sedolisin",
                 7352 : "Proteinase K"
             };
-            assign_family(nodes[0],family_list,"");
+            var family_angles = {};
+            assign_family(nodes[0],family_list,family_angles,"");
+            console.log(d3.entries(family_angles));
             tree_render.nodes = nodes;
             var link = vis.selectAll("path.link")
                 .data(cluster.links(nodes))
@@ -172,8 +186,8 @@ var tree_render = {};
                 "P06873": "Proteinase K",
                 "Q63JI2": "Sedolisin",
             }
-            
-     /*       var label = vis.selectAll("text")
+            /*
+            var label = vis.selectAll("text")
                 .data(nodes.filter(function(d) {
                     return d.x !== undefined && !d.children;
                 }))
@@ -205,6 +219,41 @@ var tree_render = {};
                     if (d.y < 150) return d.uid;
                     else return "";
                 });*/
+
+                // Render arches
+                function polarToCartesian(centerX, centerY, radius, angleInDegrees) {
+                  var angleInRadians = angleInDegrees * Math.PI / 180.0;
+                  var x = centerX + radius * Math.cos(angleInRadians);
+                  var y = centerY + radius * Math.sin(angleInRadians);
+                  return [x,y];
+                }
+                vis.selectAll("path.arc").data(d3.entries(family_angles))
+                    .enter().append("path")
+                    .attr("class","arc")
+                    .attr("d", function (d) {
+                        var start = polarToCartesian(0,0,250,d.value.min);
+                        var stop = polarToCartesian(0,0,250,d.value.max);
+                        return "M " + start[0] + " " + start[1]+ " A 250 250 0 0 1 " +stop[0] + " " +stop[1];
+                    });
+                vis.insert("defs").selectAll("path").data(d3.entries(family_angles))
+                    .enter().append("path")
+                    .attr("d", function (d) {
+                        var start = polarToCartesian(0,0,250,d.value.min);
+                        var stop = polarToCartesian(0,0,250,d.value.max);
+                        return "M " + start[0] + " " + start[1]+ " A 250 250 0 0 1 " +stop[0] + " " +stop[1];
+                    })
+                    .attr("id",function (d) {return d.key;});
+
+                vis.selectAll("text").data(d3.entries(family_angles))
+                    .enter().append("text")
+                    .attr("x",0)
+                    .attr("z",0)
+                    .attr("text-anchor","middle")
+                    .insert("textPath")
+                    .attr("xlink:href", function (d) {return "#"+d.key;})
+                    .attr("startOffset", "50%")
+                    .text(function (d) { return d.key;});
+
                 tree_render.vis = vis;
                 tree_render.link = link;
         });

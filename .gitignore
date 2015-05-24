@@ -1,6 +1,6 @@
 .DS_Store
 .svn
-.swp
+*.swp
 log/*.log
 tmp/**
 node_modules/
