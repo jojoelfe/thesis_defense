@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 
+<<<<<<< HEAD
 <head>
     <meta charset="utf-8">
 
@@ -245,3 +246,106 @@
 </body>
 
 </html>%
+=======
+	<head>
+		<meta charset="utf-8">
+
+		<title>Thesis Defense</title>
+
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/white.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+                <header><div id="logo"></div></header>
+				<section>
+					<h1>Using computational and experimental methods to understand protein function:</h1>
+					<h2>Application to proprotein convertases and other disease-related proteins</h2>
+					<p>
+					Johannes Elferich
+					</p>
+					<p>
+                    June 4<sup>th</sup> 2015
+					</p>
+				</section>
+                <section data-state="header1">
+                    <style>.header1 header:after { content: "Overview"; }</style>
+
+                    <ol>
+                        <li>Use computers to describe proteins
+                        <ol><li>Sequences</li>
+                            <li>Structure</li>
+                        </ol>
+                        </li>
+                        <li> Database analysis </li>
+                        <li> How protonation causes activation </li>
+                        <li> How can we discern concentration </li>
+                    </ol>
+                </section>
+                        
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: false,
+				progress: true,
+				history: true,
+				center: true,
+                slideNumber: true,
+                width: 1024,
+                height: 768,
+                minScale: 1.0,
+                maxScale: 1.0,
+				transition: 'none', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
+>>>>>>> a7b23622052f4e27f961bf39e4168a1b70c948e9
