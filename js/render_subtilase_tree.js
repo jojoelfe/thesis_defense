@@ -183,7 +183,6 @@ var tree_render = {};
                     return "rotate(" + (d.x - 90) + ")translate(" + (d.y) + ")rotate(" + (d.x < 180 ? 0 : 180) + ")";
                 })
                 .text(function(d) {
-                    console.log(d);
                     if (d.y < 150) return d.uid;
                     else return "";
                 });
