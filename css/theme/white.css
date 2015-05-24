@@ -83,10 +83,26 @@ section.has-dark-background, section.has-dark-background h1, section.has-dark-ba
   fill: none;
   stroke-width: 4px; }
 
-.arc {
+path.arc {
   fill: none;
   stroke: #222;
-  stroke-width: 5px; }
+  stroke-width: 5px;
+  display: none; }
+
+text.arc {
+  font-size: 0.7em;
+  display: none; }
+
+circle.measure {
+  stroke-width: 3px;
+  stroke: #222;
+  fill: none;
+  display: none; }
+
+line.dhisbar {
+  stroke-width: 1px;
+  stroke: #444;
+  display: none; }
 
 /*********************************************
  * GLOBAL STYLES

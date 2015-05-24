@@ -131,10 +131,26 @@ stroke-width: 1.0px;
 	fill: none;
 	stroke-width: 4.0px;
 }
-.arc {
+path.arc  {
   fill: none;
     stroke: #222;
 stroke-width: 5.0px;
+	display: none;
+}
+text.arc {
+	font-size: 0.7em;
+	display: none;
+}
+circle.measure {
+	stroke-width: 3.0px;
+	stroke: #222;
+	fill: none;
+	display: none;
+}
+line.dhisbar {
+	stroke-width: 1px;
+	stroke: #444;
+	display: none;
 }
 // Theme template ------------------------------
 @import "../template/theme";

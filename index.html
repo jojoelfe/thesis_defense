@@ -109,6 +109,14 @@
                 <span style="position: absolute; bottom: 15px; right: 35px">
                     <cite>Elferich <i>et al.</i> FASEB 2013</cite>
                 </span>
+                <div class="fragment" data-exec='tree_render.highlight_family("Subtilisin")'></div>
+                <div class="fragment" data-exec='tree_render.highlight_family("Kexin/PC")'></div>
+                <div class="fragment" data-exec='tree_render.highlight_family("Proteinase K")'></div>
+                <div class="fragment" data-exec='tree_render.highlight_family("Sedolisin")'></div>
+                <div class="fragment" data-exec='tree_render.highlight_family("Cucumulisin/Pyrolisin")'></div>
+                <div class="fragment" data-exec='tree_render.highlight_family("");tree_render.show_circle();'></div>
+                <div class="fragment" data-exec='tree_render.highlight_family("");tree_render.show_dhis();'></div>
+                <div class="fragment" data-exec='tree_render.highlight_family("");tree_render.color_nodes();'></div>
             </section>
 
         </div>
@@ -180,8 +188,18 @@
                 async: true
             }]
         });
-        Reveal.addEventListener('ready', function(event) {
-        });
+                    Reveal.addEventListener( 'slidechanged', function( event ) { 
+                        //Check if current slide has div-gl elemen
+                        if(event.currentSlide.getAttribute("data-exec")) {
+                            eval(event.currentSlide.getAttribute("data-exec"));
+                        }
+                    });
+
+                    Reveal.addEventListener('fragmentshown', function(element) {
+                        if(element.fragment.getAttribute("data-exec")) { 
+                            eval(element.fragment.getAttribute("data-exec"));
+                        }
+                        });
     </script>
 
 </body>
