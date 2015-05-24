@@ -550,7 +550,7 @@
 
 				// Center slides vertically
 				if( numberOfPages === 1 && config.center || slide.classList.contains( 'center' ) ) {
-					top = Math.max( ( pageHeight - contentHeight ) / 2, 0 );
+					top = Math.max( ( pageHeight - contentHeight - 120 ) / 2, 0 )+220;
 				}
 
 				// Position the slide inside of the page
@@ -1563,7 +1563,7 @@
 						slide.style.top = 0;
 					}
 					else {
-						slide.style.top = Math.max( ( ( size.height - getAbsoluteHeight( slide ) ) / 2 ) - slidePadding, 0 ) + 'px';
+						slide.style.top = Math.max( ( ( size.height - getAbsoluteHeight( slide ) - 100 ) / 2 ) - slidePadding, 0 ) + 100 + 'px';
 					}
 				}
 				else {

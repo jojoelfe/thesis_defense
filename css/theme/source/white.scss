@@ -13,28 +13,29 @@
 
 // Include theme-specific fonts
 @import url(../../lib/font/source-sans-pro/source-sans-pro.css);
+@import url(https://fonts.googleapis.com/css?family=Ubuntu:300,700,300italic,700italic);
 
 
 // Override theme settings (see ../template/settings.scss)
-$backgroundColor: #fff;
+$backgroundColor: #eee;
 
 $mainColor: #222;
 $headingColor: #222;
 
-$mainFontSize: 38px;
-$mainFont: 'Source Sans Pro', Helvetica, sans-serif;
-$headingFont: 'Source Sans Pro', Helvetica, sans-serif;
+$mainFontSize: 36px;
+$mainFont: 'Ubuntu', Helvetica, sans-serif;
+$headingFont: 'Ubuntu', Helvetica, sans-serif;
 $headingTextShadow: none;
 $headingLetterSpacing: normal;
-$headingTextTransform: uppercase;
-$headingFontWeight: 600;
-$linkColor: #2a76dd;
+$headingTextTransform: none;
+$headingFontWeight: 700;
+$linkColor: #0E4D8F;
 $linkColorHover: lighten( $linkColor, 15% );
 $selectionBackgroundColor: lighten( $linkColor, 25% );
 
-$heading1Size: 2.5em;
-$heading2Size: 1.6em;
-$heading3Size: 1.3em;
+$heading1Size: 1.6em;
+$heading2Size: 1.3em;
+$heading3Size: 1.0em;
 $heading4Size: 1.0em;
 
 section.has-dark-background {
@@ -42,8 +43,90 @@ section.has-dark-background {
 		color: #fff;
 	}
 }
+.reveal sup { 
+	    vertical-align: super;
+	        font-size: 0.6em;
+	
+}
+
+.reveal header {
+	position:absolute;
+	top:0px;
+	left:0px;
+	z-index:5;
+	background-color:  #0E4D8F ;
+	font-size:1.6em;
+	font-weight: 700;
+	color: #eee;
+	width: 100%;
+	text-align: left;
+	height: 150px;
+	padding: 5px;
+	border-color: #0E4D8F;
+	border-style: solid;
+}
+
+.reveal header:before {
+	content: "";
+	position: absolute;
+	top: 40%;
+	left: -5%;
+	background: #eee;
+	border: 18px solid #eee;
+	border-radius:50%;
+	width: 200%;
+	height: 150px;
+}
+.reveal header #logo {
+	background-image: url(../../img/sprite.png);
+	background-position: left -453px;
+	background-repeat: no-repeat;
+	width: 75px;
+	height: 100%;
+	float:left;
+}
+
+.reveal .slides section {
+	padding: 0px 0px 0px 0px;
+}
+
+.reveal .slide-number {
+	font-size: 24px
+}
+
+.reveal cite {
+	font-family: Serif;
+	font-variant: small-caps;
+	font-style: normal;
+}
+
+.reveal cite::before {
+	content: "[";
+}
+
+.reveal cite::after {
+	content: "]";
+}
+
+.reveal cite i {
+	font-family: Serif;
+	font-variant: normal;
+}
 
 
+.node circle {
+	  fill: #eee;
+	    stroke: #222;
+	      stroke-width: 1.5px;
+	display: none;
+      }
+
+
+.link {
+  fill: none;
+    stroke: #222;
+stroke-width: 1.0px;
+}
 // Theme template ------------------------------
 @import "../template/theme";
 // ---------------------------------------------
