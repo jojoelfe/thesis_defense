@@ -74,10 +74,35 @@ section.has-dark-background, section.has-dark-background h1, section.has-dark-ba
   stroke-width: 1.5px;
   display: none; }
 
+#protein-vis .node circle {
+  display: block;
+  fill: #eee;
+  stroke-width: 0.5px; }
+
+#protein-vis .node.polar circle {
+  fill: #04A821; }
+
+#protein-vis .node.nonpolar circle {
+  fill: #DC8605; }
+
+#protein-vis .node.pos circle {
+  fill: #0E4D8F; }
+
+#protein-vis .node.neg circle {
+  fill: #DC1505; }
+
+#protein-vis .node text {
+  font-size: 0.4em;
+  font-weight: 700; }
+
 .link {
   fill: none;
   stroke: #222;
   stroke-width: 1px; }
+
+#protein-vis .link {
+  stroke-width: 4px;
+  stroke: #aaa; }
 
 .link.highlight {
   fill: none;
@@ -103,6 +128,12 @@ line.dhisbar {
   stroke-width: 1px;
   stroke: #444;
   display: none; }
+
+line.dhisbar.euk {
+  stroke: #DC1505; }
+
+line.dhisbar.prok {
+  stroke: #0E4D8F; }
 
 /*********************************************
  * GLOBAL STYLES

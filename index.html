@@ -83,6 +83,18 @@
                         font-size: 1.4em;
                     }
                 </style>
+                <svg id="protein-vis" width=500 height=500 style="position:absolute;left:20px"></svg>
+
+            </section>
+            <section data-state="proteins">
+                <style>
+                    .proteins header:after {
+                        content: "Proteins: From sequence to structure";
+                    }
+                    .proteins header {
+                        font-size: 1.4em;
+                    }
+                </style>
 
             </section>
             <section data-state="sec61">
@@ -120,7 +132,16 @@
                 <div class="fragment" data-exec='tree_render.highlight_family("");tree_render.show_dhis();'></div>
                 <div class="fragment" data-exec='tree_render.highlight_family("");tree_render.color_nodes();'></div>
             </section>
-
+        <section data-state="hdx_animation">
+            <style>
+                .hdx_animation header:after {
+                    content: "Peptide ions after exchange";
+                }
+                .hdx_annimation header {
+                    font-size: 1.4em;
+                    }
+                </style>
+        </section>
         </div>
 
     </div>
@@ -187,6 +208,9 @@
                 async: true
             }, {
                 src: 'js/render_pdb.js',
+                async: true
+            }, {
+                src: 'js/render_protein_vis.js',
                 async: true
             }]
         });

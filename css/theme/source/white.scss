@@ -15,7 +15,10 @@
 @import url(../../lib/font/source-sans-pro/source-sans-pro.css);
 @import url(https://fonts.googleapis.com/css?family=Ubuntu:300,700,300italic,700italic);
 
-
+//Blue 0E4D8F
+//Red DC1505
+//Yellow DC8605
+//Green 04A821
 // Override theme settings (see ../template/settings.scss)
 $backgroundColor: #eee;
 
@@ -120,12 +123,40 @@ section.has-dark-background {
 	      stroke-width: 1.5px;
 	display: none;
       }
+#protein-vis .node circle {
+	display: block;
+	fill: #eee;
+	stroke-width: 0.5px;
+}
+#protein-vis .node.polar circle {
+	fill: #04A821
+}
+#protein-vis .node.nonpolar circle {
+	fill: #DC8605
+}
+#protein-vis .node.pos circle {
+	fill: #0E4D8F
+}
+#protein-vis .node.neg circle {
+	fill: #DC1505
+}
+
+
+#protein-vis .node text  {
+	font-size: 0.4em;
+	font-weight: 700;
+}
 
 
 .link {
   fill: none;
     stroke: #222;
 stroke-width: 1.0px;
+}
+
+#protein-vis .link {
+	stroke-width: 4.0px;
+	stroke: #aaa;
 }
 .link.highlight {
 	fill: none;
@@ -152,6 +183,14 @@ line.dhisbar {
 	stroke: #444;
 	display: none;
 }
+line.dhisbar.euk {
+	stroke: #DC1505 
+}
+line.dhisbar.prok {
+	stroke: #0E4D8F 
+}
+
+
 // Theme template ------------------------------
 @import "../template/theme";
 // ---------------------------------------------

@@ -318,10 +318,10 @@ var tree_render = {};
         }};
 
     tree_render.color_nodes = function() {
-        tree_render.dhisbar.style("stroke", function (d) {
-            if (d.tax == "Eukaryota") return "#f00";
-            if (d.tax == "Bacteria") return "#00f";
-            return "#222";
+        tree_render.dhisbar.attr("class", function (d) {
+            if (d.tax == "Eukaryota") return "euk dhisbar";
+            if (d.tax == "Bacteria") return "prok dhisbar";
+            return "dhisbar";
         });
     };
 
