@@ -2,6 +2,39 @@ render_protein_vis = {};
 
 (function () {
 
+function calculate_initial_position(n,i,a) {
+    var length = a.length;
+    var stepx = 24;
+    var stepy = 22;
+    n.x = 10 + stepx * (i +1); 
+    n.y = 10 +  stepy * (i +1);
+}
+
+function collide(node) {
+      var r = node.radius + 10,
+          nx1 = node.x - r,
+            nx2 = node.x + r,
+                    ny1 = node.y - r,
+                      ny2 = node.y + r;
+        return function(quad, x1, y1, x2, y2) {
+                if (quad.point && (quad.point !== node)) {
+                          var x = node.x - quad.point.x,
+                                        y = node.y - quad.point.y,
+                                    l = Math.sqrt(x * x + y * y),
+                                                      r = node.radius + quad.point.radius;
+                                if (l < r) {
+                                            l = (l - r) / l * .5;
+                                                    node.x -= x *= l;
+                                                            node.y -= y *= l;
+                                                                    quad.point.x += x;
+                                                                            quad.point.y += y;
+                                                                                  }
+                                    }
+                    return x1 > nx2 || x2 < nx1 || y1 > ny2 || y2 < ny1;
+                      };
+}
+render_protein_vis.render = function () {
+
 var nodes = [
 { aa: "Asn", type : "polar",radius : 14 },
 { aa: "Leu", type : "nonpolar",radius : 14 },
@@ -46,39 +79,8 @@ var links = [
 {source: 18, target: 19},
 ];
 
-function calculate_initial_position(n,i,a) {
-    var length = a.length;
-    var stepx = 24;
-    var stepy = 22;
-    n.x = 10 + stepx * (i +1); 
-    n.y = 10 +  stepy * (i +1);
-}
-
-function collide(node) {
-      var r = node.radius + 10,
-          nx1 = node.x - r,
-            nx2 = node.x + r,
-                    ny1 = node.y - r,
-                      ny2 = node.y + r;
-        return function(quad, x1, y1, x2, y2) {
-                if (quad.point && (quad.point !== node)) {
-                          var x = node.x - quad.point.x,
-                                        y = node.y - quad.point.y,
-                                    l = Math.sqrt(x * x + y * y),
-                                                      r = node.radius + quad.point.radius;
-                                if (l < r) {
-                                            l = (l - r) / l * .5;
-                                                    node.x -= x *= l;
-                                                            node.y -= y *= l;
-                                                                    quad.point.x += x;
-                                                                            quad.point.y += y;
-                                                                                  }
-                                    }
-                    return x1 > nx2 || x2 < nx1 || y1 > ny2 || y2 < ny1;
-                      };
-}
-render_protein_vis.render = function () {
-var svg = d3.select("#protein-vis");
+    
+    var svg = d3.select("#protein-vis");
 var width = svg.attr("width");
 var height = svg.attr("height");
 var force = d3.layout.force()
@@ -91,9 +93,9 @@ force.linkStrength(0);
 force.charge(0);
 force.gravity(0);
 force.friction(0);
-
+force.alpha(0);
 nodes.forEach(calculate_initial_position, svg);
-
+svg.html("");
 var link = svg.selectAll('.link')
         .data(links)
         .enter().append('line')
