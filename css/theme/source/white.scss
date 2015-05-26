@@ -14,7 +14,6 @@
 // Include theme-specific fonts
 @import url(../../lib/font/source-sans-pro/source-sans-pro.css);
 @import url(https://fonts.googleapis.com/css?family=Ubuntu:300,700,300italic,700italic);
-@import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700);
 
 //Blue 0E4D8F
 //Red DC1505
@@ -146,11 +145,6 @@ section.has-dark-background {
 #protein-vis .node text  {
 	font-size: 0.4em;
 	font-weight: 700;
-}
-#seq_tree .node text  {
-	font-size: 0.6em;
-	font-weight: 700;
-	font-family: 'Ubuntu mono'
 }
 
 
