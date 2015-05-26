@@ -91,13 +91,15 @@
             <section data-state="sequences">
                 <style>
                     .sequences header:after {
-                        content: "Comparing protein sequences computationally";
+                        content: "Protein sequence comparison";
                     }
                     .sequences header {
                         font-size: 1.4em;
                     }
                 </style>
-
+                <svg id="seq_tree" width=1000 height=200></svg>
+                <h4 class="fragment" style="text-align:left;">Pairwise Comparison</h4>
+<img src="img/hmm.svg"></img>
             </section>
             <section data-state="sec61">
                 <style>
@@ -213,6 +215,9 @@
                 async: true
             }, {
                 src: 'js/render_protein_vis.js',
+                async: true
+            }, {
+                src: 'js/render_seq_tree.js',
                 async: true
             }]
         });
