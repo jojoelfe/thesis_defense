@@ -83,15 +83,17 @@
                         font-size: 1.4em;
                     }
                 </style>
-                <svg id="protein-vis" width=500 height=500 style="position:absolute;left:20px"></svg>
-
+                <svg id="protein-vis" width=520 height=500 style="position:absolute;left:20px"></svg>
+                <ul style="margin-left:520px;font-size:0.8em;"><li>Proteins are a linear polymer comprised of 20 possible amino acids that can be represented as a string</li>
+                    <li class="fragment" data-exec="render_protein_vis.apply_force_field();">Proteins fold into a defined structure, based on the chemical properties of the amino acids, that can be represented by Cartesian coordinates for every atom</li>
+                </ul>
             </section>
-            <section data-state="proteins">
+            <section data-state="sequences">
                 <style>
-                    .proteins header:after {
-                        content: "Proteins: From sequence to structure";
+                    .sequences header:after {
+                        content: "Comparing protein sequences computationally";
                     }
-                    .proteins header {
+                    .sequences header {
                         font-size: 1.4em;
                     }
                 </style>

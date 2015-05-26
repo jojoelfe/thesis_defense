@@ -3,26 +3,26 @@ render_protein_vis = {};
 (function () {
 
 var nodes = [
-{ aa: "Asn", type : "polar" },
-{ aa: "Leu", type : "nonpolar" },
-{ aa: "Tyr", type : "polar" },
-{ aa: "Ile", type : "nonpolar" },
-{ aa: "Gln", type : "polar" },
-{ aa: "Trp", type : "nonpolar" },
-{ aa: "Leu", type : "nonpolar" },
-{ aa: "Lys", type : "pos" },
-{ aa: "Asp", type : "neg" },
-{ aa: "Gly", type : "polar" },
-{ aa: "Gly", type : "polar" },
-{ aa: "Pro", type : "nonpolar" },
-{ aa: "Ser", type : "polar" },
-{ aa: "Ser", type : "polar" },
-{ aa: "Gly", type : "polar" },
-{ aa: "Arg", type : "pos" },
-{ aa: "Pro", type : "nonpolar" },
-{ aa: "Pro", type : "nonpolar" },
-{ aa: "Pro", type : "nonpolar" },
-{ aa: "Ser", type : "polar" },
+{ aa: "Asn", type : "polar",radius : 14 },
+{ aa: "Leu", type : "nonpolar",radius : 14 },
+{ aa: "Tyr", type : "polar",radius : 17 },
+{ aa: "Ile", type : "nonpolar",radius : 14},
+{ aa: "Gln", type : "polar",radius : 15 },
+{ aa: "Trp", type : "nonpolar",radius : 18 },
+{ aa: "Leu", type : "nonpolar",radius : 14 },
+{ aa: "Lys", type : "pos",radius:15 },
+{ aa: "Asp", type : "neg",radius : 14 },
+{ aa: "Gly", type : "polar", radius : 10 },
+{ aa: "Gly", type : "polar", radius : 10 },
+{ aa: "Pro", type : "nonpolar", radius : 12 },
+{ aa: "Ser", type : "polar", radius : 12 },
+{ aa: "Ser", type : "polar", radius : 12 },
+{ aa: "Gly", type : "polar",radius : 10 },
+{ aa: "Arg", type : "pos",radius : 16 },
+{ aa: "Pro", type : "nonpolar", radius: 12 },
+{ aa: "Pro", type : "nonpolar", radius: 12 },
+{ aa: "Pro", type : "nonpolar", radius: 12 },
+{ aa: "Ser", type : "polar",radius:12 },
     ];
 var links = [
 {source: 0, target: 1},
@@ -50,9 +50,8 @@ function calculate_initial_position(n,i,a) {
     var length = a.length;
     var stepx = 24;
     var stepy = 22;
-    n.x = 20 + stepx * (i +1); 
-    n.y = 20 +  stepy * (i +1);
-    n.radius = 14;
+    n.x = 10 + stepx * (i +1); 
+    n.y = 10 +  stepy * (i +1);
 }
 
 function collide(node) {
@@ -128,8 +127,19 @@ var q = d3.geom.quadtree(nodes),
           i = 0,
       n = nodes.length;
 
+    while (++i < n) {
+        if (nodes[i].type == "nonpolar") {
+            var midx = width/2;
+            var midy = height/2;
+            var dx = nodes[i].x-midx;
+            var dy = nodes[i].y-midy;
+            nodes[i].x -= (dx *force.alpha() * 0.06)*(nodes[i].radius-8);
+            nodes[i].y -= (dy *force.alpha() * 0.06)*(nodes[i].radius-8);
+        }
+    }
+   i = 0;
+    n = nodes.length;
   while (++i < n) q.visit(collide(nodes[i]));
-    
     node.attr('transform', function(d) {
         return "translate("+d.x+" "+d.y+")";});
     link.attr('x1', function(d) { return d.source.x; })
@@ -145,12 +155,12 @@ render_protein_vis.force = force;
 render_protein_vis.apply_force_field = function () {
 var force = render_protein_vis.force;
 force.on('tick',render_protein_vis.stepForce);
-force.gravity(0.01);
+force.gravity(0.00);
 force.linkDistance(32.5);
 force.linkStrength(1.0);
-force.charge(2);
-force.alpha(0.00001);
-force.friction(0.9);
+force.charge(5);
+force.alpha(0.03);
+force.friction(0.8);
 force.start();
 }
 })();
