@@ -1,0 +1,3 @@
+--langdef=reveal
+--langmap=reveal:.html
+--regex-reveal=/<section data-state="([a-zA-Z0-9]+)"/Slide \1/d,definition/
