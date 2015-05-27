@@ -7,29 +7,34 @@
     <title>Thesis Defense</title>
 
 
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-capable"
+        content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style"
+        content="black-translucent" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-    <link rel="stylesheet" href="css/reveal.css">
-    <link rel="stylesheet" href="css/theme/white.css" id="theme">
+    <link rel="stylesheet"
+        href="css/reveal.css">
+    <link rel="stylesheet"
+        href="css/theme/white.css"
+        id="theme">
 
     <!-- Code syntax highlighting -->
-    <link rel="stylesheet" href="lib/css/zenburn.css">
+    <link rel="stylesheet"
+        href="lib/css/zenburn.css">
 
     <!-- Printing and PDF exports -->
     <script>
         var link = document.createElement('link');
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        link.href = window.location.search.match(/print-pdf/gi) ?
+            'css/print/pdf.css' : 'css/print/paper.css';
         document.getElementsByTagName('head')[0].appendChild(link);
     </script>
 
-    <!--[if lt IE 9]>
-                                                            <script src="lib/js/html5shiv.js"></script>
-                                                                            <![endif]-->
 </head>
 
 <body>
@@ -50,8 +55,10 @@
                     June 4<sup>th</sup> 2015
                 </p>
                 <div style="height:300px"></div>
-                <div id="viewer_left" style="position:absolute;width:350px;height:350px;top:40%;left:0px;z-index:-5"></div>
-                <div id="viewer_right" style="position:absolute;width:350px;height:350px;top:40%;left:700px;z-index:-5"></div>
+                <div id="viewer_left"
+                    style="position:absolute;width:350px;height:350px;top:40%;left:0px;z-index:-5"></div>
+                <div id="viewer_right"
+                    style="position:absolute;width:350px;height:350px;top:40%;left:700px;z-index:-5"></div>
             </section>
             <section data-state="overview">
                 <style>
@@ -60,7 +67,8 @@
                     }
                 </style>
 
-                <ol type="A" style="list-style-type: upper-alpha">
+                <ol type="A"
+                    style="list-style-type: upper-alpha">
                     <li>Use computers to describe proteins
                         <ol>
                             <li>Sequences (Sec61/translocon complex)</li>
@@ -70,7 +78,8 @@
                     <li>How propeptides of proprotein convertases sense pH
                         <ol>
                             <li> Propeptides contain histidines </li>
-                            <li> Histidine protonation destabilizes propeptide structure </li>
+                            <li> Histidine protonation destabilizes propeptide structure
+                            </li>
                             <li> Histidine pKa determines pH of activation </li>
                         </ol>
                     </li>
@@ -82,14 +91,21 @@
                     .proteins header:after {
                         content: "Proteins: From sequence to structure";
                     }
+                    
                     .proteins header {
                         font-size: 1.4em;
                     }
                 </style>
-                <svg id="protein-vis" width=520 height=500 style="position:absolute;left:20px"></svg>
+                <svg id="protein-vis"
+                    width=520
+                    height=500
+                    style="position:absolute;left:20px"></svg>
                 <ul style="margin-left:520px;font-size:0.8em;">
-                    <li>Proteins are a linear polymer comprised of 20 possible amino acids that can be represented as a string</li>
-                    <li class="fragment" data-exec="render_protein_vis.apply_force_field();" data-exec-hide='render_protein_vis.render();'>Proteins fold into a defined structure, based on the chemical properties of the amino acids, that can be represented by Cartesian coordinates for every atom</li>
+                    <li>Protein sequences can be represented as strings</li>
+                    <li class="fragment"
+                        data-exec="render_protein_vis.apply_force_field();"
+                        data-exec-hide='render_protein_vis.render();'>
+                        Protein structures can be represented as lists of atoms and their coordinates</li>
                 </ul>
             </section>
             <section data-state="sequences">
@@ -101,26 +117,31 @@
                         font-size: 1.4em;
                     }
                 </style>
-                <svg id="seq_tree" width=1000 height=600></svg>
+                <svg id="seq_tree"
+                    width=1000
+                    height=600></svg>
                 <div style="width:950px;position:absolute;top:200px;left:37px;">
-                    <h6 class="fragment" style="float:left;width:33.333%;text-align:left;font-size:0.6em;">Pairwise Comparison</h6>
-                    <div class="fragment" 
-                        data-exec-hide='render_seq_tree.pairwise_align_del("#YHWWDRG","#YHFWDRP")' 
+                    <h6 class="fragment"
+                        style="float:left;width:33.333%;text-align:left;font-size:0.6em;">Pairwise Comparison</h6>
+                    <div class="fragment"
+                        data-exec-hide='render_seq_tree.pairwise_align_del("#YHWWDRG","#YHFWDRP")'
                         data-exec='render_seq_tree.pairwise_align("#YHWWDRG","#YHFWDRP",20,250)'></div>
-                    <div class="fragment" style="position:absolute;left:90px;top:65px;font-size:0.6em;">
+                    <div class="fragment"
+                        style="position:absolute;left:90px;top:65px;font-size:0.6em;">
                         5/7 71% Identical
                     </div>
-                    <div class="fragment" 
-                        data-exec-hide='render_seq_tree.pairwise_align_del("#YFWDRG","#YHFWDRP")' 
+                    <div class="fragment"
+                        data-exec-hide='render_seq_tree.pairwise_align_del("#YFWDRG","#YHFWDRP")'
                         data-exec='render_seq_tree.pairwise_align("#YFWDRG","#YHFWDRP",20,300)'></div>
-                    <div class="fragment" 
-                        data-exec-hide='render_seq_tree.pairwise_align_del("#YFWDRG","#FHFWHKG")' 
-                        data-exec='render_seq_tree.pairwise_align("#YFWDRG","#FHFWHKG",20,350)'></div>
-                    <h6 class="fragment" style="float:left;width:33.333%;text-align:center;font-size:0.6em">Multiple sequence alignment</h6>
-                    <div class="fragment" 
-                        data-exec-hide='render_seq_tree.multiple_align_del()' 
+                    <div class="fragment"
+                        data-exec-hide='render_seq_tree.pairwise_align_del("#YFWDRG","#FHFWHKG")'>
+                    <h6 class="fragment"
+                        style="float:left;width:33.333%;text-align:center;font-size:0.6em">Multiple sequence alignment</h6>
+                    <div class="fragment"
+                        data-exec-hide='render_seq_tree.multiple_align_del()'
                         data-exec='render_seq_tree.multiple_align(460,250)'></div>
-                    <div class="fragment" style="float:left;width:33.333%;text-align:right;font-size:0.6em;">
+                    <div class="fragment"
+                        style="float:left;width:33.333%;text-align:right;font-size:0.6em;">
                         <h6>Hidden markov model<br> sequence profiles</h6>
                         <img src="img/hmm.svg"></img>
                     </div>
@@ -211,14 +232,22 @@
                 <span style="position: absolute; bottom: 15px; right: 45px">
                     <cite>Elferich <i>et al.</i> FASEB 2013</cite>
                 </span>
-                <div class="fragment" data-exec='tree_render.highlight_family("Subtilisin")'></div>
-                <div class="fragment" data-exec='tree_render.highlight_family("Kexin/PC")'></div>
-                <div class="fragment" data-exec='tree_render.highlight_family("Proteinase K")'></div>
-                <div class="fragment" data-exec='tree_render.highlight_family("Sedolisin")'></div>
-                <div class="fragment" data-exec='tree_render.highlight_family("Cucumulisin/Pyrolisin")'></div>
-                <div class="fragment" data-exec='tree_render.highlight_family("");tree_render.show_circle();'></div>
-                <div class="fragment" data-exec='tree_render.highlight_family("");tree_render.show_dhis();'></div>
-                <div class="fragment" data-exec='tree_render.highlight_family("");tree_render.color_nodes();'></div>
+                <div class="fragment"
+                    data-exec='tree_render.highlight_family("Subtilisin")'></div>
+                <div class="fragment"
+                    data-exec='tree_render.highlight_family("Kexin/PC")'></div>
+                <div class="fragment"
+                    data-exec='tree_render.highlight_family("Proteinase K")'></div>
+                <div class="fragment"
+                    data-exec='tree_render.highlight_family("Sedolisin")'></div>
+                <div class="fragment"
+                    data-exec='tree_render.highlight_family("Cucumulisin/Pyrolisin")'></div>
+                <div class="fragment"
+                    data-exec='tree_render.highlight_family("");tree_render.show_circle();'></div>
+                <div class="fragment"
+                    data-exec='tree_render.highlight_family("");tree_render.show_dhis();'></div>
+                <div class="fragment"
+                    data-exec='tree_render.highlight_family("");tree_render.color_nodes();'></div>
             </section>
             <section data-state="hdx_animation">
                 <style>
@@ -269,18 +298,21 @@
             }, {
                 src: 'plugin/markdown/marked.js',
                 condition: function() {
-                    return !!document.querySelector('[data-markdown]');
+                    return !!document.querySelector(
+                        '[data-markdown]');
                 }
             }, {
                 src: 'plugin/markdown/markdown.js',
                 condition: function() {
-                    return !!document.querySelector('[data-markdown]');
+                    return !!document.querySelector(
+                        '[data-markdown]');
                 }
             }, {
                 src: 'plugin/highlight/highlight.js',
                 async: true,
                 condition: function() {
-                    return !!document.querySelector('pre code');
+                    return !!document.querySelector(
+                        'pre code');
                 },
                 callback: function() {
                     hljs.initHighlightingOnLoad();
@@ -319,7 +351,8 @@
         });
         Reveal.addEventListener('fragmenthidden', function(element) {
             if (element.fragment.getAttribute("data-exec-hide")) {
-                eval(element.fragment.getAttribute("data-exec-hide"));
+                eval(element.fragment.getAttribute(
+                    "data-exec-hide"));
             }
         });
     </script>
