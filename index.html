@@ -104,11 +104,22 @@
                 <svg id="seq_tree" width=1000 height=600></svg>
                 <div style="width:950px;position:absolute;top:200px;left:37px;">
                     <h6 class="fragment" style="float:left;width:33.333%;text-align:left;font-size:0.6em;">Pairwise Comparison</h6>
-                    <div class="fragment" data-exec-hide='render_seq_tree.pairwise_align_del("#YHWWDRG","#YHFWDRP")' data-exec='render_seq_tree.pairwise_align("#YHWWDRG","#YHFWDRP",20,250)'></div>
-                    <div class="fragment" data-exec-hide='render_seq_tree.pairwise_align_del("#YFWDRG","#YHFWDRP")' data-exec='render_seq_tree.pairwise_align("#YFWDRG","#YHFWDRP",20,300)'></div>
-                    <div class="fragment" data-exec-hide='render_seq_tree.pairwise_align_del("#YFWDRG","#FHFWHKG")' data-exec='render_seq_tree.pairwise_align("#YFWDRG","#FHFWHKG",20,350)'></div>
+                    <div class="fragment" 
+                        data-exec-hide='render_seq_tree.pairwise_align_del("#YHWWDRG","#YHFWDRP")' 
+                        data-exec='render_seq_tree.pairwise_align("#YHWWDRG","#YHFWDRP",20,250)'></div>
+                    <div class="fragment" style="position:absolute;left:90px;top:65px;font-size:0.6em;">
+                        5/7 71% Identical
+                    </div>
+                    <div class="fragment" 
+                        data-exec-hide='render_seq_tree.pairwise_align_del("#YFWDRG","#YHFWDRP")' 
+                        data-exec='render_seq_tree.pairwise_align("#YFWDRG","#YHFWDRP",20,300)'></div>
+                    <div class="fragment" 
+                        data-exec-hide='render_seq_tree.pairwise_align_del("#YFWDRG","#FHFWHKG")' 
+                        data-exec='render_seq_tree.pairwise_align("#YFWDRG","#FHFWHKG",20,350)'></div>
                     <h6 class="fragment" style="float:left;width:33.333%;text-align:center;font-size:0.6em">Multiple sequence alignment</h6>
-                    <div class="fragment" data-exec-hide='render_seq_tree.multiple_align_del()' data-exec='render_seq_tree.multiple_align(320,250)'></div>
+                    <div class="fragment" 
+                        data-exec-hide='render_seq_tree.multiple_align_del()' 
+                        data-exec='render_seq_tree.multiple_align(460,250)'></div>
                     <div class="fragment" style="float:left;width:33.333%;text-align:right;font-size:0.6em;">
                         <h6>Hidden markov model<br> sequence profiles</h6>
                         <img src="img/hmm.svg"></img>
@@ -124,7 +135,7 @@
                         font-size: 1.4em;
                     }
                 </style>
-                <span style="position: absolute; bottom: 15px; right: 15px">
+                <span style="position: absolute; bottom: 15px; right: 45px">
                     <cite>Conti, Elferich <i>et al.</i> 2014</cite>
                 </span>
             </section>
@@ -150,7 +161,7 @@
                         font-size: 1.4em;
                     }
                 </style>
-                <span style="position: absolute; bottom: 15px; right: 15px">
+                <span style="position: absolute; bottom: 15px; right: 45px">
                     <cite>Li, Sun, Elferich <i>et al.</i> JBC 2014</cite>
                 </span>
             </section>
@@ -163,7 +174,7 @@
                         font-size: 1.4em;
                     }
                 </style>
-                <span style="position: absolute; bottom: 15px; right: 15px">
+                <span style="position: absolute; bottom: 15px; right: 45px">
                     <cite>Li, Sun, Elferich <i>et al.</i> JBC 2014</cite>
                 </span>
             </section>
@@ -197,7 +208,7 @@
                     }
                 </style>
                 <div id="vis"></div>
-                <span style="position: absolute; bottom: 15px; right: 35px">
+                <span style="position: absolute; bottom: 15px; right: 45px">
                     <cite>Elferich <i>et al.</i> FASEB 2013</cite>
                 </span>
                 <div class="fragment" data-exec='tree_render.highlight_family("Subtilisin")'></div>
