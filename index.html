@@ -134,14 +134,41 @@
                         data-exec-hide='render_seq_tree.pairwise_align_del("#YFWDRG","#YHFWDRP")'
                         data-exec='render_seq_tree.pairwise_align("#YFWDRG","#YHFWDRP",20,300)'></div>
                     <div class="fragment"
-                        data-exec-hide='render_seq_tree.pairwise_align_del("#YFWDRG","#FHFWHKG")'>
+                        style="position:absolute;left:90px;top:115px;font-size:0.6em;" id="ndident">
+                        1/7 14% Identical
+                    </div>
+                    <div class="fragment" 
+                        data-exec='d3.select("#YFWDRGc").text("Y-FWDRG").attr("id","old");
+                                   d3.select("#ndident").html("5/7 71% Identical");'
+                        data-exec-hide='' >
+                    </div>
+                    <div class="fragment"
+                        data-exec-hide='render_seq_tree.pairwise_align_del("#YFWDRG","#FHFWHKG")'
+                        data-exec='render_seq_tree.pairwise_align("#YFWDRG","#FHFWHKG",20,350)'></div>
+                    <div class="fragment"
+                        style="position:absolute;left:90px;top:165px;font-size:0.6em;" id="rdident">
+                        0/7 0% Identical
+                    </div>
+                    <div class="fragment" 
+                        data-exec='d3.selectAll("#YFWDRGc").text("Y-FWDRG");
+                                   d3.select("#rdident").html("3/7 43% Identical");'
+                        data-exec-hide='' >
+                    </div>
                     <h6 class="fragment"
                         style="float:left;width:33.333%;text-align:center;font-size:0.6em">Multiple sequence alignment</h6>
                     <div class="fragment"
                         data-exec-hide='render_seq_tree.multiple_align_del()'
                         data-exec='render_seq_tree.multiple_align(460,250)'></div>
+                    <div class="fragment" 
+                        data-exec='d3.select("#YHFWHAGc.oldclonem").text("YHFWH-AG");
+                                   d3.select("#FHFWHKGc.oldclonem").text("FHFWH-KG");
+                                   d3.select("#YHFWDRPc.oldclonem").text("YHFWD-RP");
+                                   d3.select("#YHWWDRGc.oldclonem").text("YHWWD-RG");
+                                   d3.select("#YFWDRGc.oldclonem").text("Y-FWD-RG");'
+                        data-exec-hide='' >
+                    </div>
                     <div class="fragment"
-                        style="float:left;width:33.333%;text-align:right;font-size:0.6em;">
+                        style="float:left;width:33.333%;text-align:center;font-size:0.6em;">
                         <h6>Hidden markov model<br> sequence profiles</h6>
                         <img src="img/hmm.svg"></img>
                     </div>
@@ -150,7 +177,7 @@
             <section data-state="sec61">
                 <style>
                     .sec61 header:after {
-                        content: "Sec61:translocon complex";
+                        content: "Protein transport across membranes";
                     }
                     .sec61 header {
                         font-size: 1.4em;
@@ -159,6 +186,7 @@
                 <span style="position: absolute; bottom: 15px; right: 45px">
                     <cite>Conti, Elferich <i>et al.</i> 2014</cite>
                 </span>
+                <img src="img/translocon_mech.png" width="600px"></img>
             </section>
             <section data-state="structure">
                 <style>

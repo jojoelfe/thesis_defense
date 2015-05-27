@@ -19,7 +19,7 @@ var tree_render = {};
 
     function project(d) {
         var r = d.y,
-            a = (d.x ) / 180 * Math.PI;
+            a = (d.x) / 180 * Math.PI;
         return [r * Math.cos(a), r * Math.sin(a)];
     }
 
@@ -99,12 +99,13 @@ var tree_render = {};
     }
 
     function assign_family(n, family_list, family_angles, family) {
-        if (n.uid in family_list) 
+        if (n.uid in family_list)
             family = family_list[n.uid];
         n.family = family;
         if (n.children) n.children.forEach(function(n) {
             assign_family(n, family_list, family_angles, family);
-        }); else {
+        });
+        else {
             if (family != "") {
                 if (family in family_angles) {
                     if (n.x < family_angles[family].min) family_angles[family].min = n.x;
@@ -118,219 +119,247 @@ var tree_render = {};
         }
 
     }
-    
+
     tree_render.render_subtilase_tree = function() {
         d3.text("data/PF00082_converted.nhx", function(text) {
-        d3.json("data/his_pro.json", function(hispro) {
-        d3.json("data/his_mat.json", function(hismat) {
-        d3.json("data/protein_species.json", function(taxo) {
-                //d3.text("data/life.txt", function(text) {
-            var x = Newick.parse(text);
+            d3.json("data/his_pro.json", function(hispro) {
+                d3.json("data/his_mat.json", function(hismat) {
+                    d3.json("data/protein_species.json", function(taxo) {
+                        //d3.text("data/life.txt", function(text) {
+                        var x = Newick.parse(text);
 
 
 
-            var nodes = cluster.nodes(x);
-            phylo(nodes[0], 0);
-            var dists = nodes.map(function(d) {
-                return d.y
-            });
-            var maxdist = d3.max(dists);
-            count_children(nodes[0], maxdist, 0);
-            calculate_r(nodes[0], nodes[0].y);
-            var family_list = {
-                261 : "Kexin/PC",
-                9299 : "Subtilisin",
-                3170 : "Cucumulisin/Pyrolisin",
-                6245 : "Sedolisin",
-                7352 : "Proteinase K"
-            };
-            var family_angles = {};
-            assign_family(nodes[0],family_list,family_angles,"");
-            tree_render.nodes = nodes;
-            nodes.forEach(function (d) { if (!d.children) {
-                d.dhis = hispro[d.name] - hismat[d.name];
-                if (isNaN(d.dhis)) d.dhis = 0;}});
-            nodes.forEach(function (d) { if (!d.children) {
-                d.tax = taxo[d.name];}});
+                        var nodes = cluster.nodes(x);
+                        phylo(nodes[0], 0);
+                        var dists = nodes.map(function(d) {
+                            return d.y
+                        });
+                        var maxdist = d3.max(dists);
+                        count_children(nodes[0], maxdist, 0);
+                        calculate_r(nodes[0], nodes[0].y);
+                        var family_list = {
+                            261: "Kexin/PC",
+                            9299: "Subtilisin",
+                            3170: "Cucumulisin/Pyrolisin",
+                            6245: "Sedolisin",
+                            7352: "Proteinase K"
+                        };
+                        var family_angles = {};
+                        assign_family(nodes[0], family_list, family_angles, "");
+                        tree_render.nodes = nodes;
+                        nodes.forEach(function(d) {
+                            if (!d.children) {
+                                d.dhis = hispro[d.name] - hismat[d.name];
+                                if (isNaN(d.dhis)) d.dhis = 0;
+                            }
+                        });
+                        nodes.forEach(function(d) {
+                            if (!d.children) {
+                                d.tax = taxo[d.name];
+                            }
+                        });
 
-            var link = vis.selectAll("path.link")
-                .data(cluster.links(nodes))
-                .enter().append("path")
-                .attr("class", "link")
-                .attr("d", step);
+                        var link = vis.selectAll("path.link")
+                            .data(cluster.links(nodes))
+                            .enter().append("path")
+                            .attr("class", "link")
+                            .attr("d", step);
 
-            var node = vis.selectAll("g.node")
-                .data(nodes.filter(function(n) {
-                    return n.x !== undefined;
-                }))
-                .enter().append("g")
-                .attr("class", "node")
-                .attr("transform", function(d) {
-                    return "rotate(" + (d.x ) + ")translate(" + d.y + ")";
-                })
+                        var node = vis.selectAll("g.node")
+                            .data(nodes.filter(function(n) {
+                                return n.x !== undefined;
+                            }))
+                            .enter().append("g")
+                            .attr("class", "node")
+                            .attr("transform", function(d) {
+                                return "rotate(" + (d.x) + ")translate(" + d.y + ")";
+                            })
 
-            //node.append("circle")
-            //      .attr("r", 2.5);
-            protein_list = {
-                "P09958": "Furin",
-                "P04189": "Subtilisin",
-                "P08594": "Aqualysin",
-                "Q8RR56": "Kumamolisin",
-                "P29120": "PC1",
-                "Q8NBP7": "PC9",
-                "P16519": "PC2",
-                "Q6UW60": "PC4",
-                "Q92824": "PC5",
-                "P29122": "PC6",
-                "Q16549": "PC7",
-                "P13134": "Kexin",
-                "P09232": "Cerevisin",
-                "O14773": "TPP-1",
-                "Q14703": "SKI-1",
-                "P06873": "Proteinase K",
-                "Q9LLL8": "XSP1",
-                "O65351": "ARA12",
-                "Q39547": "Cucumisin",
-                "Q60106": "Xanthomonalisin",
-                "P13134": "Kexin",
-                "P04189": "Subtilisin",
-                "P06873": "Proteinase K",
-                "Q63JI2": "Sedolisin",
-            }
-            /*
-            var label = vis.selectAll("text")
-                .data(nodes.filter(function(d) {
-                    return d.x !== undefined && !d.children;
-                }))
-                .enter().append("text")
-                .attr("dy", ".31em")
-                .attr("text-anchor", function(d) {
-                    return d.x < 180 ? "start" : "end";
-                })
-                .attr("transform", function(d) {
-                    return "rotate(" + (d.x - 90) + ")translate(" + (170) + ")rotate(" + (d.x < 180 ? 0 : 180) + ")";
-                })
-                .text(function(d) {
-                    return protein_list[d.name.replace(/_/g, ' ')];
-                });
-            var label_temp = vis.selectAll("text.label")
-                .data(nodes.filter(function(d) {
-                    return d.x !== undefined && d.children;
-                }))
-                .enter().append("text")
-                .attr("dy", ".31em")
-                .style("font-size", ".5em")
-                .attr("text-anchor", function(d) {
-                    return d.x < 180 ? "start" : "end";
-                })
-                .attr("transform", function(d) {
-                    return "rotate(" + (d.x - 90) + ")translate(" + (d.y) + ")rotate(" + (d.x < 180 ? 0 : 180) + ")";
-                })
-                .text(function(d) {
-                    if (d.y < 150) return d.uid;
-                    else return "";
-                });*/
+                        //node.append("circle")
+                        //      .attr("r", 2.5);
+                        protein_list = {
+                                "P09958": "Furin",
+                                "P04189": "Subtilisin",
+                                "P08594": "Aqualysin",
+                                "Q8RR56": "Kumamolisin",
+                                "P29120": "PC1",
+                                "Q8NBP7": "PC9",
+                                "P16519": "PC2",
+                                "Q6UW60": "PC4",
+                                "Q92824": "PC5",
+                                "P29122": "PC6",
+                                "Q16549": "PC7",
+                                "P13134": "Kexin",
+                                "P09232": "Cerevisin",
+                                "O14773": "TPP-1",
+                                "Q14703": "SKI-1",
+                                "P06873": "Proteinase K",
+                                "Q9LLL8": "XSP1",
+                                "O65351": "ARA12",
+                                "Q39547": "Cucumisin",
+                                "Q60106": "Xanthomonalisin",
+                                "P13134": "Kexin",
+                                "P04189": "Subtilisin",
+                                "P06873": "Proteinase K",
+                                "Q63JI2": "Sedolisin",
+                            }
+                            /*
+                            var label = vis.selectAll("text")
+                                .data(nodes.filter(function(d) {
+                                    return d.x !== undefined && !d.children;
+                                }))
+                                .enter().append("text")
+                                .attr("dy", ".31em")
+                                .attr("text-anchor", function(d) {
+                                    return d.x < 180 ? "start" : "end";
+                                })
+                                .attr("transform", function(d) {
+                                    return "rotate(" + (d.x - 90) + ")translate(" + (170) + ")rotate(" + (d.x < 180 ? 0 : 180) + ")";
+                                })
+                                .text(function(d) {
+                                    return protein_list[d.name.replace(/_/g, ' ')];
+                                });
+                            var label_temp = vis.selectAll("text.label")
+                                .data(nodes.filter(function(d) {
+                                    return d.x !== undefined && d.children;
+                                }))
+                                .enter().append("text")
+                                .attr("dy", ".31em")
+                                .style("font-size", ".5em")
+                                .attr("text-anchor", function(d) {
+                                    return d.x < 180 ? "start" : "end";
+                                })
+                                .attr("transform", function(d) {
+                                    return "rotate(" + (d.x - 90) + ")translate(" + (d.y) + ")rotate(" + (d.x < 180 ? 0 : 180) + ")";
+                                })
+                                .text(function(d) {
+                                    if (d.y < 150) return d.uid;
+                                    else return "";
+                                });*/
 
-                // Render arches
-                function polarToCartesian(centerX, centerY, radius, angleInDegrees) {
-                  var angleInRadians = (angleInDegrees ) * Math.PI / 180.0;
-                  var x = centerX + radius * Math.cos(angleInRadians);
-                  var y = centerY + radius * Math.sin(angleInRadians);
-                  return [x,y];
-                }
-
-                family_angles["Sedolisin"].offset = 10;
-                family_angles["Kexin/PC"].invert =true; 
-                family_angles["Cucumulisin/Pyrolisin"].invert =true; 
-
-                function create_arc(d) {
-                        var radius = 250;
-                        if ("offset" in d.value) radius += d.value.offset;
-                        var start = polarToCartesian(0,0,radius,d.value.min);
-                        var stop = polarToCartesian(0,0,radius,d.value.max);
-                        var dir = 1;
-                        if (d.value.invert) {
-                            var temp = start;
-                            start = stop;
-                            stop = temp;
-                            dir = 0;
+                        // Render arches
+                        function polarToCartesian(centerX, centerY, radius, angleInDegrees) {
+                            var angleInRadians = (angleInDegrees) * Math.PI / 180.0;
+                            var x = centerX + radius * Math.cos(angleInRadians);
+                            var y = centerY + radius * Math.sin(angleInRadians);
+                            return [x, y];
                         }
-                        return "M " + start[0] + " " + start[1]+ " A " + radius + " " + radius +" 0 0 " + dir + " " +stop[0] + " " +stop[1];
 
-                }
+                        family_angles["Sedolisin"].offset = 10;
+                        family_angles["Kexin/PC"].invert = true;
+                        family_angles["Cucumulisin/Pyrolisin"].invert = true;
 
-                vis.selectAll("path.arc").data(d3.entries(family_angles))
-                    .enter().append("path")
-                    .attr("class","arc")
-                    .attr("id", function (d) { return d.key.substring(0,4);})
-                    .attr("d", create_arc);
-                vis.insert("defs").selectAll("path").data(d3.entries(family_angles))
-                    .enter().append("path")
-                    .attr("d",create_arc)
-                    .attr("id",function (d) {return d.key;});
+                        function create_arc(d) {
+                            var radius = 250;
+                            if ("offset" in d.value) radius += d.value.offset;
+                            var start = polarToCartesian(0, 0, radius, d.value.min);
+                            var stop = polarToCartesian(0, 0, radius, d.value.max);
+                            var dir = 1;
+                            if (d.value.invert) {
+                                var temp = start;
+                                start = stop;
+                                stop = temp;
+                                dir = 0;
+                            }
+                            return "M " + start[0] + " " + start[1] + " A " + radius + " " + radius + " 0 0 " + dir + " " + stop[0] + " " + stop[1];
 
-                vis.selectAll("text").data(d3.entries(family_angles))
-                    .enter().append("text")
-                    .attr("class","arc")
-                    .attr("id",function (d) { return d.key.substring(0,4); })
-                    .attr("x",0)
-                    .attr("z",0)
-                    .attr("dy",function (d) {
-                        if (d.value.invert) return 25; else return -5; })
-                    .attr("text-anchor","middle")
-                    .insert("textPath")
-                    .attr("xlink:href", function (d) {return "#"+d.key;})
-                    .attr("startOffset", "50%")
-                    .text(function (d) { return d.key;});
+                        }
 
-                tree_render.vis = vis;
-                tree_render.link = link;
+                        vis.selectAll("path.arc").data(d3.entries(family_angles))
+                            .enter().append("path")
+                            .attr("class", "arc")
+                            .attr("id", function(d) {
+                                return d.key.substring(0, 4);
+                            })
+                            .attr("d", create_arc);
+                        vis.insert("defs").selectAll("path").data(d3.entries(family_angles))
+                            .enter().append("path")
+                            .attr("d", create_arc)
+                            .attr("id", function(d) {
+                                return d.key;
+                            });
 
-                //Plot dhis bars
-                var dhisbar = vis.selectAll("g.dhisbar")
-                .data(nodes.filter(function(n) {
-                    return n.x !== undefined && !n.children;
-                }))
-                .enter().append("g")
-                .attr("class", "hisbar")
-                .attr("transform", function(d) {
-                    return "rotate(" + (d.x ) + ")translate(" + (d.y + 50 )+ ")";
-                }).insert("line")
-                      .attr("y", 0)
-                      .attr("x", 0)
-                      .attr("y2", 0)
-                      .attr("class", "dhisbar")
-                      .attr("x2", function (d) {return d.dhis * 500;});
-                vis.insert("circle")
-                    .attr("cx",0)
-                    .attr("cy",0)
-                    .attr("r", 180)
-                    .attr("class","measure");
-                tree_render.dhisbar = dhisbar
-        });});});});
+                        vis.selectAll("text").data(d3.entries(family_angles))
+                            .enter().append("text")
+                            .attr("class", "arc")
+                            .attr("id", function(d) {
+                                return d.key.substring(0, 4);
+                            })
+                            .attr("x", 0)
+                            .attr("z", 0)
+                            .attr("dy", function(d) {
+                                if (d.value.invert) return 25;
+                                else return -5;
+                            })
+                            .attr("text-anchor", "middle")
+                            .insert("textPath")
+                            .attr("xlink:href", function(d) {
+                                return "#" + d.key;
+                            })
+                            .attr("startOffset", "50%")
+                            .text(function(d) {
+                                return d.key;
+                            });
+
+                        tree_render.vis = vis;
+                        tree_render.link = link;
+
+                        //Plot dhis bars
+                        var dhisbar = vis.selectAll("g.dhisbar")
+                            .data(nodes.filter(function(n) {
+                                return n.x !== undefined && !n.children;
+                            }))
+                            .enter().append("g")
+                            .attr("class", "hisbar")
+                            .attr("transform", function(d) {
+                                return "rotate(" + (d.x) + ")translate(" + (d.y + 50) + ")";
+                            }).insert("line")
+                            .attr("y", 0)
+                            .attr("x", 0)
+                            .attr("y2", 0)
+                            .attr("class", "dhisbar")
+                            .attr("x2", function(d) {
+                                return d.dhis * 500;
+                            });
+                        vis.insert("circle")
+                            .attr("cx", 0)
+                            .attr("cy", 0)
+                            .attr("r", 180)
+                            .attr("class", "measure");
+                        tree_render.dhisbar = dhisbar
+                    });
+                });
+            });
+        });
     };
-    tree_render.highlight_family = function (family) {
-        if (family) { d3.selectAll("#"+family.substring(0,4)).style("display","block");
-        tree_render.link.attr("class", function (d) { if (d.target.family == family ) return "highlight link"; else return "link";});
+    tree_render.highlight_family = function(family) {
+        if (family) {
+            d3.selectAll("#" + family.substring(0, 4)).style("display", "block");
+            tree_render.link.attr("class", function(d) {
+                if (d.target.family == family) return "highlight link";
+                else return "link";
+            });
         } else {
-        tree_render.link.attr("class", "link");
-        
-        }};
+            tree_render.link.attr("class", "link");
+
+        }
+    };
 
     tree_render.color_nodes = function() {
-        tree_render.dhisbar.attr("class", function (d) {
+        tree_render.dhisbar.attr("class", function(d) {
             if (d.tax == "Eukaryota") return "euk dhisbar";
             if (d.tax == "Bacteria") return "prok dhisbar";
             return "dhisbar";
         });
     };
 
-    tree_render.show_circle = function () {
-        d3.select("circle.measure").style("display","block");
+    tree_render.show_circle = function() {
+        d3.select("circle.measure").style("display", "block");
     }
 
-    tree_render.show_dhis = function ()  {
-        tree_render.dhisbar.style("display","block");
+    tree_render.show_dhis = function() {
+        tree_render.dhisbar.style("display", "block");
     }
 })();
 
