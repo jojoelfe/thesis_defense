@@ -68,10 +68,13 @@
                         </ol>
                     </li>
                     <li>How propeptides of proprotein convertases sense pH
-                    <ol><li> Propeptides contain histidines </li>
-                    <li> Histidine protonation destabilizes propeptide structure </li>
-                    <li> Histidine pKa determines pH of activation </li></ol></li>
-                <li> Conclusions & Acknowledgements </li>
+                        <ol>
+                            <li> Propeptides contain histidines </li>
+                            <li> Histidine protonation destabilizes propeptide structure </li>
+                            <li> Histidine pKa determines pH of activation </li>
+                        </ol>
+                    </li>
+                    <li> Conclusions & Acknowledgements </li>
                 </ol>
             </section>
             <section data-state="proteins">
@@ -84,7 +87,8 @@
                     }
                 </style>
                 <svg id="protein-vis" width=520 height=500 style="position:absolute;left:20px"></svg>
-                <ul style="margin-left:520px;font-size:0.8em;"><li>Proteins are a linear polymer comprised of 20 possible amino acids that can be represented as a string</li>
+                <ul style="margin-left:520px;font-size:0.8em;">
+                    <li>Proteins are a linear polymer comprised of 20 possible amino acids that can be represented as a string</li>
                     <li class="fragment" data-exec="render_protein_vis.apply_force_field();" data-exec-hide='render_protein_vis.render();'>Proteins fold into a defined structure, based on the chemical properties of the amino acids, that can be represented by Cartesian coordinates for every atom</li>
                 </ul>
             </section>
@@ -99,15 +103,17 @@
                 </style>
                 <svg id="seq_tree" width=1000 height=600></svg>
                 <div style="width:950px;position:absolute;top:200px;left:37px;">
-                <h6 class="fragment" style="float:left;width:33.333%;text-align:left;font-size:0.6em;" >Pairwise Comparison</h6>
-                <div class="fragment" data-exec-hide='render_seq_tree.pairwise_align_del("#YHWWDRG","#YHFWDRP")' data-exec='render_seq_tree.pairwise_align("#YHWWDRG","#YHFWDRP",20,250)'></div>
-                <div class="fragment" data-exec-hide='render_seq_tree.pairwise_align_del("#YFWDRG","#YHFWDRP")' data-exec='render_seq_tree.pairwise_align("#YFWDRG","#YHFWDRP",20,300)'></div>
-                <div class="fragment" data-exec-hide='render_seq_tree.pairwise_align_del("#YFWDRG","#FHFWHKG")' data-exec='render_seq_tree.pairwise_align("#YFWDRG","#FHFWHKG",20,350)'></div>
-                <h6 class="fragment" style="float:left;width:33.333%;text-align:center;font-size:0.6em">Multiple sequence alignment</h6>
-                <div class="fragment" data-exec-hide='render_seq_tree.multiple_align_del()' data-exec='render_seq_tree.multiple_align(320,250)'></div>
-                <div class = "fragment" style="float:left;width:33.333%;text-align:right;font-size:0.6em;"><h6>Hidden markov model<br> sequence profiles</h6>
-                    <img src="img/hmm.svg"></img></div>
-            </div>
+                    <h6 class="fragment" style="float:left;width:33.333%;text-align:left;font-size:0.6em;">Pairwise Comparison</h6>
+                    <div class="fragment" data-exec-hide='render_seq_tree.pairwise_align_del("#YHWWDRG","#YHFWDRP")' data-exec='render_seq_tree.pairwise_align("#YHWWDRG","#YHFWDRP",20,250)'></div>
+                    <div class="fragment" data-exec-hide='render_seq_tree.pairwise_align_del("#YFWDRG","#YHFWDRP")' data-exec='render_seq_tree.pairwise_align("#YFWDRG","#YHFWDRP",20,300)'></div>
+                    <div class="fragment" data-exec-hide='render_seq_tree.pairwise_align_del("#YFWDRG","#FHFWHKG")' data-exec='render_seq_tree.pairwise_align("#YFWDRG","#FHFWHKG",20,350)'></div>
+                    <h6 class="fragment" style="float:left;width:33.333%;text-align:center;font-size:0.6em">Multiple sequence alignment</h6>
+                    <div class="fragment" data-exec-hide='render_seq_tree.multiple_align_del()' data-exec='render_seq_tree.multiple_align(320,250)'></div>
+                    <div class="fragment" style="float:left;width:33.333%;text-align:right;font-size:0.6em;">
+                        <h6>Hidden markov model<br> sequence profiles</h6>
+                        <img src="img/hmm.svg"></img>
+                    </div>
+                </div>
             </section>
             <section data-state="sec61">
                 <style>
@@ -121,14 +127,73 @@
                 <span style="position: absolute; bottom: 15px; right: 15px">
                     <cite>Conti, Elferich <i>et al.</i> 2014</cite>
                 </span>
-        </section>
-        <section data-state="subt_tree">
-            <style>
-                .subt_tree header:after {
-                    content: "Histidine bias in subtilase propeptides";
-                }
-                .subt_tree header {
-                    font-size: 1.4em;
+            </section>
+            <section data-state="structure">
+                <style>
+                    .structure header:after {
+                        content: "Algorithms for protein structure exploration";
+                    }
+                    .structure header {
+                        font-size: 1.2em;
+                    }
+                </style>
+
+
+            </section>
+
+            <section data-state="otub1">
+                <style>
+                    .otub1 header:after {
+                        content: "Monoubiquitination of Otub1";
+                    }
+                    .otub1 header {
+                        font-size: 1.4em;
+                    }
+                </style>
+                <span style="position: absolute; bottom: 15px; right: 15px">
+                    <cite>Li, Sun, Elferich <i>et al.</i> JBC 2014</cite>
+                </span>
+            </section>
+            <section data-state="pcs">
+                <style>
+                    .pcs header:after {
+                        content: "Proprotein Convertases";
+                    }
+                    .pcs header {
+                        font-size: 1.4em;
+                    }
+                </style>
+                <span style="position: absolute; bottom: 15px; right: 15px">
+                    <cite>Li, Sun, Elferich <i>et al.</i> JBC 2014</cite>
+                </span>
+            </section>
+            <section data-state="activation">
+                <style>
+                    .activation header:after {
+                        content: "Activation of Proprotein Convertases";
+                    }
+                    .activation header {
+                        font-size: 1.4em;
+                    }
+                </style>
+            </section>
+            <section data-state="phsensor">
+                <style>
+                    .phsensor header:after {
+                        content: "pH Sensors";
+                    }
+                    .phsensor header {
+                        font-size: 1.4em;
+                    }
+                </style>
+            </section>
+            <section data-state="subt_tree">
+                <style>
+                    .subt_tree header:after {
+                        content: "Histidine bias in subtilase propeptides";
+                    }
+                    .subt_tree header {
+                        font-size: 1.4em;
                     }
                 </style>
                 <div id="vis"></div>
@@ -144,16 +209,16 @@
                 <div class="fragment" data-exec='tree_render.highlight_family("");tree_render.show_dhis();'></div>
                 <div class="fragment" data-exec='tree_render.highlight_family("");tree_render.color_nodes();'></div>
             </section>
-        <section data-state="hdx_animation">
-            <style>
-                .hdx_animation header:after {
-                    content: "Peptide ions after exchange";
-                }
-                .hdx_annimation header {
-                    font-size: 1.4em;
+            <section data-state="hdx_animation">
+                <style>
+                    .hdx_animation header:after {
+                        content: "Peptide ions after exchange";
+                    }
+                    .hdx_annimation header {
+                        font-size: 1.4em;
                     }
                 </style>
-        </section>
+            </section>
         </div>
 
     </div>
@@ -229,23 +294,23 @@
                 async: true
             }]
         });
-                    Reveal.addEventListener( 'slidechanged', function( event ) { 
-                        //Check if current slide has div-gl elemen
-                        if(event.currentSlide.getAttribute("data-exec")) {
-                            eval(event.currentSlide.getAttribute("data-exec"));
-                        }
-                    });
+        Reveal.addEventListener('slidechanged', function(event) {
+            //Check if current slide has div-gl elemen
+            if (event.currentSlide.getAttribute("data-exec")) {
+                eval(event.currentSlide.getAttribute("data-exec"));
+            }
+        });
 
-                    Reveal.addEventListener('fragmentshown', function(element) {
-                        if(element.fragment.getAttribute("data-exec")) { 
-                            eval(element.fragment.getAttribute("data-exec"));
-                        }
-                        });
-                    Reveal.addEventListener('fragmenthidden', function(element) {
-                        if(element.fragment.getAttribute("data-exec-hide")) { 
-                            eval(element.fragment.getAttribute("data-exec-hide"));
-                        }
-                        });
+        Reveal.addEventListener('fragmentshown', function(element) {
+            if (element.fragment.getAttribute("data-exec")) {
+                eval(element.fragment.getAttribute("data-exec"));
+            }
+        });
+        Reveal.addEventListener('fragmenthidden', function(element) {
+            if (element.fragment.getAttribute("data-exec-hide")) {
+                eval(element.fragment.getAttribute("data-exec-hide"));
+            }
+        });
     </script>
 
 </body>
