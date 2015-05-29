@@ -18,7 +18,7 @@ var render_pdb = {};
                     showRelated: '1',
                 });
                 var rotation = viewpoint.principalAxes(go);
-                viewer.setRotation(rotation)
+                viewer.setRotation(rotation);
             }
 
             function load(pdb_id,viewer) {
@@ -60,5 +60,5 @@ var render_pdb = {};
             };
 })();
 
-render_pdb.render_title_page()
+render_pdb.render_title_page();
 

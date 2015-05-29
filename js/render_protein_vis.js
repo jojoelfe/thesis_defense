@@ -6,7 +6,7 @@ function calculate_initial_position(n,i,a) {
     var length = a.length;
     var stepx = 24;
     var stepy = 22;
-    n.x = 10 + stepx * (i +1); 
+    n.x = 10 + stepx * (i +1);
     n.y = 10 +  stepy * (i +1);
 }
 
@@ -23,7 +23,7 @@ function collide(node) {
                                     l = Math.sqrt(x * x + y * y),
                                                       r = node.radius + quad.point.radius;
                                 if (l < r) {
-                                            l = (l - r) / l * .5;
+                                            l = (l - r) / l * 0.5;
                                                     node.x -= x *= l;
                                                             node.y -= y *= l;
                                                                     quad.point.x += x;
@@ -79,8 +79,7 @@ var links = [
 {source: 18, target: 19},
 ];
 
-    
-    var svg = d3.select("#protein-vis");
+var svg = d3.select("#protein-vis");
 var width = svg.attr("width");
 var height = svg.attr("height");
 var force = d3.layout.force()
@@ -103,7 +102,7 @@ var link = svg.selectAll('.link')
 var node = svg.selectAll('.node')
     .data(nodes)
     .enter().append('g')
-    .attr('class', function (d) {return d.type + ' node'});
+    .attr('class', function (d) {return d.type + ' node';});
 node.append('circle')
     .attr("r", function (d) {return d.radius;})
     .attr("cx",0)
@@ -148,11 +147,11 @@ var q = d3.geom.quadtree(nodes),
         .attr('y1', function(d) { return d.source.y; })
         .attr('x2', function(d) { return d.target.x; })
         .attr('y2', function(d) { return d.target.y; });
-}
+};
 
 force.start();
 render_protein_vis.force = force;
-}
+};
 
 render_protein_vis.apply_force_field = function () {
 var force = render_protein_vis.force;
@@ -164,7 +163,7 @@ force.charge(5);
 force.alpha(0.03);
 force.friction(0.8);
 force.start();
-}
+};
 })();
 
 render_protein_vis.render();

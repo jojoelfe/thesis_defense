@@ -124,6 +124,26 @@ text.arc {
   font-size: 0.7em;
   display: none; }
 
+path.spec_arc {
+  fill: none;
+  stroke: #222;
+  stroke-width: 5px;
+  display: none; }
+
+path.spec_arc.minor {
+  fill: none;
+  stroke: #222;
+  stroke-width: 3px;
+  display: none; }
+
+text.spec_arc {
+  font-size: 0.7em;
+  display: none; }
+
+text.spec_arc.minor {
+  font-size: 0.3em;
+  display: none; }
+
 circle.measure {
   stroke-width: 3px;
   stroke: #222;

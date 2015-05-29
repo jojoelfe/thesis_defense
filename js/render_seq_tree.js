@@ -65,7 +65,7 @@ render_seq_tree.nodeEnter = nodeEnter;
    .attr("d", diagonal);
 
 
-}
+};
 render_seq_tree.pairwise_align = function(seq1,seq2,x,y) {
     var seq_sel = svg.selectAll(seq1+", "+seq2);
     var move_seq_sel = cloneSelection(svg, seq_sel, 1);
@@ -77,11 +77,11 @@ render_seq_tree.pairwise_align = function(seq1,seq2,x,y) {
         .attr("x", x)
         .attr("y", function (d,i) { return y + i * 15;});
 
-}
+};
 render_seq_tree.pairwise_align_del = function(seq1,seq2) {
     var seq_sel = svg.selectAll(seq1+"c, "+seq2+"c");
     seq_sel.remove();
-}
+};
 
 render_seq_tree.multiple_align = function(x,y) {
 var seq_sel = render_seq_tree.nodeEnter.filter( function (d) { return (d.depth == 2);});
@@ -95,9 +95,9 @@ var seq_sel = render_seq_tree.nodeEnter.filter( function (d) { return (d.depth =
         .attr("x", x)
         .attr("y", function (d,i) { return y + i * 15;});
 
-}
+};
 render_seq_tree.multiple_align_del = function() {
     svg.selectAll(".oldclonem").remove();
-}
+};
 })();
 render_seq_tree.render();

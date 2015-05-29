@@ -47,10 +47,9 @@ section.has-dark-background {
 		color: #fff;
 	}
 }
-.reveal sup { 
-	    vertical-align: super;
-	        font-size: 0.6em;
-	
+.reveal sup {
+	vertical-align: super;
+	font-size: 0.6em;
 }
 
 .reveal header {
@@ -119,9 +118,9 @@ section.has-dark-background {
 
 
 .node circle {
-	  fill: #eee;
-	    stroke: #222;
-	      stroke-width: 1.5px;
+	fill: #eee;
+	stroke: #222;
+	stroke-width: 1.5px;
 	display: none;
       }
 #protein-vis .node circle {
@@ -178,6 +177,26 @@ text.arc {
 	font-size: 0.7em;
 	display: none;
 }
+path.spec_arc  {
+  fill: none;
+    stroke: #222;
+stroke-width: 5.0px;
+	display: none;
+}
+path.spec_arc.minor  {
+  fill: none;
+    stroke: #222;
+stroke-width: 3.0px;
+	display: none;
+}
+text.spec_arc {
+	font-size: 0.7em;
+	display: none;
+}
+text.spec_arc.minor {
+	font-size: 0.3em;
+	display: none;
+}
 circle.measure {
 	stroke-width: 3.0px;
 	stroke: #222;
@@ -190,10 +209,10 @@ line.dhisbar {
 	display: none;
 }
 line.dhisbar.euk {
-	stroke: #DC1505 
+	stroke: #DC1505;
 }
 line.dhisbar.prok {
-	stroke: #0E4D8F 
+	stroke: #0E4D8F;
 }
 
 

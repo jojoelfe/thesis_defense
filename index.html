@@ -91,7 +91,6 @@
                     .proteins header:after {
                         content: "Proteins: From sequence to structure";
                     }
-                    
                     .proteins header {
                         font-size: 1.4em;
                     }
@@ -137,7 +136,7 @@
                         style="position:absolute;left:90px;top:115px;font-size:0.6em;" id="ndident">
                         1/7 14% Identical
                     </div>
-                    <div class="fragment" 
+                    <div class="fragment"
                         data-exec='d3.select("#YFWDRGc").text("Y-FWDRG").attr("id","old");
                                    d3.select("#ndident").html("5/7 71% Identical");'
                         data-exec-hide='' >
@@ -149,7 +148,7 @@
                         style="position:absolute;left:90px;top:165px;font-size:0.6em;" id="rdident">
                         0/7 0% Identical
                     </div>
-                    <div class="fragment" 
+                    <div class="fragment"
                         data-exec='d3.selectAll("#YFWDRGc").text("Y-FWDRG");
                                    d3.select("#rdident").html("3/7 43% Identical");'
                         data-exec-hide='' >
@@ -159,7 +158,7 @@
                     <div class="fragment"
                         data-exec-hide='render_seq_tree.multiple_align_del()'
                         data-exec='render_seq_tree.multiple_align(460,250)'></div>
-                    <div class="fragment" 
+                    <div class="fragment"
                         data-exec='d3.select("#YHFWHAGc.oldclonem").text("YHFWH-AG");
                                    d3.select("#FHFWHKGc.oldclonem").text("FHFWH-KG");
                                    d3.select("#YHFWDRPc.oldclonem").text("YHFWD-RP");
@@ -257,12 +256,12 @@
                     <cite>Elferich <i>et al.</i> 2014</cite>
                 </span>
             </section>
-            <section data-state="hisenrhypoth">
+            <section data-state="HisEnrichmentHypothesis">
                 <style>
-                    .hisenrhypoth header:after {
+                    .HisEnrichmentHypothesis header:after {
                         content: "Hypothesis";
                     }
-                    .hisenrhypoth header {
+                    .HisEnrichmentHypothesis header {
                         font-size: 1.6em;
                     }
                 </style>
@@ -283,17 +282,17 @@
                     <cite>Elferich <i>et al.</i> 2014</cite>
                 </span>
             </section>
-            <section data-state="subt_tree">
+            <section data-state="subttree">
                 <style>
-                    .subt_tree header:after {
+                    .subttree header:after {
                         content: "Histidine bias in subtilase propeptides";
                     }
-                    .subt_tree header {
+                    .subttree header {
                         font-size: 1.4em;
                     }
                 </style>
                 <div id="vis"></div>
-                <span style="position: absolute; bottom: 15px; right: 45px">
+                <span style="position: absolute; bottom: 11px; right: 45px">
                     <cite>Elferich <i>et al.</i> FASEB 2013</cite>
                 </span>
                 <div class="fragment"
@@ -312,6 +311,18 @@
                     data-exec='tree_render.highlight_family("");tree_render.show_dhis();'></div>
                 <div class="fragment"
                     data-exec='tree_render.highlight_family("");tree_render.color_nodes();'></div>
+                <div class="fragment" 
+                    data-exec='tree_render.update_to_species();'
+                    data-exec-hide='' >
+                </div>
+                <div class="fragment" 
+                    data-exec='d3.selectAll("#vis #Euka").style("display","block");d3.selectAll("#vis #Prok").style("display","block");'
+                    data-exec-hide='' >
+                </div>
+                <div class="fragment" 
+                    data-exec='d3.selectAll("#vis .minor").style("display","block");'
+                    data-exec-hide='' >
+                </div>
             </section>
             <section data-state="hisenrstats">
                 <style>
