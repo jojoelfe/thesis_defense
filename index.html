@@ -176,16 +176,59 @@
             <section data-state="sec61">
                 <style>
                     .sec61 header:after {
-                        content: "Protein transport across membranes";
+                        content: "Example: Sec61 translocon complex";
                     }
                     .sec61 header {
                         font-size: 1.4em;
                     }
                 </style>
-                <span style="position: absolute; bottom: 15px; right: 45px">
-                    <cite>Conti, Elferich <i>et al.</i> 2014</cite>
+                <figure>    
+                <img src="img/translocon_mech.png" width="450px"></img>
+                <figcaption> Potential mechanism, by which folding of a protein could affect translocation of secreted proteins</figcaption>
+            </figure>
+            <figure class="fragment">
+                <img src="img/nsmb_2779-F1.jpg" width="700px"></img>
+                <figcaption>Insertion of a zinc-finger domain, that folds in the presence of zinc, near the N-terminus of a secreted protein inhibits translocation in the presence of zinc</figcaption>
+            </figure>
+                <span style="float:right;margin-right: 60px">
+                    <cite>Conti, Elferich <i>et al.</i> NSMB 2014</cite>
                 </span>
-                <img src="img/translocon_mech.png" width="600px"></img>
+            </section>
+            <section data-state="sec61res">
+                <style>
+                    .sec61res header:after {
+                        content: "Do secreted proteins avoid small folded domains at their N-terminus?";
+                    }
+                    .sec61res header {
+                        font-size: 1.0em;
+                    }
+                </style>
+                    <div style="width:90%;font-size:0.8em;" class="conclusion"><h5>Hypothesis:</h5>Secreted proteins avoid small folded domains in their first 100 residues.</div>
+                <div style="width:40.0%;float:left;" class="fragment">
+                    <h5>Approach</h5>
+                    <ul style="font-size:0.7em"><li class="fragment">Generate list of all secreted proteins or all cytosolic/nuclear proteins in the human genome</li>
+                        <li class="fragment">Map domains in the first 100 residues using HMM sequence profiles generated for all known folds<ul><li>Superfamily: SCOP</li><li>Gene3D: CATH</li></ul></li>
+                        <li class="fragment">Calculate fraction of proteins that contain short (50 or 100 residues) domains within the first 100 residues</li>
+                    </ul>
+                    </div>
+                    <div style="width:60%;margin-left:40%;" class="fragment"><h5>Results</h5>
+                        <figure style="width:85%;margin-top:-40px;margin-left:auto;margin-right:auto;">
+                            <img src="img/sec61_table.png"></img>
+                        </figure>
+                        <figure style="width:70%;float:left;margin-top:-20px;" class="fragment">
+                            <img src="img/sec61_type.png"></img>
+                            <figcaption style:"font-size:0.6em;">Most frequently found domains in the first 100 residues</figcaption>
+                            </figure>
+                            <figure style="width:30%;float:left;margin-top:-20px;" class="fragment">
+                                <img src="img/sec61_disulf.png"></img>
+                                <figcaption style:"font-size:0.5em;">Ratio of disulfide-containing domains</figcaption>
+                            </figure>
+
+                        </figure>
+                    </div>
+                <span style="position: absolute; bottom: 15px; left: 88px">
+                    <cite>Conti, Elferich <i>et al.</i> NSMB 2014</cite>
+                </span>
             </section>
             <section data-state="structure">
                 <style>
@@ -200,7 +243,7 @@
 
             </section>
 
-            <section id="otub1slide" data-state="otub1" style="height:650px">
+            <section data-state="otub1" id="otub1slide" style="height:650px">
                 <style>
                     .otub1 header:after {
                         content: "Monoubiquitination of Otub1";
@@ -305,7 +348,7 @@
                     }
                 </style>
             </section>
-            <section data-state="HisConservation">
+            <section data-state="HisConservation" id="hisconservation">
                 <style>
                     .HisConservation header:after {
                         content: "Is the putative pH sensor conserved?";
@@ -313,10 +356,13 @@
                     .HisConservation header {
                         font-size: 1.4em;
                     }
+
                 </style>
-                <span style="position: absolute; bottom: 15px; right: 15px">
-                    <cite>Elferich <i>et al.</i> 2014</cite>
-                </span>
+                <div id="pro_alignment" style="width:800;"></div>
+                <figure style="width:700px;margin-left:auto;margin-right:auto;">
+                    <img src="img/hiscons.png"></img>
+                    <figcaption>Structures of bacterial subtilisins or animal proprotein convertases in complex with their propeptides. Tube thickness indicates conservation. Occurence of histidine at each position is color-coded in blue.</figcaption>
+                </figure>
             </section>
             <section data-state="HisEnrichmentHypothesis">
                 <style>
@@ -603,6 +649,8 @@ let g:tagbar_type_html = {
             }, {
                 src: 'lib/js/newick.js',
             }, {
+                src: 'lib/js/msa.min.gz.js',
+            }, {
                 src: 'lib/js/queue.min.js',
             }, {
                 src: 'plugin/markdown/marked.js',
@@ -640,6 +688,9 @@ let g:tagbar_type_html = {
                 async: true
             }, {
                 src: 'js/render_protein_vis.js',
+                async: true
+            }, {
+                src: 'js/render_pro_alignment.js',
                 async: true
             }, {
                 src: 'js/render_seq_tree.js',
