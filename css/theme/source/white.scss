@@ -52,6 +52,22 @@ section.has-dark-background {
 	font-size: 0.6em;
 }
 
+
+.theme-green {
+	color:#04A821;
+}
+.theme-red {
+	color:#DC1505;
+}
+.theme-blue {
+	color:#0E4D8F;
+}
+.theme-yellow {
+	color:#DC8605;
+}
+.theme-purple {
+	color: #a020f0;
+}
 .reveal header {
 	position:absolute;
 	top:0px;
@@ -214,8 +230,23 @@ line.dhisbar.euk {
 line.dhisbar.prok {
 	stroke: #0E4D8F;
 }
-
-
+.reveal figcaption {
+	font-size:0.6em;
+}
+.reveal section#otub1slide video,
+.reveal section#otub1slide img {
+	position:absolute;
+	left:20px;
+	top: 30px;
+	width: 670px;
+}
+.reveal section#otub1slide2 figure {
+	position:relative;
+	left:20px;
+	margin-top: 30px;
+	width: 320px;
+	float:left;
+}
 // Theme template ------------------------------
 @import "../template/theme";
 // ---------------------------------------------
