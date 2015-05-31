@@ -95,7 +95,7 @@
                         font-size: 1.4em;
                     }
                 </style>
-                <svg id="protein-vis"
+                <svg id="protein-vis" class="protein-vis"
                     width=520
                     height=500
                     style="position:absolute;left:20px"></svg>
@@ -240,9 +240,113 @@
                     }
                 </style>
 
+                <div style="width:50%;float:left;"><h5>Molecular dynamics</h5>
+                
+                <svg id="md-vis" class="protein-vis"
+                    width=420
+                    height=350
+                    style="position:relative;left:20px"></svg>
+                <div class="fragment" 
+                    data-exec='render_md_vis.showvel=true;render_md_vis.render()'
+                    data-exec-hide='' >
+                </div>
+                <div class="fragment" style="font-size:0.8em;margin-top:-100px;margin-left:20px;">
+                    <ul><li>Coordinates change according to velocity</li>
+                        <li>Velocities change according to forces</li>
+                        <li>Forces are calculated according to energy function</li>
+                    </ul>
+                </div>
+                <div class="fragment" 
+                    data-exec='render_md_vis.step=2;render_md_vis.render()'
+                    data-exec-hide='render_md_vis.step=1;render_md_vis.render()' >
+                </div>
+                <div class="fragment" 
+                    data-exec='render_md_vis.step=3;render_md_vis.render()'
+                    data-exec-hide='render_md_vis.step=2;render_md_vis.render()' >
+                </div>
+                <div class="fragment" 
+                    data-exec='render_md_vis.step=4;render_md_vis.render()'
+                    data-exec-hide='render_md_vis.step=3;render_md_vis.render()' >
+                </div>
+                <div class="fragment" 
+                    data-exec='render_md_vis.step=5;render_md_vis.render()'
+                    data-exec-hide='render_md_vis.step=4;render_md_vis.render()' >
+                </div>
+                <div class="fragment" 
+                    data-exec='render_md_vis.step=6;render_md_vis.render()'
+                    data-exec-hide='render_md_vis.step=5;render_md_vis.render()' >
+                </div>
+                </div>
 
+                <div style="float:right;width:50%" class="fragment"><h5>Monte-Carlo sampling</h5>
+                <svg id="mc-vis" class="protein-vis"
+                    width=420
+                    height=350
+                    style="position:relative;left:20px"></svg>
+                
+                <div class="fragment" style="font-size:0.8em;margin-top:-100px;margin-left:20px;">
+                    <ul><li>Structure is modified by random move</li>
+                        <li>New structure is evaluated by energy function</li>
+                        <li>If the move leads to worse energy it is reversed with a probability based on the energy increase</li>
+                    </ul>
+                </div>
+                <div class="fragment" 
+                    data-exec='render_mc_vis.rot_move(25,-120)'
+                    data-exec-hide='render_mc_vis.rot_move(25,120)' >
+                </div>
+                <div class="fragment" 
+                    data-exec='render_mc_vis.rot_move(25,120)'
+                    data-exec-hide='render_mc_vis.rot_move(25,-120)' >
+                </div>
+                <div class="fragment" 
+                    data-exec='render_mc_vis.rot_move(25,-50)'
+                    data-exec-hide='render_mc_vis.rot_move(25,50)' >
+                </div>
+                <div class="fragment" 
+                    data-exec='render_mc_vis.rot_moven(15,10)'
+                    data-exec-hide='render_mc_vis.rot_moven(15,-10)' >
+                </div>
+                </div>
             </section>
+            <section data-state="otub1intro" id="otub1intro">
+                <style>
+                    .otub1intro header:after {
+                        content: "Example: p53 stabilization by monoubiquitination of Otub1";
+                    }
+                    .otub1intro header {
+                        font-size: 1.0em;
+                    }
+                    .otub1intro section h5 {
+                        font-size:0.7em;
+                        margin-bottom:0px;
+                    }
+                </style>
+                <div style="width:50%;float:left;margin-top:20px;">
+                <h5>Otub1 stabilizes p53 by inhibiting the E2-Ligase that polyubiquitinates p53</h5>
+                <figure style="width:400px;margin-left:auto;margin-right:auto;">
+                    <img src="img/Otub1_p53_mech.png" style="width:70%"></img>
+                    <figcaption>Schematic of Otub1 mechanism</figcaption>
+                </figure>
+            </div>
+                <div style="width:50%;float:right;margin-top:50px;" class="fragment">
+                <h5>Monoubiquitination of Otub1 is critical for p53 stabilization</h5>
+                <figure style="width:400px;margin-left:auto;margin-right:auto;">
+                    <img src="img/otub_ubq_p53.png" style="width:100%"></img>
+                    <figcaption>Western Blot for p53 and p53 downstream targets in the presenche of various Otub1 mutants</figcaption>
+                </figure>
+                </div>
+                <div style="width:50%;float:left;" class="fragment">
+                <h5>E2-Ligase preferentially binds to monoubiquitinated Otub1</h5>
+                <figure style="width:500px;margin-left:auto;margin-right:auto;">
+                    <img src="img/otub_ubq_e2pull.png" style="width:30%"></img>
+                    <figcaption>Western Blot for Otub1 after E2-Ligase immunoprecipitation</figcaption>
+                </figure>
+                </div>
 
+                <span style="position: absolute; bottom: 15px; right: 45px">
+                    <cite>Li, Sun, Elferich <i>et al.</i> JBC 2014</cite>
+                </span>
+            </section>
             <section data-state="otub1" id="otub1slide" style="height:650px">
                 <style>
                     .otub1 header:after {
@@ -305,7 +409,7 @@
                     <cite>Li, Sun, Elferich <i>et al.</i> JBC 2014</cite>
                 </span>
             </section>
-            <section data-state="otub1slide3" id="otub1slide3">
+            <section data-state="otub1slide3" id="otub1slide3" style="height:650px">
                 <style>
                     .otub1slide3 header:after {
                         content: "Alternative hypothesis";
@@ -314,7 +418,25 @@
                         font-size: 1.4em;
                     }
                 </style>
-                <span style="float:right;margin-right:60px;">
+                <img src ="img/otub_alt_ter.png" ></img>
+                <img src ="img/otub_alt_ter_ubqback.png" class="fragment"></img>
+                <img src ="img/otub_alt_otububq.png" class="fragment"></img>
+<video class="fragment">
+    <source data-src="img/otub_alt_zoom_to_both.mp4" type="video/mp4" />
+  </video>
+<video class="fragment">
+    <source data-src="img/otub_alt_bringtogether.mp4" type="video/mp4" />
+  </video>
+<video class="fragment" >
+    <source data-src="img/otub_alt_zoominterface.mp4" type="video/mp4" />
+  </video>
+  <ul style="margin-left:750px;margin-top:40px;z-index:5;">
+      <li class="theme-blue">E2-Ligase</li>
+      <li class="theme-yellow">Ubiquitin</li>
+        <li class="theme-green">Otub1</li>
+        <li class="theme-purple">Ubiquitin ligated to Otub1</li>
+  </ul>
+                <span style="position: absolute; bottom: 15px; right: 45px">
                     <cite>Li, Sun, Elferich <i>et al.</i> JBC 2014</cite>
                 </span>
             </section>
@@ -691,6 +813,12 @@ let g:tagbar_type_html = {
                 async: true
             }, {
                 src: 'js/render_pro_alignment.js',
+                async: true
+            }, {
+                src: 'js/render_md_vis.js',
+                async: true
+            }, {
+                src: 'js/render_mc_vis.js',
                 async: true
             }, {
                 src: 'js/render_seq_tree.js',
