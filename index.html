@@ -505,12 +505,16 @@
                     .otub1slide3 header {
                         font-size: 1.4em;
                     }
+                    .otub1slide3 h5 {
+                        font-size: 0.7em;
+                        margin-bottom: -15px;
+                    }
                 </style>
-                <img src="img/otub_alt_ter.png"></img>
+                <img src="img/otub_alt_ter.png" class="model"></img>
                 <img src="img/otub_alt_ter_ubqback.png"
-                    class="fragment"></img>
+                    class="fragment model"></img>
                 <img src="img/otub_alt_otububq.png"
-                    class="fragment"></img>
+                    class="fragment model"></img>
                 <video class="fragment">
                     <source data-src="img/otub_alt_zoom_to_both.mp4"
                         type="video/mp4" />
@@ -523,12 +527,35 @@
                     <source data-src="img/otub_alt_zoominterface.mp4"
                         type="video/mp4" />
                 </video>
+                <img src="img/otub_alt_inter_annot.png"
+                    class="fragment final model"></img>
                 <ul style="margin-left:750px;margin-top:40px;z-index:5;">
                     <li class="theme-blue">E2-Ligase</li>
                     <li class="theme-yellow">Ubiquitin</li>
                     <li class="theme-green">Otub1</li>
                     <li class="theme-purple">Ubiquitin ligated to Otub1</li>
                 </ul>
+                <div class="fragment" 
+                    data-exec='d3.select("#otub1slide3").selectAll("img.model,video").style("display","none"); 
+                              d3.select("#otub1slide3 img.final").style("display","block").style("width","400px").style("height","300px").style("right","20px").style("left","initial"); 
+                              d3.select("#otub1slide3 ul").style("display","none");'
+                    data-exec-hide='' >
+                </div>
+                <div style="width:560px;position:absolute;left:20px;top:25px" class="fragment">
+                    <h5>Mutagenesis of S22 blocks binding of monoubiquitinated Otub1 to E2-Ligase</h5>
+                    <figure>
+                        <img src="img/val_mut_E2.png" style="width:80%" alt="">
+                        <figcaption></figcaption>
+                    </figure>
+                </div>
+                <div style="width:560px;position:absolute;left:20px;top:360px" class="fragment">
+                    <h5>Mutagenesis of I44 can rescue binding</h5>
+                    <figure>
+                        <img src="img/val_mut_ubq.png" style="width:35%" alt="">
+                        <figcaption></figcaption>
+                    </figure>
+                </div>
+                <div class="fragment conclusion" style="position:absolute;top:420px;left:450px;width:520px;font-size: 0.8em;">Monoubiquitinated Otub1 interacts with E2-Ligase through "backside" interaction of the conjugated Ubiquitin</div>
                 <span style="position: absolute; bottom: 15px; right: 45px">
                     <cite>Li, Sun, Elferich <i>et al.</i> JBC 2014</cite>
                 </span>

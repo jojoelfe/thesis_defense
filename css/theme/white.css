@@ -180,7 +180,7 @@ line.dhisbar.prok {
   font-size: 0.6em;
   margin-top: -5px; }
 
-.reveal section#otub1slide video, .reveal section#otub1slide img, .reveal section#otub1slide3 video, .reveal section#otub1slide3 img {
+.reveal section#otub1slide video, .reveal section#otub1slide img, .reveal section#otub1slide3 video, .reveal section#otub1slide3 img.model {
   position: absolute;
   left: 20px;
   top: 30px;
