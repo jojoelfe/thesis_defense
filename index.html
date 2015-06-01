@@ -1121,17 +1121,50 @@
                         font-size: 1.4em;
                     }
                 </style>
-                <span style="position: absolute; bottom: 15px; right: 15px">
-                    <cite>Elferich <i>et al.</i> 2014</cite>
-                </span>
             </section>
-            <section data-state="hdx_animation">
+            <section data-state="hdxanimation" style="height:550px;">
                 <style>
-                    .hdx_animation header:after {
-                        content: "Peptide ions after exchange";
+                    .hdxanimation header:after {
+                        content: "Measuring histidine pKa values with hydrogen-deuterium exchange";
                     }
                     
-                    .hdx_annimation header {
+                    .hdxanimation header {
+                        font-size: 1.0em;
+                    }
+                    .hdxanimation section img {
+                        border: 0px;
+                        box-shadow: none;
+                    }
+                </style>
+		<div style="float:left;width:50%">
+		<img src="img/pep_water.png" style="z-index:1;position:absolute;width:50%;top:120px;left:0px;max-height:none;" />
+		<img class = "fragment" src="img/pep_d2o.png" style="z-index:1;position:absolute;width:50%;top:120px;left:0px;max-height:none;transition: all 1.2s ease;" />
+		<img class = "fragment" src="img/pep_polar_d2o.png" style="z-index:1;position:absolute;width:50%;top:120px;left:0px;max-height:none;transition: all 1.2s ease;" />
+		<img class = "fragment" src="img/pep_amide_d2o.png" style="z-index:1;position:absolute;width:50%;top:120px;left:0px;max-height:none;transition: all 1.2s ease;" />
+		<img class = "fragment" src="img/pep_c2_d2o.png" style="z-index:1;position:absolute;width:50%;top:120px;left:0px;max-height:none;transition: all 1.2s ease;" />
+		<img class = "fragment" src="img/pep_c2_water.png" style="z-index:1;position:absolute;width:50%;top:120px;left:0px;max-height:none;transition: all 1.2s ease;" />
+		<img class = "fragment" src="img/pep_c2only_water.png" style="z-index:1;position:absolute;width:50%;top:120px;left:0px;max-height:none;transition: all 1.2s ease;" />
+		</div>
+            </section>
+            <section data-state="hdx_results">
+                <style>
+                    .hdx_results header:after {
+                        content: "Histidine pKa values in furin and PC1/3 propeptides";
+                    }
+                    .hdx_results header {
+                        font-size: 1.4em;
+                    }
+                </style>
+                <span style="float:right;margin-right:65px;">
+                    <cite>Elferich <i>et al.</i> under review 2015</cite>
+                </span>
+            </section>
+            <section data-state="mechmodelanim">
+                <style>
+                    .mechmodelanim header:after {
+                        content: "Current model for pH-mediated activation";
+                    }
+                    .mechmodelanim header {
                         font-size: 1.4em;
                     }
                 </style>
@@ -1147,21 +1180,6 @@
                     }
                 </style>
             </section>
-            <section data-state="summm">
-                <style>
-                    .summm header:after {
-                        content: "Conclusions";
-                    }
-                    
-                    let g:tagbar_type_html= {
-                        \ 'kinds': [ \ 'f:JavaScript funtions', \ 'a:named anchors', \ 'd:definitions', \], \
-                    }
-                    
-                    .summm header {
-                        font-size: 1.4em;
-                    }
-                </style>
-            </section>
             <section data-state="acknowledgments">
                 <style>
                     .acknowledgments header:after {
@@ -1172,9 +1190,6 @@
                         font-size: 1.4em;
                     }
                 </style>
-                <span style="position: absolute; bottom: 15px; right: 15px">
-                    <cite>Elferich <i>et al.</i> 2014</cite>
-                </span>
             </section>
         </div>
 
