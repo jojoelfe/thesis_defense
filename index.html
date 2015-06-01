@@ -505,12 +505,14 @@
                     .otub1slide3 header {
                         font-size: 1.4em;
                     }
+                    
                     .otub1slide3 h5 {
                         font-size: 0.7em;
                         margin-bottom: -15px;
                     }
                 </style>
-                <img src="img/otub_alt_ter.png" class="model"></img>
+                <img src="img/otub_alt_ter.png"
+                    class="model"></img>
                 <img src="img/otub_alt_ter_ubqback.png"
                     class="fragment model"></img>
                 <img src="img/otub_alt_otububq.png"
@@ -535,30 +537,111 @@
                     <li class="theme-green">Otub1</li>
                     <li class="theme-purple">Ubiquitin ligated to Otub1</li>
                 </ul>
-                <div class="fragment" 
+                <div class="fragment"
                     data-exec='d3.select("#otub1slide3").selectAll("img.model,video").style("display","none"); 
                               d3.select("#otub1slide3 img.final").style("display","block").style("width","400px").style("height","300px").style("right","20px").style("left","initial"); 
                               d3.select("#otub1slide3 ul").style("display","none");'
-                    data-exec-hide='' >
+            
+                    data-exec-hide=''>
                 </div>
-                <div style="width:560px;position:absolute;left:20px;top:25px" class="fragment">
+                <div style="width:560px;position:absolute;left:20px;top:25px"
+                    class="fragment">
                     <h5>Mutagenesis of S22 blocks binding of monoubiquitinated Otub1 to E2-Ligase</h5>
                     <figure>
-                        <img src="img/val_mut_E2.png" style="width:80%" alt="">
+                        <img src="img/val_mut_E2.png"
+                            style="width:80%"
+                            alt="">
                         <figcaption></figcaption>
                     </figure>
                 </div>
-                <div style="width:560px;position:absolute;left:20px;top:360px" class="fragment">
+                <div style="width:560px;position:absolute;left:20px;top:360px"
+                    class="fragment">
                     <h5>Mutagenesis of I44 can rescue binding</h5>
                     <figure>
-                        <img src="img/val_mut_ubq.png" style="width:35%" alt="">
+                        <img src="img/val_mut_ubq.png"
+                            style="width:35%"
+                            alt="">
                         <figcaption></figcaption>
                     </figure>
                 </div>
-                <div class="fragment conclusion" style="position:absolute;top:420px;left:450px;width:520px;font-size: 0.8em;">Monoubiquitinated Otub1 interacts with E2-Ligase through "backside" interaction of the conjugated Ubiquitin</div>
+                <div class="fragment conclusion"
+                    style="position:absolute;top:420px;left:450px;width:520px;font-size: 0.8em;">Monoubiquitinated Otub1 interacts with E2-Ligase through "backside"
+                    interaction of the conjugated Ubiquitin</div>
                 <span style="position: absolute; bottom: 15px; right: 45px">
                     <cite>Li, Sun, Elferich <i>et al.</i> JBC 2014</cite>
                 </span>
+            </section>
+            <section data-state="compsummary">
+                <style>
+                    .compsummary header:after {
+                        content: "Summary";
+                    }
+                    
+                    .compsummary header {
+                        font-size: 1.4em;
+                    }
+                </style>
+                <ol style="font-size:0.7em;width:90%;">
+                    <li style="font-weight: 700;">Sequences
+                        <ul style="font-weight:300;">
+                            <li>Hidden markov model sequence profiles can be used
+                                to find remote homologs and annotate domains</li>
+                            <li class="fragment">The abundance of protein sequences in public databases
+                                allows testing of hypotheses on a genomic scale</li>
+                            <li class="fragment">Secreted proteins do not select against small folded
+                                domains in their first 100 residues, but must
+                                rely on another mechanism to ensure successful
+                                translocation</li>
+                        </ul>
+                    </li>
+                    <li style="font-weight: 700;"
+                        class="fragment">Structures
+                        <ul style="font-weight: 300;">
+                            <li>Visualization of protein structures allow us to
+                                understand how they really work</li>
+                            <li class="fragment">Various algorithms can be used to generate structural
+                                ensembles: Molecular Dynamics is biophysically
+                                meaningful, Monte-Carlo sampeling allows for
+                                more extensive exploration of conformational
+                                space</li>
+                            <li class="fragment">Monoubiquitination of Otub1 allows for a so far
+                                unappreciated interaction between the ubiquitin
+                                and the "backside" of E2-Ligases, which is critical
+                                for p523 stabilization</li>
+                        </ul>
+                    </li>
+                </ol>
+            </section>
+            <section data-state="kindestcut">
+                <style>
+                    .kindestcut header:after {
+                        content: "The kindest cut";
+                    }
+                    
+                    .kindestcut header {
+                        font-size: 1.4em;
+                    }
+                </style>
+                <img src="img/proteins.png"
+                    style="width:70%;"
+                    alt="">
+
+                <img src="img/insulin.jpg"
+                    style="width:40%;"
+                    class="fragment"
+                    alt="">
+                <div class="fragment theme-green"
+                    style="position:absolute;top:300px;left:80px;">POMC</div>
+                <div class="fragment theme-blue"
+                    style="position:absolute;top:400px;left:720px;">Bone morphogenic protein</div>
+                <div class="fragment theme-red"
+                    style="position:absolute;top:500px;left:50px;">Cadherin</div>
+                <div class="fragment theme-purple"
+                    style="position:absolute;top:300px;left:720px;">Matrix metalloprotease</div>
+                <div class="fragment theme-blue"
+                    style="position:absolute;top:400px;left:20px;">Anthrax toxin</div>
+                <div class="fragment theme-red"
+                    style="position:absolute;top:550px;left:820px;">HIV gp160</div>
             </section>
             <section data-state="pcs">
                 <style>
@@ -568,7 +651,78 @@
                     
                     .pcs header {
                         font-size: 1.4em;
+                    }
                 </style>
+                <table style="font-size:0.5em;width:80%">
+                    <tr>
+                        <th>Name</th>
+                        <th>Specificity</th>
+                        <th>Cellular localization</th>
+                        <th>Tissue localization</th>
+                        <th>Involved in disease</th>
+                        <th>Knockout phenotype</th>
+                    </tr>
+                    <tr>
+                        <td>PC1/3</td>
+                        <td>Dibasic</td>
+                        <td>Secretory granules</td>
+                        <td>Neurons, endocrine cells</td>
+                        <td>Obesity, Diabetes</td>
+                        <td>Growth retardation, abnormal hormone levels</td>
+                    </tr>
+                    <tr>
+                        <td>PC2</td>
+                        <td>Dibasic</td>
+                        <td>Secretory granules</td>
+                        <td>Neurons, endocrine cells</td>
+                        <td>Obesity, Diabetes</td>
+                        <td>Growth retardation, abnormal hormone levels, developmental
+                            abnormalities</td>
+                    </tr>
+                    <tr class="fragment highlight-red">
+                        <td>Furin</td>
+                        <td>Dibasic</td>
+                        <td>Golgi apparatus, cell surface, extracellular</td>
+                        <td>Ubiquitous</td>
+                        <td>Cancer, Heart disease, Influenza, HIV, Anthrax</td>
+                        <td>Die on embryonic day 11</td>
+                    </tr>
+                    <tr>
+                        <td>PC4</td>
+                        <td>Basic motif</td>
+                        <td>Granules, cell surface</td>
+                        <td>Germ cells</td>
+                        <td>Infertility</td>
+                        <td>Infertile males</td>
+                    </tr>
+                    <tr>
+                        <td>PC5/6</td>
+                        <td>Dibasic</td>
+                        <td>Cell surface</td>
+                        <td>Development, Neurons</td>
+                        <td>Colon tumors</td>
+                        <td>Death at birth, bone defects</td>
+                    </tr>
+                    <tr>
+                        <td>PACE4</td>
+                        <td>Dibasic</td>
+                        <td>Cell surface</td>
+                        <td>Development, neurons, glial cells</td>
+                        <td>Ostheoarthritis</td>
+                        <td>25% death rate before birth, bone defects</td>
+                    </tr>
+                    <tr>
+                        <td>PC7</td>
+                        <td>Dibasic</td>
+                        <td>Secretory pathway</td>
+                        <td>Ubiquitous</td>
+                        <td>Immune defects(?)</td>
+                        <td>None</td>
+                    </tr>
+                </table>
+                <span style="position: relative; top: 15px; left: 245px">
+                    <cite>Seidah ANYAS 2011</cite>
+                </span>
             </section>
             <section data-state="activation">
                 <style>
@@ -580,17 +734,48 @@
                         font-size: 1.4em;
                     }
                 </style>
+                <img src="img/activ.png"
+                    style="width:90%;padding:10px;border: 0px;box-shadow:none;"
+            
+                    alt="">
             </section>
             <section data-state="phsensor">
                 <style>
                     .phsensor header:after {
-                        content: "pH Sensors";
+                        content: "The pH sensor of furin";
                     }
                     
                     .phsensor header {
                         font-size: 1.4em;
                     }
+                    
+                    .phsensor img {
+                        padding: 5px;
+                    }
                 </style>
+                <figure style=" width: 50%; margin-top: 100px; margin-right: auto; float: left; "><img src="img/felici.png"
+                        alt="">
+                    <figcaption>Activity of furin:propeptide complex after incubation at
+                        pH 6.0 or 7.5 or after treatment with trypsin
+                    </figcaption>
+                </figure>
+                <div style="width:50%;float:right;">
+                    <figure><img src="img/felici_structure.png"
+                            style="width:60%"
+                            alt="">
+                        <figcaption>Homology model of furin propeptide
+                        </figcaption>
+                    </figure>
+                    <figure><img src="img/hisequib.png"
+                            style="width:60%"
+                            alt="">
+                        <figcaption>The two protonation states of the histidine sidechain
+                        </figcaption>
+                    </figure>
+                </div>
+                <span style="position: absolute; bottom: 15px; left: 15px">
+                    <cite>Feliciangeli <i>et al.</i> JBC 2006</cite>
+                </span>
             </section>
             <section data-state="HisConservation"
                 id="hisconservation">
@@ -623,8 +808,16 @@
                         font-size: 1.6em;
                     }
                 </style>
-                <span style="position: absolute; bottom: 15px; right: 15px">
-                    <cite>Elferich <i>et al.</i> 2014</cite>
+                <img src="img/activ.png"
+                    style="width:50%;padding:10px;border: 0px;box-shadow:none;"
+            
+                    alt="">
+                <div class="conclusion">
+                    <h5>Hypothesis:</h5>Propeptides of eukaryotic subtilases that need to sense
+                    pH for activation have more histidines in their propeptides
+                    than prokaryotic subtilases</div>
+                <span style="float:right;margin-right:65px">
+                    <cite>Elferich <i>et al.</i> FASEB 2013</cite>
                 </span>
             </section>
             <section data-state="hisenrapproach">
@@ -636,9 +829,80 @@
                     .hisenrapproach header {
                         font-size: 1.6em;
                     }
+                    
+                    .hisenrapproach section {
+                        font-size: 0.6em;
+                    }
                 </style>
-                <span style="position: absolute; bottom: 15px; right: 15px">
-                    <cite>Elferich <i>et al.</i> 2014</cite>
+
+                <div style="float:left;width:48%;margin-left:10px;">
+                    <div><img src="img/uni.png"
+                            style="padding:5px;" />
+                        <ul>
+                            <li>Database of manually and automatically annotated
+                                protein sequences</li>
+                        </ul>
+                    </div>
+                    <div class="fragment">
+                        <img src="img/pfam.gif"
+                            style="width:70%;" />
+                        <ul>
+                            <li>Database of protein family hidden markov profiles</li>
+                            <li> Automatically matches all sequences in Uniprot</li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div style="margin-left:50%;"
+                    class="fragment">
+                    <h4>PF00082: Subtilase family</h4>
+                    <ul>
+                        <li>Dataset of 10741 sequences with start and end position
+                            of the protease domain</li>
+                    </ul>
+                    <svg width="500"
+                        height="100">
+                        <line x1=10
+                            x2=490
+                            y1=30
+                            y2=30
+                            style="stroke:#586e75;stroke-width:10px;"></line>
+                        <g class="fragment">
+                            <line x1=150
+                                x2=450
+                                y1=30
+                                y2=30
+                                style="stroke: #E8160D;stroke-width:10px;"></line>
+                            <text x=150
+                                y=65
+                                style="fill:#E8160D;">Protease domain (PF00082)</text>
+                        </g>
+                        <g class="fragment">
+                            <line x1=30
+                                x2=150
+                                y1=30
+                                y2=30
+                                style="stroke: #2613FF;stroke-width:10px;"></line>
+                            <text x=20
+                                y=65
+                                style="fill:#2613FF;">Propeptide</text>
+                        </g>
+                    </svg>
+                    <span class="fragment" style="font-weight:700;">Assumptions:</span>
+                    <ul>
+                        <li class="fragment">20 residue signal peptide</li>
+                        <li class="fragment">Propeptide between 50 and 200 residues long</li>
+                        <li class="fragment">No sequences with two protease domains or sequences
+                            labeled as fragment in Uniprot</li>
+                        <li class="fragment">After filtering dataset consists if 6533 sequences</li>
+                    </ul>
+                </div>
+                <div style="display:inline-block;width:70%;text-align:left;margin-left:300px;margin-top:20px;" class="fragment"><span style="font-weight:700;margin-left:60px;">Calculated values:</span><br>[His]<sub>Pro</sub>: Histidine content in propeptide<br>
+                    [His]<sub>Mat</sub>: Histidine content in protease domain<br>
+                    &Delta;[His]=[His]<sub>Pro</sub>-[His]<sub>Mat</sub>: Enrichment of histidines in propeptide
+                </div>
+                <span style="float:right; margin-right: 65px">
+                    <cite style="font-size:1.8em;">Elferich <i>et al.</i> FASEB 2013</cite>
                 </span>
             </section>
             <section data-state="subttree">
@@ -652,7 +916,7 @@
                     }
                 </style>
                 <div id="vis"></div>
-                <span style="position: absolute; bottom: 11px; right: 45px">
+                <span style="position: absolute; bottom: 11px; right: 65px">
                     <cite>Elferich <i>et al.</i> FASEB 2013</cite>
                 </span>
                 <div class="fragment"
