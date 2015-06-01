@@ -1,5 +1,5 @@
 @import url(../../lib/font/source-sans-pro/source-sans-pro.css);
-@import url(https://fonts.googleapis.com/css?family=Ubuntu:300,700,300italic,700italic);
+@import url(https://fonts.googleapis.com/css?family=Ubuntu:400,700,400italic,700italic);
 @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700);
 /**
  * White theme for reveal.js. This is the opposite of the 'black' theme.
@@ -207,7 +207,7 @@ body {
 .reveal {
   font-family: 'Ubuntu', Helvetica, sans-serif;
   font-size: 36px;
-  font-weight: normal;
+  font-weight: 400;
   color: #222; }
 
 ::selection {
