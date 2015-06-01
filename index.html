@@ -953,17 +953,40 @@
             <section data-state="hisenrstats">
                 <style>
                     .hisenrstats header:after {
-                        content: "Statistical considerations";
+                        content: "Is this significant?";
                     }
                     
                     .hisenrstats header {
                         font-size: 1.4em;
                     }
+                    .hisenrstats section img {
+                        padding:5px;
+                        width:50%;
+                        
+                    }
+                    .hisenrstats section figure {
+                        
+                        width:50%;
+                        float:left;
+                        font-size:0.8em;
+                    }
                 </style>
-                <span style="position: absolute; bottom: 15px; right: 15px">
+                    <figure>
+                        <img src="img/dist.png" alt="">
+                        <figcaption>Distribution of histidine content in eukaryotic and prokaryotic domains</figcaption>
+                    </figure>
+                    <figure class="fragment">
+                        <img src="img/ddist.png" alt="">
+                        <figcaption>Distribution of histidine content difference in eukaryotic and prokaryotic subtilases</figcaption>
+                    </figure>
+                    <figure style="width:100%;" class="fragment">
+                        <img src="img/Effect_size_new.png" alt="">
+                        <figcaption>Effect size of difference in distribution of residue content difference in eukaryotic and prokaryotic subtilases</figcaption>
+                    </figure>
+                <span style="float:right; margin-right: 15px">
                     <cite>Elferich <i>et al.</i> 2014</cite>
                 </span>
-            </section>
+            </section><!---
             <section data-state="hisother">
                 <style>
                     .hisother header:after {
@@ -977,19 +1000,40 @@
                 <span style="position: absolute; bottom: 15px; right: 15px">
                     <cite>Elferich <i>et al.</i> 2014</cite>
                 </span>
-            </section>
+            </section>--->
             <section data-state="hismech">
                 <style>
                     .hismech header:after {
-                        content: "What does histidine protonation do?";
+                        content: "How does this difference in histidine content affect structure?";
                     }
                     
                     .hismech header {
-                        font-size: 1.4em;
+                        font-size: 1.0em;
+                    }
+                    .hismech section img {
+                        padding:5px;
+                        width:70%;
+                        
+                    }
+                    .hismech section figure {
+                        
+                        width:50%;
+                        float:left;
+                        font-size:0.8em;
                     }
                 </style>
-                <span style="position: absolute; bottom: 15px; right: 15px">
-                    <cite>Elferich <i>et al.</i> 2014</cite>
+                <figure>
+                    <h5>Secondary structure content of various subtilase propeptides is similar at neutral pH</h5>
+                    <img src="img/cd_spectra.png" alt="">
+                    <figcaption>Far-UV circular dichroism spectra of the propeptide of subtilisin, aqualisin, PC1/3 and furin</figcaption>
+                </figure>
+                <figure>
+                    <h5>Only histidine containing propeptides show structure loss at acidic pH</h5>
+                    <img src="img/cd_titration.png" alt="">
+                    <figcaption>Ellipticity at 222nm as a function of pH</figcaption>
+                </figure>
+                <span style="float:right;margin-right:65px;">
+                    <cite>Dillon, Williamson, Elferich <i>et al.</i> JMB 2012</cite>
                 </span>
             </section>
             <section data-state="proexch">
@@ -1002,22 +1046,13 @@
                         font-size: 1.2em;
                     }
                 </style>
-                <span style="position: absolute; bottom: 15px; right: 15px">
-                    <cite>Dillon, Williamson, Elferich <i>et al.</i> 2014</cite>
-                </span>
-            </section>
-            <section data-state="prostab">
-                <style>
-                    .prostab header:after {
-                        content: "Propeptides loose structure at low pH";
-                    }
-                    
-                    .prostab header {
-                        font-size: 1.4em;
-                    }
-                </style>
-                <span style="position: absolute; bottom: 15px; right: 15px">
-                    <cite>Elferich <i>et al.</i> 2014</cite>
+                <figure style="height:500px;">
+                    <img src="img/proexch_2.png" class="fragment fade-out" data-fragment-index=1 alt="" style="position:absolute;left:200px;width:60%;">
+                    <img src="img/proexch_3.png" class="fragment" alt="" data-fragment-index=1 style="position:absolute;left:200px;width:60%;">
+                    <figcaption>Activity of furin:propeptide complex after incubation at various pH values</figcaption>
+                </figure>
+                <span style="float:right;margin-right:65px;">
+                    <cite>Dillon, Williamson, Elferich <i>et al.</i> JMB 2012</cite>
                 </span>
             </section>
             <section data-state="hismd">
@@ -1030,7 +1065,7 @@
                         font-size: 1.2em;
                     }
                 </style>
-                <span style="position: absolute; bottom: 15px; right: 15px">
+                <span style="float:right;margin-right:65px;">
                     <cite>Elferich <i>et al.</i> 2014</cite>
                 </span>
             </section>
