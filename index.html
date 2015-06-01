@@ -16,6 +16,8 @@
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
     <link rel="stylesheet"
+        href="css/spse.css">
+    <link rel="stylesheet"
         href="css/reveal.css">
     <link rel="stylesheet"
         href="css/theme/white.css"
@@ -1065,7 +1067,24 @@
                         font-size: 1.2em;
                     }
                 </style>
-                
+                <div style="float:left;width:33%;">
+                    <h5>Approach</h5>
+                <figure>
+                    <img src="img/hisequib.png" style="width:60%;borders:none;box-shadow:none;" alt="">
+                    <figcaption></figcaption>
+                    </figure>
+                    <ul style="font-size:0.6em">
+                        <li>I performed molecular dynamics simulations of the furin propeptide using either protonated or nonprotonated histidines.</li>
+                    </ul>
+                </div>
+                <figure style="width:45%;float:right;">
+                    <img src="img/fimc_md_struc.png" style="width:70%;" alt="">
+                    <figcaption>Replace with animation</figcaption>
+                </figure>
+                <figure style="width:55%;float:left;">
+                    <img src="img/fimc_rmsd.png" alt="">
+                    <figcaption></figcaption>
+                </figure>
                 <span style="float:right;margin-right:65px;">
                     <cite>Dillon, Williamson, Elferich <i>et al.</i> JMB 2012</cite>
                 </span>
@@ -1108,22 +1127,13 @@
                         font-size: 1.2em;
                     }
                 </style>
-                <span style="position: absolute; bottom: 15px; right: 15px">
-                    <cite>Elferich <i>et al.</i> 2014</cite>
+                <figure style="width:55%;margin-left:auto;margin-right:auto;"><img src="img/his_pc1.png" alt=""></figure>
+                <div class="conclusion"><h5>Hypothesis:</h5> Furin and PC1/3 activate at different pH values due to difference in histidine pKa values in their propeptides</div>
+                <span style="float:right;margin-right:65px;">
+                    <cite>Williamson</cite>
                 </span>
             </section>
-            <section data-state="hismodhypothesis">
-                <style>
-                    .hismodhypothesis header:after {
-                        content: "Hypothesis";
-                    }
-                    
-                    .hismodhypothesis header {
-                        font-size: 1.4em;
-                    }
-                </style>
-            </section>
-            <section data-state="hdxanimation" style="height:550px;">
+            <section data-state="hdxanimation" style="height:650px;">
                 <style>
                     .hdxanimation header:after {
                         content: "Measuring histidine pKa values with hydrogen-deuterium exchange";
@@ -1137,8 +1147,14 @@
                         box-shadow: none;
                         background: none;
                     }
+                    .hdxanimation section  h5{
+                        font-size:0.5em;
+
+                        margin-bottom:-10px;
+                        margin-top:-15px;
+                    }
                 </style>
-		<div style="float:left;width:50%">
+		<div style="float:left;width:50%" >
 		<img src="img/pep_water.png" style="z-index:1;position:absolute;width:50%;top:120px;left:0px;max-height:none;" />
 		<img class = "fragment" src="img/pep_d2o.png" style="z-index:1;position:absolute;width:50%;top:120px;left:0px;max-height:none;transition: all 1.2s ease;" />
 		<img class = "fragment" src="img/pep_polar_d2o.png" style="z-index:1;position:absolute;width:50%;top:120px;left:0px;max-height:none;transition: all 1.2s ease;" />
@@ -1147,16 +1163,168 @@
 		<img class = "fragment" src="img/pep_c2_water.png" style="z-index:1;position:absolute;width:50%;top:120px;left:0px;max-height:none;transition: all 1.2s ease;" />
 		<img class = "fragment" src="img/pep_c2only_water.png" style="z-index:1;position:absolute;width:50%;top:120px;left:0px;max-height:none;transition: all 1.2s ease;" />
 		</div>
+
+		<div style="float:right;width:50%" class="fragment" data-exec="$('#Startmz').load('data/YHF_4.svg');">
+            <h5>m/z profile of peptide VARKHGFLNL</h5>
+            <div id="Startmz" ></div>
+            <div class="fragment" data-exec="$('#YHF_9').load('data/YHF_9.svg');$('#title').text('pH 9.0');$('#ex_9_0').attr('display','block');">
+                <h5>m/z profile after exchange at <span id="title"> pH 9.0</span></h5>
+                    <div id="YHF_9" > </div></div>
+        <div class="fragment">
+            <h5>Rate constant of deuterium uptake</h5>
+<svg width="400" height="220"><g transform="translate(40,10)"><g class="x axis" transform="translate(0,170)"><g class="tick" transform="translate(9.687500000000009,0)" style="opacity: 1;"><line y2="6" x2="0"></line><text y="9" x="0" dy=".71em" style="text-anchor: middle;">3.0</text></g><g class="tick" transform="translate(33.90625000000001,0)" style="opacity: 1;"><line y2="6" x2="0"></line><text y="9" x="0" dy=".71em" style="text-anchor: middle;">3.5</text></g><g class="tick" transform="translate(58.12500000000001,0)" style="opacity: 1;"><line y2="6" x2="0"></line><text y="9" x="0" dy=".71em" style="text-anchor: middle;">4.0</text></g><g class="tick" transform="translate(82.34375,0)" style="opacity: 1;"><line y2="6" x2="0"></line><text y="9" x="0" dy=".71em" style="text-anchor: middle;">4.5</text></g><g class="tick" transform="translate(106.5625,0)" style="opacity: 1;"><line y2="6" x2="0"></line><text y="9" x="0" dy=".71em" style="text-anchor: middle;">5.0</text></g><g class="tick" transform="translate(130.78125,0)" style="opacity: 1;"><line y2="6" x2="0"></line><text y="9" x="0" dy=".71em" style="text-anchor: middle;">5.5</text></g><g class="tick" transform="translate(155,0)" style="opacity: 1;"><line y2="6" x2="0"></line><text y="9" x="0" dy=".71em" style="text-anchor: middle;">6.0</text></g><g class="tick" transform="translate(179.21875,0)" style="opacity: 1;"><line y2="6" x2="0"></line><text y="9" x="0" dy=".71em" style="text-anchor: middle;">6.5</text></g><g class="tick" transform="translate(203.4375,0)" style="opacity: 1;"><line y2="6" x2="0"></line><text y="9" x="0" dy=".71em" style="text-anchor: middle;">7.0</text></g><g class="tick" transform="translate(227.65625,0)" style="opacity: 1;"><line y2="6" x2="0"></line><text y="9" x="0" dy=".71em" style="text-anchor: middle;">7.5</text></g><g class="tick" transform="translate(251.875,0)" style="opacity: 1;"><line y2="6" x2="0"></line><text y="9" x="0" dy=".71em" style="text-anchor: middle;">8.0</text></g><g class="tick" transform="translate(276.09375,0)" style="opacity: 1;"><line y2="6" x2="0"></line><text y="9" x="0" dy=".71em" style="text-anchor: middle;">8.5</text></g><g class="tick" transform="translate(300.3125,0)" style="opacity: 1;"><line y2="6" x2="0"></line><text y="9" x="0" dy=".71em" style="text-anchor: middle;">9.0</text></g><path class="domain" d="M0,-170V0H310V-170"></path><text y="20" x="155" dy=".71em" style="text-anchor: middle;">pH</text></g><g class="y axis" transform="translate(0,0)"><g class="tick" transform="translate(0,170)" style="opacity: 1;"><line x2="-6" y2="0"></line><text x="-9" y="0" dy=".32em" style="text-anchor: end;">0.000</text></g><g class="tick" transform="translate(0,127.5)" style="opacity: 1;"><line x2="-6" y2="0"></line><text x="-9" y="0" dy=".32em" style="text-anchor: end;">0.005</text></g><g class="tick" transform="translate(0,85)" style="opacity: 1;"><line x2="-6" y2="0"></line><text x="-9" y="0" dy=".32em" style="text-anchor: end;">0.010</text></g><g class="tick" transform="translate(0,42.5)" style="opacity: 1;"><line x2="-6" y2="0"></line><text x="-9" y="0" dy=".32em" style="text-anchor: end;">0.015</text></g><g class="tick" transform="translate(0,0)" style="opacity: 1;"><line x2="-6" y2="0"></line><text x="-9" y="0" dy=".32em" style="text-anchor: end;">0.020</text></g><path class="domain" d="M310,0H0V170H310"></path><text transform="rotate(-90)" x="-85" y="-30" style="text-anchor: middle;"></text></g><g style="fill: #1f77b4;">
+<g id="ex_9_0" display="none">
+<circle cx="300.3125" cy="117.65367387256313" r="3"></circle>
+<circle cx="300.3125" cy="113.86641284890779" r="3"></circle>
+<circle cx="300.3125" cy="113.61659034242521" r="3"></circle>
+</g>
+<g id="ex_3_5" display="none">
+<circle cx="33.90625000000001" cy="169.82948103748467" r="3"></circle>
+<circle cx="33.90625000000001" cy="169.72529863887823" r="3"></circle>
+<circle cx="33.90625000000001" cy="170" r="3"></circle>
+</g>
+<g id="ex_6_0" display="none">
+<circle cx="155" cy="142.08550386576485" r="3"></circle>
+<circle cx="155" cy="141.73299147125513" r="3"></circle>
+<circle cx="155" cy="142.16966759077292" r="3"></circle>
+</g>
+<g id="ex_4_0" display="none">
+<circle cx="58.12500000000001" cy="169.04862982717256" r="3"></circle>
+<circle cx="58.12500000000001" cy="169.1918017218403" r="3"></circle>
+<circle cx="58.12500000000001" cy="169.434394935586" r="3"></circle>
+</g>
+<g id="ex_4_5" display="none">
+<circle cx="82.34375" cy="166.2503045291527" r="3"></circle>
+<circle cx="82.34375" cy="166.51425620197693" r="3"></circle>
+<circle cx="82.34375" cy="167.466727379683" r="3"></circle>
+</g>
+<g id="ex_5_0" display="none">
+<circle cx="106.5625" cy="164.23239313783375" r="3"></circle>
+<circle cx="106.5625" cy="164.41285654689065" r="3"></circle>
+<circle cx="106.5625" cy="164.4890551858222" r="3"></circle>
+</g>
+<g id="ex_5_5" display="none">
+<circle cx="130.78125" cy="156.31933048100606" r="3"></circle>
+<circle cx="130.78125" cy="156.17285984283026" r="3"></circle>
+<circle cx="130.78125" cy="156.07302723079266" r="3"></circle>
+</g>
+<g id="ex_6_5" display="none">
+<circle cx="179.21875" cy="123.92126392584491" r="3"></circle>
+<circle cx="179.21875" cy="122.7682362313787" r="3"></circle>
+<circle cx="179.21875" cy="123.0580437028703" r="3"></circle>
+</g>
+<g id="ex_7_0" display="none">
+<circle cx="203.4375" cy="114.01947220283202" r="3"></circle>
+<circle cx="203.4375" cy="112.37887978147529" r="3"></circle>
+<circle cx="203.4375" cy="112.67095149543833" r="3"></circle>
+</g>
+<g id="ex_7_5" display="none">
+<circle cx="227.65625" cy="113.39322205327645" r="3"></circle>
+<circle cx="227.65625" cy="110.18747221176397" r="3"></circle>
+<circle cx="227.65625" cy="111.04556758389458" r="3"></circle>
+</g>
+<g id="ex_8_0" display="none">
+<circle cx="251.875" cy="112.2193518909142" r="3"></circle>
+<circle cx="251.875" cy="111.8508079054473" r="3"></circle>
+<circle cx="251.875" cy="111.46149273713777" r="3"></circle>
+</g>
+<g id="ex_8_5" display="none">
+<circle cx="276.09375" cy="111.92184701271592" r="3"></circle>
+<circle cx="276.09375" cy="111.36513294605729" r="3"></circle>
+<circle cx="276.09375" cy="111.76343794133717" r="3"></circle>
+</g>
+</g></g></svg>
+</div>
+		<div class="fragment" id="Y9" data-exec="$('#YHF_9').load('data/YHF_8_5.svg');$('#title').text('pH 8.5');$('#ex_8_5').attr('display','block');"> </div>
+		<div class="fragment" id="Y9" data-exec="$('#YHF_9').load('data/YHF_8.svg');$('#title').text('pH 8.0');$('#ex_8_0').attr('display','block');"> </div>
+		<div class="fragment" id="Y9" data-exec="$('#YHF_9').load('data/YHF_7_5.svg');$('#title').text('pH 7.5');$('#ex_7_5').attr('display','block');"> </div>
+		<div class="fragment" id="Y9" data-exec="$('#YHF_9').load('data/YHF_7.svg');$('#title').text('pH 7.0');$('#ex_7_0').attr('display','block');"> </div>
+		<div class="fragment" id="Y9" data-exec="$('#YHF_9').load('data/YHF_6_5.svg');$('#title').text('pH 6.5');$('#ex_6_5').attr('display','block');"> </div>
+		<div class="fragment" id="Y9" data-exec="$('#YHF_9').load('data/YHF_6.svg');$('#title').text('pH 6.0');$('#ex_6_0').attr('display','block');"> </div>
+		<div class="fragment" id="YHF_9" data-exec="$('#YHF_9').load('data/YHF_5_5.svg');$('#title').text('pH 5.5');$('#ex_5_5').attr('display','block');"> </div>
+		<div class="fragment" id="YHF_9" data-exec="$('#YHF_9').load('data/YHF_5.svg');$('#title').text('pH 5.0');$('#ex_5_0').attr('display','block');" > </div>
+		<div class="fragment" id="HF_9" data-exec="$('#YHF_9').load('data/YHF_4_5.svg');$('#title').text('pH 4.5');$('#ex_4_5').attr('display','block');" > </div>
+		<div class="fragment" id="YHF_9" data-exec="$('#YHF_9').load('data/YHF_4.svg');$('#title').text('pH 4.0');$('#ex_4_0').attr('display','block');"> </div>
+        </div>
             </section>
             <section data-state="hdx_results">
                 <style>
                     .hdx_results header:after {
-                        content: "Histidine pKa values in furin and PC1/3 propeptides";
+                        content: "Histidine pKa values in the propeptide of furin and PC1/3";
                     }
                     .hdx_results header {
-                        font-size: 1.4em;
+                        font-size: 1.0em;
                     }
                 </style>
+                <figure style="width:50%;float:left;">
+                    <h5>Furin</h5>
+                    <img src="img/fur_pka.png" alt="" style="width:70%;">
+                    <figcaption></figcaption>
+                    <table style="font-size:0.6em;">
+                        <tr>
+                            <th>Histidine</th>
+                            <th>pKa</th>
+                            <th>k<sub>max</sub></th>
+                        </tr>
+                        <tr>
+                            <td>H52</td>
+                            <td>6.07&#177;0.02</td>
+                            <td>0.0124&#177;0.0001</td>
+                        </tr>
+                        <tr>
+                            <td>H66</td>
+                            <td>5.98&#177;0.03</td>
+                            <td>0.0069&#177;0.0001</td>
+                        </tr>
+                        <tr>
+                            <td>H69</td>
+                            <td>6.04&#177;0.05</td>
+                            <td>0.0063&#177;0.0002</td>
+                        </tr>
+                        <tr>
+                            <td>H80</td>
+                            <td>6.02&#177;0.03</td>
+                            <td>0.0094&#177;0.0002</td>
+                        </tr>
+                        <tr>
+                            <td>H84</td>
+                            <td>6.04&#177;0.07</td>
+                            <td>0.0073&#177;0.0002</td>
+                        </tr>
+                    </table>
+                </figure>
+                <figure style="width:50%;float:left;">
+                <h5>PC1/3</h5>
+                    <img src="img/pc1_pka.png" alt="" style="width:70%;">
+                    <figcaption></figcaption>
+                    <table style="font-size:0.6em;">
+                        <tr>
+                            <th>Histidine</th>
+                            <th>pKa</th>
+                            <th>k<sub>max</sub></th>
+                        </tr>
+                        <tr>
+                            <td>H67</td>
+                            <td>6.31&#177;0.03</td>
+                            <td>0.0068&#177;0.0001</td>
+                        </tr>
+                        <tr>
+                            <td>H72</td>
+                            <td>5.61&#177;0.06</td>
+                            <td>0.0034&#177;0.0001</td>
+                        </tr>
+                        <tr>
+                            <td>H75</td>
+                            <td>5.97&#177;0.03</td>
+                            <td>0.0057&#177;0.0001</td>
+                        </tr>
+                        <tr>
+                            <td>H85</td>
+                            <td>5.85&#177;0.04</td>
+                            <td>0.0052&#177;0.0001</td>
+                        </tr>
+                    </table>
+                </figure>
                 <span style="float:right;margin-right:65px;">
                     <cite>Elferich <i>et al.</i> under review 2015</cite>
                 </span>
@@ -1170,6 +1338,10 @@
                         font-size: 1.4em;
                     }
                 </style>
+                <figure>
+                    <img src="img/pkaanal.png" alt="">
+                    <figcaption></figcaption>
+                </figure>
             </section>
             <section data-state="sumprop">
                 <style>
