@@ -67,17 +67,23 @@
                     .overview header:after {
                         content: "Overview";
                     }
+                    .overview section ol {
+                        font-weight:700;
+                    }
+                    .overview section ol li ol {
+                        font-weight: 400;
+                    }
                 </style>
 
                 <ol type="A"
                     style="list-style-type: upper-alpha">
-                    <li>Use computers to describe proteins
+                    <li>Using computers to describe proteins
                         <ol>
                             <li>Sequences (Sec61/translocon complex)</li>
                             <li>Structure (Otub1-monoubiquitination)</li>
                         </ol>
                     </li>
-                    <li>How propeptides of proprotein convertases sense pH
+                    <li class="fragment">How propeptides of proprotein convertases sense pH
                         <ol>
                             <li> Propeptides contain histidines </li>
                             <li> Histidine protonation destabilizes propeptide structure
@@ -85,7 +91,7 @@
                             <li> Histidine pKa determines pH of activation </li>
                         </ol>
                     </li>
-                    <li> Conclusions & Acknowledgements </li>
+                    <li class="fragment"> Conclusions & Acknowledgements </li>
                 </ol>
             </section>
             <section data-state="proteins">
@@ -104,11 +110,31 @@
                     height=500
                     style="position:absolute;left:20px"></svg>
                 <ul style="margin-left:520px;font-size:0.8em;">
-                    <li>Protein sequences can be represented as strings</li>
+                    <li>Protein sequences can be represented as strings
+                    <pre><code data-trim>
+>Protein
+NLYIQWLKDGGPSSGRPPPS
+                    </code></pre>
+                    
+                    </li>
                     <li class="fragment"
                         data-exec="render_protein_vis.apply_force_field();"
                         data-exec-hide='render_protein_vis.render();'>
-                        Protein structures can be represented as lists of atoms and their coordinates</li>
+                        Protein structures can be represented as lists of atoms and their coordinates
+                        <pre><code>
+ATOM    1  N   MET A   1   27.340  24.430   2.614
+ATOM    2  CA  MET A   1   26.266  25.413   2.842
+ATOM    3  C   MET A   1   26.913  26.639   3.531
+ATOM    4  O   MET A   1   27.886  26.463   4.263
+ATOM    5  CB  MET A   1   25.112  24.880   3.649
+ATOM    6  CG  MET A   1   25.353  24.860   5.134
+ATOM    7  SD  MET A   1   23.930  23.959   5.904
+ATOM    8  CE  MET A   1   24.447  23.984   7.620
+ATOM    9  N   GLN A   2   26.335  27.770   3.258
+ATOM   10  CA  GLN A   2   26.850  29.021   3.898
+ATOM   11  C   GLN A   2   26.100  29.253   5.202
+ATOM   12  O   GLN A   2   24.865  29.024   5.330
+                        </code></pre></li>
                 </ul>
             </section>
             <section data-state="sequences">
@@ -128,14 +154,6 @@
                     <h6 class="fragment"
                         style="float:left;width:33.333%;text-align:left;font-size:0.6em;">Pairwise Comparison</h6>
                     <div class="fragment"
-                        data-exec-hide='render_seq_tree.pairwise_align_del("#YHWWDRG","#YHFWDRP")'
-                
-                        data-exec='render_seq_tree.pairwise_align("#YHWWDRG","#YHFWDRP",20,250)'></div>
-                    <div class="fragment"
-                        style="position:absolute;left:90px;top:65px;font-size:0.6em;">
-                        5/7 71% Identical
-                    </div>
-                    <div class="fragment"
                         data-exec-hide='render_seq_tree.pairwise_align_del("#YFWDRG","#YHFWDRP")'
                 
                         data-exec='render_seq_tree.pairwise_align("#YFWDRG","#YHFWDRP",20,300)'></div>
@@ -148,22 +166,6 @@
                     <div class="fragment"
                         data-exec='d3.select("#YFWDRGc").text("Y-FWDRG").attr("id","old");
                                    d3.select("#ndident").html("5/7 71% Identical");'
-                
-                        data-exec-hide=''>
-                    </div>
-                    <div class="fragment"
-                        data-exec-hide='render_seq_tree.pairwise_align_del("#YFWDRG","#FHFWHKG")'
-                
-                        data-exec='render_seq_tree.pairwise_align("#YFWDRG","#FHFWHKG",20,350)'></div>
-                    <div class="fragment"
-                        style="position:absolute;left:90px;top:165px;font-size:0.6em;"
-                
-                        id="rdident">
-                        0/7 0% Identical
-                    </div>
-                    <div class="fragment"
-                        data-exec='d3.selectAll("#YFWDRGc").text("Y-FWDRG");
-                                   d3.select("#rdident").html("3/7 43% Identical");'
                 
                         data-exec-hide=''>
                     </div>
@@ -200,19 +202,31 @@
                 </style>
                 <figure>
                     <img src="img/translocon_mech.png"
-                        width="450px"></img>
-                    <figcaption> Potential mechanism, by which folding of a protein could
-                        affect translocation of secreted proteins</figcaption>
+                        width="850px"></img>
                 </figure>
-                <figure class="fragment">
+            </section>
+            <section data-state="sec61-hypoth">
+                <style>
+                    .sec61-hypoth header:after {
+                        content: "Small folded domains at the N-terminus block translocation";
+                    }
+                    
+                    .sec61-hypoth header {
+                        font-size: 1.0em;
+                    }
+                    .sec61-hypoth section {
+                        font-size: 0.8em;
+                    }
+                </style>
+                <figure>
+                    <h5>Insertion of a zinc-finger domain blocks translocation in the presence of zinc</h5>
                     <img src="img/nsmb_2779-F1.jpg"
                         width="700px"></img>
-                    <figcaption>Insertion of a zinc-finger domain, that folds in the presence
-                        of zinc, near the N-terminus of a secreted protein inhibits
-                        translocation in the presence of zinc</figcaption>
                 </figure>
+                <div class="conclusion fragment"><h5>Hypothesis:</h5>Secreted proteins select against small folded domains at their N-terminus</div>
+                <div class="conclusion fragment"><h5>Approach:</h5>Use HMM sequence profiles to quantify the number of secreted and not secreted proteins with small domains at their N-terminus</div>
                 <span style="float:right;margin-right: 60px">
-                    <cite>Conti, Elferich <i>et al.</i> NSMB 2014</cite>
+                    <cite>Conti, Elferich <i>et al.</i> Nature Structural and Molecular Biology 2014</cite>
                 </span>
             </section>
             <section data-state="sec61res">
@@ -225,50 +239,26 @@
                         font-size: 1.0em;
                     }
                 </style>
-                <div style="width:90%;font-size:0.8em;"
-                    class="conclusion">
-                    <h5>Hypothesis:</h5>Secreted proteins avoid small folded domains in their first
-                    100 residues.</div>
-                <div style="width:40.0%;float:left;"
-                    class="fragment">
-                    <h5>Approach</h5>
-                    <ul style="font-size:0.7em">
-                        <li class="fragment">Generate list of all secreted proteins or all cytosolic/nuclear
-                            proteins in the human genome</li>
-                        <li class="fragment">Map domains in the first 100 residues using HMM sequence
-                            profiles generated for all known folds
-                            <ul>
-                                <li>Superfamily: SCOP</li>
-                                <li>Gene3D: CATH</li>
-                            </ul>
-                        </li>
-                        <li class="fragment">Calculate fraction of proteins that contain short (50
-                            or 100 residues) domains within the first 100 residues</li>
-                    </ul>
-                </div>
-                <div style="width:60%;margin-left:40%;"
-                    class="fragment">
+                <div style="width:90%;margin-left:auto;margin-right:auto;" >
                     <h5>Results</h5>
-                    <figure style="width:85%;margin-top:-40px;margin-left:auto;margin-right:auto;">
+                    <figure style="width:85%;margin-left:auto;margin-right:auto;">
                         <img src="img/sec61_table.png"></img>
                     </figure>
-                    <figure style="width:70%;float:left;margin-top:-20px;"
+                    <figure style="width:50%;float:left;margin-left:30px;margin-top:-10px;"
                         class="fragment">
+                        <h5>Type of domains</h5>
                         <img src="img/sec61_type.png"></img>
-                        <figcaption style:
-                            "font-size:0.6em;">Most frequently found domains in the first 100 residues</figcaption>
                     </figure>
-                    <figure style="width:30%;float:left;margin-top:-20px;"
+                    <figure style="width:20%;float:right;margin-right:60px;margin-top:-10px;"
                         class="fragment">
+                        <h5>Disulfides</h5>
                         <img src="img/sec61_disulf.png"></img>
-                        <figcaption style:
-                            "font-size:0.5em;">Ratio of disulfide-containing domains</figcaption>
                     </figure>
 
                     </figure>
                 </div>
-                <span style="position: absolute; bottom: 15px; left: 88px">
-                    <cite>Conti, Elferich <i>et al.</i> NSMB 2014</cite>
+                <span style="float:right;margin-right: 60px">
+                    <cite>Conti, Elferich <i>et al.</i> Nature Structural and Molecular Biology 2014</cite>
                 </span>
             </section>
             <section data-state="structure">
@@ -387,17 +377,14 @@
                     <figure style="width:400px;margin-left:auto;margin-right:auto;">
                         <img src="img/Otub1_p53_mech.png"
                             style="width:70%"></img>
-                        <figcaption>Schematic of Otub1 mechanism</figcaption>
                     </figure>
                 </div>
-                <div style="width:50%;float:right;margin-top:50px;"
+                <div style="width:48%;margin-right:2%;float:right;margin-top:90px;"
                     class="fragment">
                     <h5>Monoubiquitination of Otub1 is critical for p53 stabilization</h5>
                     <figure style="width:400px;margin-left:auto;margin-right:auto;">
                         <img src="img/otub_ubq_p53.png"
                             style="width:100%"></img>
-                        <figcaption>Western Blot for p53 and p53 downstream targets in the
-                            presenche of various Otub1 mutants</figcaption>
                     </figure>
                 </div>
                 <div style="width:50%;float:left;"
@@ -405,8 +392,7 @@
                     <h5>E2-Ligase preferentially binds to monoubiquitinated Otub1</h5>
                     <figure style="width:500px;margin-left:auto;margin-right:auto;">
                         <img src="img/otub_ubq_e2pull.png"
-                            style="width:30%"></img>
-                        <figcaption>Western Blot for Otub1 after E2-Ligase immunoprecipitation</figcaption>
+                            style="width:50%"></img>
                     </figure>
                 </div>
 
@@ -476,12 +462,12 @@
                     }
                 </style>
                 <figure>
+                    <h5>Lys<sub>59</sub></h5>
                     <img src="img/supp_k59.png"></img>
-                    <figcaption>5000 possible conformations of ubiquitin ligated to K59</figcaption>
                 </figure>
                 <figure>
+                    <h5>Lys<sub>109</sub></h5>
                     <img src="img/supp_k109.png"></img>
-                    <figcaption>5000 possible conformations of ubiquitin ligated to K109</figcaption>
                 </figure>
                 <ul style="margin-left:720px;margin-top:40px;display:block;">
                     <li class="theme-blue">E2-Ligase</li>
@@ -548,7 +534,7 @@
                 </div>
                 <div style="width:560px;position:absolute;left:20px;top:25px"
                     class="fragment">
-                    <h5>Mutagenesis of S22 blocks binding of monoubiquitinated Otub1 to E2-Ligase</h5>
+                    <h5>Mutagenesis of Ser<sub>22</sub> blocks binding of monoubiquitinated Otub1 to E2-Ligase</h5>
                     <figure>
                         <img src="img/val_mut_E2.png"
                             style="width:80%"
@@ -558,7 +544,7 @@
                 </div>
                 <div style="width:560px;position:absolute;left:20px;top:360px"
                     class="fragment">
-                    <h5>Mutagenesis of I44 can rescue binding</h5>
+                    <h5>Mutagenesis of Ile<sub>44</sub> can rescue binding</h5>
                     <figure>
                         <img src="img/val_mut_ubq.png"
                             style="width:35%"
@@ -586,7 +572,7 @@
                 <ol style="font-size:0.7em;width:90%;">
                     <li style="font-weight: 700;">Sequences
                         <ul style="font-weight:300;">
-                            <li>Hidden markov model sequence profiles can be used
+                            <li>Hidden Markov model sequence profiles can be used
                                 to find remote homologs and annotate domains</li>
                             <li class="fragment">The abundance of protein sequences in public databases
                                 allows testing of hypotheses on a genomic scale</li>
@@ -602,14 +588,14 @@
                             <li>Visualization of protein structures allow us to
                                 understand how they really work</li>
                             <li class="fragment">Various algorithms can be used to generate structural
-                                ensembles: Molecular Dynamics is biophysically
-                                meaningful, Monte-Carlo sampeling allows for
+                            ensembles:<ul><li> Molecular Dynamics is biophysically
+                                meaningful</li><li> Monte-Carlo sampeling allows for
                                 more extensive exploration of conformational
-                                space</li>
+                                space</li></ul></li>
                             <li class="fragment">Monoubiquitination of Otub1 allows for a so far
                                 unappreciated interaction between the ubiquitin
                                 and the "backside" of E2-Ligases, which is critical
-                                for p523 stabilization</li>
+                                for p53 stabilization</li>
                         </ul>
                     </li>
                 </ol>
@@ -625,23 +611,31 @@
                     }
                 </style>
                 <img src="img/proteins.png"
-                    style="width:70%;"
+                    style="width:90%;"
                     alt="">
-
+                </section>
+                <section data-state="prosubsts">
+                    <style>
+                        .prosubsts header:after {
+                            content: "Proteins that require cutting";
+                        }
+                        .prosubsts header {
+                            font-size: 1.4em;
+                        }
+                    </style>
                 <img src="img/insulin.jpg"
-                    style="width:40%;"
-                    class="fragment"
+                    style="width:40%;margin-top:15%"
                     alt="">
                 <div class="fragment theme-green"
-                    style="position:absolute;top:300px;left:80px;">POMC</div>
+                    style="position:absolute;top:100px;left:80px;">POMC</div>
                 <div class="fragment theme-blue"
-                    style="position:absolute;top:400px;left:720px;">Bone morphogenic protein</div>
+                    style="position:absolute;top:300px;left:720px;">Bone morphogenic protein</div>
                 <div class="fragment theme-red"
                     style="position:absolute;top:500px;left:50px;">Cadherin</div>
                 <div class="fragment theme-purple"
-                    style="position:absolute;top:300px;left:720px;">Matrix metalloprotease</div>
+                    style="position:absolute;top:100px;left:720px;">Matrix metalloprotease</div>
                 <div class="fragment theme-blue"
-                    style="position:absolute;top:400px;left:20px;">Anthrax toxin</div>
+                    style="position:absolute;top:300px;left:20px;">Anthrax toxin</div>
                 <div class="fragment theme-red"
                     style="position:absolute;top:550px;left:820px;">HIV gp160</div>
             </section>
@@ -664,7 +658,7 @@
                         <th>Involved in disease</th>
                         <th>Knockout phenotype</th>
                     </tr>
-                    <tr>
+                    <tr class="fragment highlight-red" data-fragment-index=2>
                         <td>PC1/3</td>
                         <td>Dibasic</td>
                         <td>Secretory granules</td>
@@ -681,7 +675,7 @@
                         <td>Growth retardation, abnormal hormone levels, developmental
                             abnormalities</td>
                     </tr>
-                    <tr class="fragment highlight-red">
+                    <tr class="fragment highlight-red" data-fragment-index=1>
                         <td>Furin</td>
                         <td>Dibasic</td>
                         <td>Golgi apparatus, cell surface, extracellular</td>
@@ -837,74 +831,49 @@
                     }
                 </style>
 
-                <div style="float:left;width:48%;margin-left:10px;">
-                    <div><img src="img/uni.png"
-                            style="padding:5px;" />
-                        <ul>
-                            <li>Database of manually and automatically annotated
-                                protein sequences</li>
-                        </ul>
-                    </div>
-                    <div class="fragment">
-                        <img src="img/pfam.gif"
-                            style="width:70%;" />
-                        <ul>
-                            <li>Database of protein family hidden markov profiles</li>
-                            <li> Automatically matches all sequences in Uniprot</li>
-
-                        </ul>
-                    </div>
-                </div>
-                <div style="margin-left:50%;"
-                    class="fragment">
+                <div style="">
                     <h4>PF00082: Subtilase family</h4>
                     <ul>
-                        <li>Dataset of 10741 sequences with start and end position
+                        <li>Dataset of 6533 sequences with start and end position
                             of the protease domain</li>
                     </ul>
-                    <svg width="500"
+                    <svg width="800"
                         height="100">
                         <line x1=10
-                            x2=490
+                            x2=790
                             y1=30
                             y2=30
                             style="stroke:#586e75;stroke-width:10px;"></line>
                         <g class="fragment">
-                            <line x1=150
-                                x2=450
+                            <line x1=200
+                                x2=650
                                 y1=30
                                 y2=30
                                 style="stroke: #E8160D;stroke-width:10px;"></line>
-                            <text x=150
+                            <text x=200
                                 y=65
                                 style="fill:#E8160D;">Protease domain (PF00082)</text>
                         </g>
                         <g class="fragment">
-                            <line x1=30
-                                x2=150
+                            <line x1=40
+                                x2=200
                                 y1=30
                                 y2=30
                                 style="stroke: #2613FF;stroke-width:10px;"></line>
-                            <text x=20
+                            <text x=40
                                 y=65
                                 style="fill:#2613FF;">Propeptide</text>
                         </g>
                     </svg>
-                    <span class="fragment" style="font-weight:700;">Assumptions:</span>
-                    <ul>
-                        <li class="fragment">20 residue signal peptide</li>
-                        <li class="fragment">Propeptide between 50 and 200 residues long</li>
-                        <li class="fragment">No sequences with two protease domains or sequences
-                            labeled as fragment in Uniprot</li>
-                        <li class="fragment">After filtering dataset consists if 6533 sequences</li>
-                    </ul>
                 </div>
-                <div style="display:inline-block;width:70%;text-align:left;margin-left:300px;margin-top:20px;" class="fragment"><span style="font-weight:700;margin-left:60px;">Calculated values:</span><br>[His]<sub>Pro</sub>: Histidine content in propeptide<br>
-                    [His]<sub>Mat</sub>: Histidine content in protease domain<br>
-                    &Delta;[His]=[His]<sub>Pro</sub>-[His]<sub>Mat</sub>: Enrichment of histidines in propeptide
+                <div style="margin-top:20px;" class="fragment"><h4 >Calculated values:</h4>
+                    <ul style="list-style-type:none;"><li>[His]<sub>Pro</sub>: Histidine content in propeptide</li>
+                        <li>[His]<sub>Mat</sub>: Histidine content in protease domain</li>
+                        <li>&Delta;[His]=[His]<sub>Pro</sub>-[His]<sub>Mat</sub>: Enrichment of histidines in propeptide</li>
+                </ul>
                 </div>
                 <span style="float:right; margin-right: 65px">
-                    <cite style="font-size:1.8em;">Elferich <i>et al.</i> FASEB 2013</cite>
+                    <cite >Elferich <i>et al.</i> FASEB 2013</cite>
                 </span>
             </section>
             <section data-state="subttree">
@@ -1128,8 +1097,8 @@
                         font-size: 1.2em;
                     }
                 </style>
-                <figure style="width:55%;margin-left:auto;margin-right:auto;"><img src="img/his_pc1.png" alt=""></figure>
-                <div class="conclusion"><h5>Hypothesis:</h5> Furin and PC1/3 activate at different pH values due to difference in histidine pKa values in their propeptides</div>
+                <figure style="width:75%;margin-left:auto;margin-right:auto;"><img src="img/his_pc1.png" alt=""></figure>
+                <div class="conclusion" style="font-size:0.9em;"><h5>Hypothesis:</h5> Furin and PC1/3 activate at different pH values due to difference in histidine pKa values in their propeptides</div>
                 <span style="float:right;margin-right:65px;">
                     <cite>Williamson</cite>
                 </span>

@@ -121,6 +121,7 @@ section.has-dark-background {
 	font-family: Serif;
 	font-variant: small-caps;
 	font-style: normal;
+	font-size:24px;
 }
 
 .reveal cite::before {
@@ -203,6 +204,7 @@ path.spec_arc  {
 stroke-width: 5.0px;
 	display: none;
 }
+
 path.spec_arc.minor  {
   fill: none;
     stroke: #222;
@@ -257,3 +259,6 @@ line.dhisbar.prok {
 // Theme template ------------------------------
 @import "../template/theme";
 // ---------------------------------------------
+.reveal h5 {
+	margin-bottom: 0px;
+}
