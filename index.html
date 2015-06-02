@@ -943,16 +943,16 @@ ATOM   12  O   GLN A   2   24.865  29.024   5.330
                     }
                 </style>
                     <figure>
+                        <h5>Distribution of [His]</h5>
                         <img src="img/dist.png" alt="">
-                        <figcaption>Distribution of histidine content in eukaryotic and prokaryotic domains</figcaption>
                     </figure>
                     <figure class="fragment">
+                        <h5>Distribution of &Delta;[His]</h5>
                         <img src="img/ddist.png" alt="">
-                        <figcaption>Distribution of histidine content difference in eukaryotic and prokaryotic subtilases</figcaption>
                     </figure>
                     <figure style="width:100%;" class="fragment">
+                        <h5>Differrence of &Delta;[AA] for all residues</h5>
                         <img src="img/Effect_size_new.png" alt="">
-                        <figcaption>Effect size of difference in distribution of residue content difference in eukaryotic and prokaryotic subtilases</figcaption>
                     </figure>
                 <span style="float:right; margin-right: 15px">
                     <cite>Elferich <i>et al.</i> 2014</cite>
@@ -1026,7 +1026,7 @@ ATOM   12  O   GLN A   2   24.865  29.024   5.330
                     <cite>Dillon, Williamson, Elferich <i>et al.</i> JMB 2012</cite>
                 </span>
             </section>
-            <section data-state="hismd">
+            <section data-state="hismd" style="height:668px;">
                 <style>
                     .hismd header:after {
                         content: "Histidine protonation can explain structure loss";
@@ -1054,9 +1054,9 @@ ATOM   12  O   GLN A   2   24.865  29.024   5.330
                         type="video/mp4" />
                 </video>
 	    </div>
-                    <img src="img/fimc_rmsd.png" style="width:40%;" class="fragment" alt="">
+                    <img src="img/fimc_rmsd.png" style="width:47%;margin-top:-5px;" class="fragment" alt="">
                 <span style="float:right;margin-right:65px;">
-                    <cite>Dillon, Williamson, Elferich <i>et al.</i> JMB 2012</cite>
+                    <cite>Dillon, Williamson, Elferich <i>et al.</i> Journal of Molecular Biology 2012</cite>
                 </span>
             </section><!--
             <section data-state="primsensmut">
@@ -1135,7 +1135,7 @@ ATOM   12  O   GLN A   2   24.865  29.024   5.330
 		</div>
 
 		<div style="float:right;width:50%" class="fragment" data-exec="$('#Startmz').load('data/YHF_4.svg');">
-            <h5>m/z profile of peptide VARKHGFLNL</h5>
+            <h5>m/z profile of peptide YHF</h5>
             <div id="Startmz" ></div>
             <div class="fragment" data-exec="$('#YHF_9').load('data/YHF_9.svg');$('#title').text('pH 9.0');$('#ex_9_0').attr('display','block');">
                 <h5>m/z profile after exchange at <span id="title"> pH 9.0</span></h5>
@@ -1295,6 +1295,7 @@ ATOM   12  O   GLN A   2   24.865  29.024   5.330
                         </tr>
                     </table>
                 </figure>
+                <img src="img/hisalign.png">
                 <span style="float:right;margin-right:65px;">
                     <cite>Elferich <i>et al.</i> under review 2015</cite>
                 </span>
@@ -1302,49 +1303,50 @@ ATOM   12  O   GLN A   2   24.865  29.024   5.330
             <section data-state="mechmodelanim">
                 <style>
                     .mechmodelanim header:after {
-                        content: "Current model for pH-mediated activation";
+                        content: "Comparison with predicted pKA values in PC1/3";
                     }
                     .mechmodelanim header {
-                        font-size: 1.4em;
+                        font-size: 1.0em;
                     }
                 </style>
-                <figure>
-                    <img src="img/pkaanal.png" alt="">
-                    <figcaption></figcaption>
-                </figure>
+                    <div style="width:50%;float:left;">
+                        <h5>NMR structure of PC1/3 propeptide</h5>
+                    <img src="img/pc1nmr.png" style="width:70%" alt="">
+                    </div>
+                    <div style="width:50%;float:right">
+                        <h5>Predicted pKa values for all 20 structures</h5>
+                        <img src="img/pc1pkapredict.png" style="width:80%;" alt=""></div>
+                <span style="float:right;margin-right:65px;">
+                    <cite>Elferich <i>et al.</i> under review 2015</cite>
+                </span>
             </section>
-            <section data-state="sumprop">
+            <section data-state="sumprop" style="height:668px;">
                 <style>
                     .sumprop header:after {
-                        content: "pH sensing in Proprotein convertases - Conclusion";
+                        content: "pH sensing in proprotein convertases - Conclusion";
                     }
                     
                     .sumprop header {
                         font-size: 1.2em;
                     }
                 </style>
-            </section>
-	    <section data-state="modelanim">
-	    	<style>
-	    		.modelanim header:after {
-	    			content: "Current model for pH-mediated activation";
-	    		}
-	    		.modelanim header {
-	    			font-size: 1.0em;
-	    		}
-	    	</style>
-
-                <video class="fragment highlight-red" style="position:absolute;top: 10px;z-index:1"
-                    >
+                <ul style="width:45%;float:left;margin-top:30px;margin-left:35px;font-size:0.8em;">
+                    <li class="fragment" data-fragment-index=1>Propeptides encode histidines</li>
+                    <li class="fragment" data-fragment-index=2>Upon reaching the correct pH for activation the conserved histidine is protonated<ul><li>Furin:H69</li><li>PC1/3:H72</li></ul></li>
+                    <li class="fragment" data-fragment-index=3>This triggers a conformational change, exposing the cleavage loop</li>
+                    <li class="fragment" data-fragment-index=4>Cleavage of the loop in cis or in trans results in activation</li>
+                </ul>
+                <img src="img/finalanimstart.png" style="position:absolute;left:512px;top: 0px;z-index:1">
+                <img class="fragment" src="img/finalanimhis.png" style="position:absolute;left:512px;top: 0px;z-index:1" data-fragment-index=1>
+                <video class="fragment" style="position:absolute;left:512px;top: 0px;z-index:1" data-fragment-index=2 >
                     <source data-src="img/hisout.mp4"
                         type="video/mp4" />
                 </video>
-                <video class="fragment" style="height:100%;position:absolute;top:10px;z-index:1"
-                    >
+                <video class="fragment" style="position:absolute;left:512px;top:0px;z-index:1" data-fragment-index=3 >
                     <source data-src="img/loopout.mp4"
                         type="video/mp4" />
                 </video>
-	    </section>
+            </section>
             <section data-state="acknowledgments">
                 <style>
                     .acknowledgments header:after {
@@ -1355,6 +1357,30 @@ ATOM   12  O   GLN A   2   24.865  29.024   5.330
                         font-size: 1.4em;
                     }
                 </style>
+               	<div style="float:left;width:50%;font-size:0.7em;text-align:left;">
+		<h5>Shinde Lab</h5>
+		<ul ><li>Ujwal Shinde</li>
+		<li>Danielle Williamson</li>
+        <li>Stephanie Dillon</li>
+		</ul>
+		<h5>Comittee</h5>
+		<ul>	
+		<li>David Farrens</li>
+		<li>Larry David</li>
+		<li>Caroline Enns</li>
+		<li>Eric Gouaux</li>
+        <li>Mike Harms</li>
+		</ul>	 
+		<h5>Collaborators</h5>
+		<ul>
+		<li>Mushui Dai</li>
+		<li>Yuhuang Li</li>
+		<li>Bill Skach</li>
+		<li>Brian Conti</li>
+		</ul>
+		</div><div style="margin-left:30%;" id='gl'></div>
+
+
             </section>
         </div>
 
@@ -1459,6 +1485,10 @@ ATOM   12  O   GLN A   2   24.865  29.024   5.330
                 eval(element.fragment.getAttribute("data-exec"));
             }
             var video = event.fragment;
+            if (video.tagName == 'VIDEO') {
+                video.play();
+            }
+            var video = event.fragments[1];
             if (video.tagName == 'VIDEO') {
                 video.play();
             }
