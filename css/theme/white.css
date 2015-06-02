@@ -164,7 +164,7 @@ text.spec_arc.minor {
   font-size: 0.3em;
   display: none; }
 
-circle.measure {
+path.measure, circle.measure {
   stroke-width: 3px;
   stroke: #222;
   fill: none;

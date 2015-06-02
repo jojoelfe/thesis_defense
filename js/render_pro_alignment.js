@@ -9,7 +9,7 @@ render_pro_alignment.render = function () {
 });
 m.render();
 var fun = m.g.colorscheme.addDynScheme("fscheme", function(letter,info){
-    if (info.pos == 53) return "#DC1505";
+//    if (info.pos == 53) return "#DC1505";
     if (letter == 'H') return "#0E4D8F";
     return "#eee";
 });
