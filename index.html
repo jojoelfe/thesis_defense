@@ -1067,28 +1067,29 @@
                         font-size: 1.2em;
                     }
                 </style>
-                <div style="float:left;width:33%;">
-                    <h5>Approach</h5>
-                <figure>
-                    <img src="img/hisequib.png" style="width:60%;borders:none;box-shadow:none;" alt="">
-                    <figcaption></figcaption>
-                    </figure>
-                    <ul style="font-size:0.6em">
-                        <li>I performed molecular dynamics simulations of the furin propeptide using either protonated or nonprotonated histidines.</li>
-                    </ul>
-                </div>
-                <figure style="width:45%;float:right;">
-                    <img src="img/fimc_md_struc.png" style="width:70%;" alt="">
-                    <figcaption>Replace with animation</figcaption>
-                </figure>
-                <figure style="width:55%;float:left;">
-                    <img src="img/fimc_rmsd.png" alt="">
-                    <figcaption></figcaption>
-                </figure>
+                <div style="float:left;width:50%;margin-top:20px;">
+                    <img src="img/hishsd.png" style="position: absolute;top:30px;left:50px;z-index:5;width:100px;border:none;box-shadow:none;" alt="">
+                
+                <video class="fragment highlight-red" style="width:100%;z-index:1"
+                    >
+                    <source data-src="img/ph7_final.mp4"
+                        type="video/mp4" />
+                </video>
+	    </div>
+                <div style="float:right;width:50%;margin-top:20px;">
+                    <img src="img/hishsp.png" style="position: absolute;top:30px;left:562px;z-index:5;width:100px;border:none;box-shadow:none;" alt="">
+                
+                <video class="fragment highlight-red" style="width:100%;z-index:1"
+                    >
+                    <source data-src="img/ph6_final.mp4"
+                        type="video/mp4" />
+                </video>
+	    </div>
+                    <img src="img/fimc_rmsd.png" style="width:40%;" class="fragment" alt="">
                 <span style="float:right;margin-right:65px;">
                     <cite>Dillon, Williamson, Elferich <i>et al.</i> JMB 2012</cite>
                 </span>
-            </section>
+            </section><!--
             <section data-state="primsensmut">
                 <style>
                     .primsensmut header:after {
@@ -1116,7 +1117,7 @@
                 <span style="position: absolute; bottom: 15px; right: 15px">
                     <cite>Elferich <i>et al.</i> 2014</cite>
                 </span>
-            </section>
+	</section>--!>
             <section data-state="phactmodul">
                 <style>
                     .phactmodul header:after {
@@ -1354,6 +1355,27 @@
                     }
                 </style>
             </section>
+	    <section data-state="modelanim">
+	    	<style>
+	    		.modelanim header:after {
+	    			content: "Current model for pH-mediated activation";
+	    		}
+	    		.modelanim header {
+	    			font-size: 1.0em;
+	    		}
+	    	</style>
+
+                <video class="fragment highlight-red" style="position:absolute;top: 10px;z-index:1"
+                    >
+                    <source data-src="img/hisout.mp4"
+                        type="video/mp4" />
+                </video>
+                <video class="fragment" style="height:100%;position:absolute;top:10px;z-index:1"
+                    >
+                    <source data-src="img/loopout.mp4"
+                        type="video/mp4" />
+                </video>
+	    </section>
             <section data-state="acknowledgments">
                 <style>
                     .acknowledgments header:after {
