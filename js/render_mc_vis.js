@@ -315,14 +315,14 @@ render_mc_vis = {};
                 })
                 .attr("cx", 0)
                 .attr("cy", 0);
-            node.append('text')
-                .attr("x", 0)
-                .attr("y", 0)
-                .attr("text-anchor", "middle")
-                .attr("dominant-baseline", "central")
-                .text(function(d, i) {
-                    return aminoprops[frame_data.element[i] - 5].symbol;
-                });
+          //  node.append('text')
+          //      .attr("x", 0)
+          //      .attr("y", 0)
+          //      .attr("text-anchor", "middle")
+          //      .attr("dominant-baseline", "central")
+          //      .text(function(d, i) {
+          //          return aminoprops[frame_data.element[i] - 5].symbol;
+          //      });
             if (render_mc_vis.showvel) {
                 node.append("line")
                     .attr("x1", 0)

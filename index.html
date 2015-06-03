@@ -76,10 +76,10 @@
                 </style>
 
                 <ol type="A"
-                    style="list-style-type: upper-alpha">
+                    style="list-style-type: upper-alpha;margin-top:150px;">
                     <li>Using computers to describe proteins
                         <ol>
-                            <li>Sequences (Sec61/translocon complex)</li>
+                            <li>Sequences (sec61 translocon complex)</li>
                             <li>Structure (Otub1-monoubiquitination)</li>
                         </ol>
                     </li>
@@ -200,10 +200,13 @@ ATOM   12  O   GLN A   2   24.865  29.024   5.330
                         font-size: 1.4em;
                     }
                 </style>
-                <figure>
-                    <img src="img/translocon_mech.png"
+                <figure style="margin-top:50px;">
+                    <img src="img/sec61.png"
                         width="850px"></img>
                 </figure>
+                <span style="float:right;margin-right: 60px">
+                    <cite>Park and Rapoport. Annual Review of Biophysics 2012</cite>
+                </span>
             </section>
             <section data-state="sec61-hypoth">
                 <style>
@@ -215,13 +218,15 @@ ATOM   12  O   GLN A   2   24.865  29.024   5.330
                         font-size: 1.0em;
                     }
                     .sec61-hypoth section {
-                        font-size: 0.8em;
+                        font-size: 0.75em;
                     }
                 </style>
                 <figure>
-                    <h5>Insertion of a zinc-finger domain blocks translocation in the presence of zinc</h5>
-                    <img src="img/nsmb_2779-F1.jpg"
-                        width="700px"></img>
+                    <h5 style="margin-top:40px;">Insertion of a zinc-finger domain blocks translocation in the presence of zinc</h5>
+                    <img src="img/zinc_finger.png"
+                        width="300px"></img>
+                    <img src="img/zinc_finger_blocks.png"
+                        width="300px"></img>
                 </figure>
                 <div class="conclusion fragment"><h5>Hypothesis:</h5>Secreted proteins select against small folded domains at their N-terminus</div>
                 <div class="conclusion fragment"><h5>Approach:</h5>Use HMM sequence profiles to quantify the number of secreted and not secreted proteins with small domains at their N-terminus</div>
@@ -239,17 +244,34 @@ ATOM   12  O   GLN A   2   24.865  29.024   5.330
                         font-size: 1.0em;
                     }
                 </style>
-                <div style="width:90%;margin-left:auto;margin-right:auto;" >
+                <div style="width:90%;margin-left:auto;margin-right:auto;margin-top:100px;" >
                     <h5>Results</h5>
-                    <figure style="width:85%;margin-left:auto;margin-right:auto;">
+                    <figure style="width:95%;margin-left:auto;margin-right:auto;">
                         <img src="img/sec61_table.png"></img>
                     </figure>
-                    <figure style="width:50%;float:left;margin-left:30px;margin-top:-10px;"
-                        class="fragment">
+                <span style="float:right;margin-right: 60px">
+                    <cite>Conti, Elferich <i>et al.</i> Nature Structural and Molecular Biology 2014</cite>
+                </span>
+            </div>
+
+            </section>
+            <section data-state="sec61res">
+                <style>
+                    .sec61res header:after {
+                        content: "Do secreted proteins avoid small folded domains at their N-terminus?";
+                    }
+                    
+                    .sec61res header {
+                        font-size: 1.0em;
+                    }
+                </style>
+                <div style="margin-top:75px;">
+                    <figure style="width:69%;float:left;margin-left:0px;margin-top:-10px;"
+                        >
                         <h5>Type of domains</h5>
                         <img src="img/sec61_type.png"></img>
                     </figure>
-                    <figure style="width:20%;float:right;margin-right:60px;margin-top:-10px;"
+                    <figure style="width:29%;float:right;margin-right:0px;margin-top:-10px;"
                         class="fragment">
                         <h5>Disulfides</h5>
                         <img src="img/sec61_disulf.png"></img>
@@ -334,7 +356,7 @@ ATOM   12  O   GLN A   2   24.865  29.024   5.330
                         <ul>
                             <li>Structure is modified by random move</li>
                             <li>New structure is evaluated by energy function</li>
-                            <li>If the move leads to worse energy it is reversed
+                            <li>If the move leads to less favorable energy it is reversed
                                 with a probability based on the energy increase</li>
                         </ul>
                     </div>
@@ -391,13 +413,13 @@ ATOM   12  O   GLN A   2   24.865  29.024   5.330
                     class="fragment">
                     <h5>E2-Ligase preferentially binds to monoubiquitinated Otub1</h5>
                     <figure style="width:500px;margin-left:auto;margin-right:auto;">
-                        <img src="img/otub_ubq_e2pull.png"
-                            style="width:50%"></img>
+                        <img src="img/otub_ubq_e2pullc.png"
+                            style="width:70%"></img>
                     </figure>
                 </div>
 
-                <span style="position: absolute; bottom: 15px; right: 45px">
-                    <cite>Li, Sun, Elferich <i>et al.</i> JBC 2014</cite>
+                <span style="float:right;margin-right:65px;">
+                    <cite>Li, Sun, Elferich <i>et al.</i> Journal of Biological Chemistry 2014</cite>
                 </span>
             </section>
             <section data-state="otub1"
@@ -447,7 +469,7 @@ ATOM   12  O   GLN A   2   24.865  29.024   5.330
                         data-fragment-index=3>Ubiquitin ligated to Otub1</li>
                 </ul>
                 <span style="position: absolute; bottom: 15px; right: 45px">
-                    <cite>Li, Sun, Elferich <i>et al.</i> JBC 2014</cite>
+                    <cite>Li, Sun, Elferich <i>et al.</i> Journal of Biological Chemistry 2014</cite>
                 </span>
             </section>
             <section data-state="otub1slide2"
@@ -478,8 +500,8 @@ ATOM   12  O   GLN A   2   24.865  29.024   5.330
                 <div class="conclusion fragment">Increased interaction of monoubiquitinated Otub1 with the E2-Ligase
                     cannot be explained by direct interactions within the known
                     E2~Ubq/Otub1 complex.</div>
-                <span style="float:right;margin-right:60px;">
-                    <cite>Li, Sun, Elferich <i>et al.</i> JBC 2014</cite>
+                <span style="float:right; margin-right: 45px">
+                    <cite>Li, Sun, Elferich <i>et al.</i> Journal of Biological Chemistry 2014</cite>
                 </span>
             </section>
             <section data-state="otub1slide3"
@@ -536,18 +558,21 @@ ATOM   12  O   GLN A   2   24.865  29.024   5.330
                     class="fragment">
                     <h5>Mutagenesis of Ser<sub>22</sub> blocks binding of monoubiquitinated Otub1 to E2-Ligase</h5>
                     <figure>
-                        <img src="img/val_mut_E2.png"
-                            style="width:80%"
+                        <img src="img/val_mut_E2_cr.png"
+                            style="width:45%"
+                            alt="">
+                        <img src="img/val_mut_E2_cl.png"
+                            style="width:45%"
                             alt="">
                         <figcaption></figcaption>
                     </figure>
                 </div>
-                <div style="width:560px;position:absolute;left:20px;top:360px"
+                <div style="width:520px;position:absolute;left:20px;top:360px"
                     class="fragment">
                     <h5>Mutagenesis of Ile<sub>44</sub> can rescue binding</h5>
                     <figure>
-                        <img src="img/val_mut_ubq.png"
-                            style="width:35%"
+                        <img src="img/val_mut_ubq_c.png"
+                            style="width:55%"
                             alt="">
                         <figcaption></figcaption>
                     </figure>
@@ -555,8 +580,8 @@ ATOM   12  O   GLN A   2   24.865  29.024   5.330
                 <div class="fragment conclusion"
                     style="position:absolute;top:420px;left:450px;width:520px;font-size: 0.8em;">Monoubiquitinated Otub1 interacts with E2-Ligase through "backside"
                     interaction of the conjugated Ubiquitin</div>
-                <span style="position: absolute; bottom: 15px; right: 45px">
-                    <cite>Li, Sun, Elferich <i>et al.</i> JBC 2014</cite>
+                <span style="position: absolute; bottom: 15px; right: 65px">
+                    <cite>Li, Sun, Elferich <i>et al.</i> Journal of Biological Chemistry 2014</cite>
                 </span>
             </section>
             <section data-state="compsummary">
@@ -569,33 +594,27 @@ ATOM   12  O   GLN A   2   24.865  29.024   5.330
                         font-size: 1.4em;
                     }
                 </style>
-                <ol style="font-size:0.7em;width:90%;">
+                <ol style="font-size:0.7em;width:90%;margin-top:50px;">
                     <li style="font-weight: 700;">Sequences
                         <ul style="font-weight:300;">
-                            <li>Hidden Markov model sequence profiles can be used
-                                to find remote homologs and annotate domains</li>
-                            <li class="fragment">The abundance of protein sequences in public databases
-                                allows testing of hypotheses on a genomic scale</li>
-                            <li class="fragment">Secreted proteins do not select against small folded
-                                domains in their first 100 residues, but must
-                                rely on another mechanism to ensure successful
-                                translocation</li>
+                            <li>Secreted proteins do not select against small folded domains at their N-terminus</li>
+                            <li class="fragment">Testing of genome wide hypotheses is possible due to:
+                            <ul>
+                                <li>Abundance of available protein sequences</li>
+                                <li>Homology detection and domain annotation using Hidden Markov model sequence profiles</li>
+                            </ul></li>
                         </ul>
                     </li>
                     <li style="font-weight: 700;"
                         class="fragment">Structures
                         <ul style="font-weight: 300;">
-                            <li>Visualization of protein structures allow us to
-                                understand how they really work</li>
+                            <li>Monoubiquitinated Otub1 binds to E2-Ligase due to a "backside" interaction</li>
+                            <li class="fragment">Visualization of structures is critical for understanding of protein function and for formulating hypotheses</li>
                             <li class="fragment">Various algorithms can be used to generate structural
                             ensembles:<ul><li> Molecular Dynamics is biophysically
                                 meaningful</li><li> Monte-Carlo sampeling allows for
                                 more extensive exploration of conformational
                                 space</li></ul></li>
-                            <li class="fragment">Monoubiquitination of Otub1 allows for a so far
-                                unappreciated interaction between the ubiquitin
-                                and the "backside" of E2-Ligases, which is critical
-                                for p53 stabilization</li>
                         </ul>
                     </li>
                 </ol>
@@ -611,7 +630,7 @@ ATOM   12  O   GLN A   2   24.865  29.024   5.330
                     }
                 </style>
                 <img src="img/proteins.png"
-                    style="width:90%;"
+                    style="width:90%;margin-top:150px;"
                     alt="">
                 </section>
                 <section data-state="prosubsts">
@@ -623,8 +642,8 @@ ATOM   12  O   GLN A   2   24.865  29.024   5.330
                             font-size: 1.4em;
                         }
                     </style>
-                <img src="img/insulin.jpg"
-                    style="width:40%;margin-top:15%"
+                <img src="img/insulin.png"
+                    style="width:70%;margin-top:00%;border:none;box-shadow:none;"
                     alt="">
                 <div class="fragment theme-green"
                     style="position:absolute;top:100px;left:80px;">POMC</div>
@@ -717,7 +736,7 @@ ATOM   12  O   GLN A   2   24.865  29.024   5.330
                     </tr>
                 </table>
                 <span style="position: relative; top: 15px; left: 245px">
-                    <cite>Seidah ANYAS 2011</cite>
+                    <cite>Seidah. Annals of the New York Academy of Science 2011</cite>
                 </span>
             </section>
             <section data-state="activation">
@@ -738,39 +757,39 @@ ATOM   12  O   GLN A   2   24.865  29.024   5.330
             <section data-state="phsensor">
                 <style>
                     .phsensor header:after {
-                        content: "The pH sensor of furin";
+                        content: "What are the residues important for pH-sensing?";
                     }
                     
                     .phsensor header {
-                        font-size: 1.4em;
+                        font-size: 1.0em;
                     }
                     
                     .phsensor img {
                         padding: 5px;
                     }
+                    .phsensor section {
+                        font-size: 0.8em;
+                    }
                 </style>
-                <figure style=" width: 50%; margin-top: 100px; margin-right: auto; float: left; "><img src="img/felici.png"
+                <figure style=" width: 50%; margin-top: 100px; margin-right: auto; float: left; " class="fragment" data-fragment-index=2>
+                    <h5>Mutation of His<sub>69</sub> can block furin activation</h5>
+                    <img src="img/felici.png"
                         alt="">
-                    <figcaption>Activity of furin:propeptide complex after incubation at
-                        pH 6.0 or 7.5 or after treatment with trypsin
-                    </figcaption>
                 </figure>
                 <div style="width:50%;float:right;">
-                    <figure><img src="img/felici_structure.png"
+                    <figure><h5>Homology model of furin propeptide</h5><img src="img/felici_structure.png"
                             style="width:60%"
                             alt="">
-                        <figcaption>Homology model of furin propeptide
-                        </figcaption>
                     </figure>
-                    <figure><img src="img/hisequib.png"
+                    <figure class="fragment" data-fragment-index=1>
+                        <h5>Histidine protonation states</h5>
+                        <img src="img/hisequib.png"
                             style="width:60%"
                             alt="">
-                        <figcaption>The two protonation states of the histidine sidechain
-                        </figcaption>
                     </figure>
                 </div>
                 <span style="position: absolute; bottom: 15px; left: 15px">
-                    <cite>Feliciangeli <i>et al.</i> JBC 2006</cite>
+                    <cite>Feliciangeli <i>et al.</i> Journal of Biological Chemistry 2006</cite>
                 </span>
             </section>
             <section data-state="HisConservation"
@@ -832,7 +851,7 @@ ATOM   12  O   GLN A   2   24.865  29.024   5.330
                     }
                 </style>
 
-                <div style="">
+                <div style="margin-top:75px;">
                     <h4>PF00082: Subtilase family</h4>
                     <ul>
                         <li>Dataset of 6533 sequences with start and end position
@@ -934,7 +953,7 @@ ATOM   12  O   GLN A   2   24.865  29.024   5.330
             <section data-state="hisenrstats">
                 <style>
                     .hisenrstats header:after {
-                        content: "Is this significant?";
+                        content: "Is this unique to histidine?";
                     }
                     
                     .hisenrstats header {
@@ -952,20 +971,12 @@ ATOM   12  O   GLN A   2   24.865  29.024   5.330
                         font-size:0.8em;
                     }
                 </style>
-                    <figure>
-                        <h5>Distribution of [His]</h5>
-                        <img src="img/dist.png" alt="">
-                    </figure>
-                    <figure class="fragment">
-                        <h5>Distribution of &Delta;[His]</h5>
-                        <img src="img/ddist.png" alt="">
-                    </figure>
-                    <figure style="width:100%;" class="fragment">
-                        <h5>Differrence of &Delta;[AA] for all residues</h5>
-                        <img src="img/Effect_size_new.png" alt="">
+                    <figure style="width:100%;margin-top:150px;margin-bottom:50px;">
+                        <h5>Differrence of &Delta;[AA] between prokaryotes and eukaryotes for all residues</h5>
+                        <img src="img/Effect_size_new.png" style="width:800px;" alt="">
                     </figure>
                 <span style="float:right; margin-right: 15px">
-                    <cite>Elferich <i>et al.</i> 2014</cite>
+                    <cite>Elferich <i>et al.</i> FASEB 2013</cite>
                 </span>
             </section><!---
             <section data-state="hisother">
@@ -1004,17 +1015,17 @@ ATOM   12  O   GLN A   2   24.865  29.024   5.330
                     }
                 </style>
                 <figure>
-                    <h5>Secondary structure content of various subtilase propeptides is similar at neutral pH</h5>
+                    <h5 style="margin-top:50px;">Secondary structure content of various subtilase propeptides is similar at neutral pH</h5>
                     <img src="img/cd_spectra.png" alt="">
                     <figcaption>Far-UV circular dichroism spectra of the propeptide of subtilisin, aqualisin, PC1/3 and furin</figcaption>
                 </figure>
                 <figure>
-                    <h5>Only histidine containing propeptides show structure loss at acidic pH</h5>
+                    <h5 style="margin-top:50px;">Only histidine containing propeptides show structure loss at acidic pH</h5>
                     <img src="img/cd_titration.png" alt="">
                     <figcaption>Ellipticity at 222nm as a function of pH</figcaption>
                 </figure>
                 <span style="float:right;margin-right:65px;">
-                    <cite>Dillon, Williamson, Elferich <i>et al.</i> JMB 2012</cite>
+                    <cite>Dillon, Williamson, Elferich <i>et al.</i> Journal of Molecular Biology 2012</cite>
                 </span>
             </section>
             <section data-state="proexch" style="height:550px;">
@@ -1033,7 +1044,7 @@ ATOM   12  O   GLN A   2   24.865  29.024   5.330
                     <figcaption style="padding-top:500px;">Activity of furin:propeptide complex after incubation at various pH values</figcaption>
                 </figure>
                 <span style="float:right;margin-right:65px;">
-                    <cite>Dillon, Williamson, Elferich <i>et al.</i> JMB 2012</cite>
+                    <cite>Dillon, Williamson, Elferich <i>et al.</i> Journal of Molecular Biology 2012</cite>
                 </span>
             </section>
             <section data-state="hismd" style="height:668px;">
@@ -1046,19 +1057,19 @@ ATOM   12  O   GLN A   2   24.865  29.024   5.330
                         font-size: 1.2em;
                     }
                 </style>
-                <div style="float:left;width:50%;margin-top:20px;">
+                <div style="float:left;width:50%;margin-top:0px;">
                     <img src="img/hishsd.png" style="position: absolute;top:30px;left:50px;z-index:5;width:100px;border:none;box-shadow:none;" alt="">
                 
-                <video class="fragment highlight-red" style="width:100%;z-index:1"
+                <video class="fragment highlight-red" style="width:95%;z-index:1"
                     >
                     <source data-src="img/ph7_final.mp4"
                         type="video/mp4" />
                 </video>
 	    </div>
-                <div style="float:right;width:50%;margin-top:20px;">
+                <div style="float:right;width:50%;margin-top:0px;">
                     <img src="img/hishsp.png" style="position: absolute;top:30px;left:562px;z-index:5;width:100px;border:none;box-shadow:none;" alt="">
                 
-                <video class="fragment highlight-red" style="width:100%;z-index:1"
+                <video class="fragment highlight-red" style="width:95%;z-index:1"
                     >
                     <source data-src="img/ph6_final.mp4"
                         type="video/mp4" />
@@ -1110,7 +1121,7 @@ ATOM   12  O   GLN A   2   24.865  29.024   5.330
                 <figure style="width:75%;margin-left:auto;margin-right:auto;"><img src="img/his_pc1.png" alt=""></figure>
                 <div class="conclusion" style="font-size:0.9em;"><h5>Hypothesis:</h5> Furin and PC1/3 activate at different pH values due to differences in histidine pKa values within their propeptides</div>
                 <span style="float:right;margin-right:65px;">
-                    <cite>Williamson</cite>
+                    <cite>Paroutis <em>et. al.</em> Physiology 2004</cite>
                 </span>
             </section>
             <section data-state="hdxanimation" style="height:650px;">
@@ -1306,7 +1317,7 @@ ATOM   12  O   GLN A   2   24.865  29.024   5.330
                     </table>
                 </figure>
                 <img src="img/hisalign.png">
-                <span style="float:right;margin-right:65px;">
+                <span style="float:right;margin-right:65px;margin-top:-10px;">
                     <cite>Elferich <i>et al.</i> under review 2015</cite>
                 </span>
             </section>
@@ -1342,7 +1353,7 @@ ATOM   12  O   GLN A   2   24.865  29.024   5.330
                 </style>
                 <ul style="width:45%;float:left;margin-top:30px;margin-left:35px;font-size:0.8em;">
                     <li class="fragment" data-fragment-index=1>Propeptides encode histidines</li>
-                    <li class="fragment" data-fragment-index=2>Upon reaching the correct pH for activation the conserved histidine is protonated<ul><li>Furin:H69</li><li>PC1/3:H72</li></ul></li>
+                    <li class="fragment" data-fragment-index=2>Upon reaching the correct pH for activation the conserved histidine is protonated<ul><li>Furin: H69 (pH 6)</li><li>PC1/3: H72 (pH 5.5)</li></ul></li>
                     <li class="fragment" data-fragment-index=3>This triggers a conformational change, exposing the cleavage loop</li>
                     <li class="fragment" data-fragment-index=4>Cleavage of the loop in cis or in trans results in activation</li>
                 </ul>
@@ -1367,7 +1378,7 @@ ATOM   12  O   GLN A   2   24.865  29.024   5.330
                         font-size: 1.4em;
                     }
                 </style>
-               	<div style="float:left;width:50%;font-size:0.7em;text-align:left;">
+               	<div style="float:left;width:33%;font-size:0.7em;text-align:left;margin-top:10px;">
 		<h5>Shinde Lab</h5>
 		<ul ><li>Ujwal Shinde</li>
 		<li>Danielle Williamson</li>
@@ -1388,9 +1399,37 @@ ATOM   12  O   GLN A   2   24.865  29.024   5.330
 		<li>Bill Skach</li>
 		<li>Brian Conti</li>
 		</ul>
-		</div><div style="margin-left:30%;" id='gl'></div>
+		</div>
+               	<div style="float:left;width:33%;font-size:0.7em;text-align:left;margin-top:10px;">
+                    <h5>Collaborators</h5>
+                    <ul>
+                        <li>Buddy Ullman</li>
+                        <li>Peter Rotwein</li>
+                        <li>Scott Landfear</li>
+                        <li>Monika Davare</li>
+                        <li>Gary Thomas</li>
+                        <li>Jimmy Dikeakos</li>
+                    </ul>
+                    <h5>Biochemistry Department</h5>
+                    <ul>
+                        <li>Amber Jones Burnette</li>
+                        <li>Christopher Schafer</li>
+                        <li>Jessica Martin</li>
+                        <li>Gregory Martin</li>
+                        <li>Jean Summerton</li>
+                        <li>Tony Caps</li>
+                        <li>Susan Kozak</li>
+                    </ul>
+                </div>
+               	<div style="float:left;width:33%;font-size:0.7em;text-align:left;margin-top:10px;">
+                    <h5>Funding</h5>
+                    <ul>
+                        <li>American Heart Association</li>
+                        <li>Tartar Fund</li>
+                        <li>Vertex Pharmaceuticals</li>
+                    </ul>
 
-
+                </div>
             </section>
         </div>
 
@@ -1406,13 +1445,18 @@ ATOM   12  O   GLN A   2   24.865  29.024   5.330
             controls: false,
             progress: true,
             history: true,
-            center: true,
+            center: false,
             slideNumber: true,
             width: 1024,
             height: 768,
             minScale: 1.0,
             maxScale: 1.0,
             transition: 'none', // none/fade/slide/convex/concave/zoom
+  keyboard: {
+    40: 'next', // go to the next slide when the ENTER key is pressed
+    38: function() {Reveal.left();}, // go to the next slide when the ENTER key is pressed
+    27: function() {location.reload();} // do something custom when ESC is pressed
+  },
 
             // Optional reveal.js plugins
             dependencies: [{

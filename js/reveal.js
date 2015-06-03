@@ -1567,7 +1567,7 @@
 					}
 				}
 				else {
-					slide.style.top = '';
+					slide.style.top = '118px';
 				}
 
 			}
