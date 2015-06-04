@@ -546,6 +546,7 @@ ATOM   12  O   GLN A   2   24.865  29.024   5.330
                     <li class="theme-yellow">Ubiquitin</li>
                     <li class="theme-green">Otub1</li>
                     <li class="theme-purple">Ubiquitin ligated to Otub1</li>
+                    <li class="theme-red">Ubiquitin bound to E2 backside</li>
                 </ul>
                 <div class="fragment"
                     data-exec='d3.select("#otub1slide3").selectAll("img.model,video").style("display","none"); 
@@ -567,7 +568,7 @@ ATOM   12  O   GLN A   2   24.865  29.024   5.330
                         <figcaption></figcaption>
                     </figure>
                 </div>
-                <div style="width:520px;position:absolute;left:20px;top:360px"
+                <div style="width:520px;position:absolute;left:20px;top:310px"
                     class="fragment">
                     <h5>Mutagenesis of Ile<sub>44</sub> can rescue binding</h5>
                     <figure>
@@ -629,9 +630,21 @@ ATOM   12  O   GLN A   2   24.865  29.024   5.330
                         font-size: 1.4em;
                     }
                 </style>
+                <div id="comiccrop" style="width:180px;height:400px;overflow:hidden;margin-top:150px;margin-left:100px;">
                 <img src="img/proteins.png"
-                    style="width:90%;margin-top:150px;"
+                    style="width:800px;max-width:none;max-height:none;"
                     alt="">
+                </div>
+                <div class="fragment" 
+                    data-exec='d3.select("#comiccrop").style("width","380px");'
+                    data-exec-hide='' >
+                <div class="fragment" 
+                    data-exec='d3.select("#comiccrop").style("width","560px");'
+                    data-exec-hide='' >
+                <div class="fragment" 
+                    data-exec='d3.select("#comiccrop").style("width","810px");'
+                    data-exec-hide='' >
+                </div>
                 </section>
                 <section data-state="prosubsts">
                     <style>
@@ -1412,7 +1425,7 @@ ATOM   12  O   GLN A   2   24.865  29.024   5.330
                     </ul>
                     <h5>Biochemistry Department</h5>
                     <ul>
-                        <li>Amber Jones Burnette</li>
+                        <li>Amber Jones Brunette</li>
                         <li>Christopher Schafer</li>
                         <li>Jessica Martin</li>
                         <li>Gregory Martin</li>
