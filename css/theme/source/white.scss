@@ -1,0 +1,265 @@
+/**
+ * White theme for reveal.js. This is the opposite of the 'black' theme.
+ *
+ * Copyright (C) 2015 Hakim El Hattab, http://hakim.se
+ */
+
+
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+
+// Include theme-specific fonts
+@import url(../../lib/font/source-sans-pro/source-sans-pro.css);
+@import url(https://fonts.googleapis.com/css?family=Ubuntu:400,700,400italic,700italic);
+@import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700);
+
+//Blue 0E4D8F
+//Red DC1505
+//Yellow DC8605
+//Green 04A821
+// Override theme settings (see ../template/settings.scss)
+$backgroundColor: #eee;
+
+$mainColor: #222;
+$headingColor: #222;
+
+$mainFontSize: 36px;
+$mainFont: 'Ubuntu', Helvetica, sans-serif;
+$headingFont: 'Ubuntu', Helvetica, sans-serif;
+$headingTextShadow: none;
+$headingLetterSpacing: normal;
+$headingTextTransform: none;
+$headingFontWeight: 700;
+$linkColor: #0E4D8F;
+$linkColorHover: lighten( $linkColor, 15% );
+$selectionBackgroundColor: lighten( $linkColor, 25% );
+
+$heading1Size: 1.6em;
+$heading2Size: 1.3em;
+$heading3Size: 1.0em;
+$heading4Size: 1.0em;
+
+section.has-dark-background {
+	&, h1, h2, h3, h4, h5, h6 {
+		color: #fff;
+	}
+}
+.reveal sup {
+	vertical-align: super;
+	font-size: 0.6em;
+}
+
+.reveal sub {
+	vertical-align: sub;
+	font-size: 0.6em;
+}
+
+.theme-green {
+	color:#04A821;
+}
+.theme-red {
+	color:#DC1505;
+}
+.theme-blue {
+	color:#0E4D8F;
+}
+.theme-yellow {
+	color:#DC8605;
+}
+.theme-purple {
+	color: #a020f0;
+}
+.reveal header {
+	position:absolute;
+	top:0px;
+	left:0px;
+	z-index:5;
+	background-color:  #0E4D8F ;
+	font-size:1.6em;
+	font-weight: 700;
+	color: #eee;
+	width: 100%;
+	text-align: left;
+	height: 150px;
+	padding: 5px;
+	border-color: #0E4D8F;
+	border-style: solid;
+}
+
+.reveal header:before {
+	content: "";
+	position: absolute;
+	top: 40%;
+	left: -5%;
+	background: #eee;
+	border: 18px solid #eee;
+	border-radius:50%;
+	width: 200%;
+	height: 150px;
+}
+.reveal header #logo {
+	background-image: url(../../img/sprite.png);
+	background-position: left -453px;
+	background-repeat: no-repeat;
+	width: 75px;
+	height: 100%;
+	float:left;
+}
+
+.reveal .slides section {
+	padding: 0px 0px 0px 0px;
+}
+
+.reveal .slide-number {
+	font-size: 24px
+}
+
+.reveal cite {
+	font-family: Serif;
+	font-variant: small-caps;
+	font-style: normal;
+	font-size:24px;
+}
+
+.reveal cite::before {
+	content: "[";
+}
+
+.reveal cite::after {
+	content: "]";
+}
+
+.reveal cite i {
+	font-family: Serif;
+	font-variant: normal;
+}
+
+
+.node circle {
+	fill: #eee;
+	stroke: #222;
+	stroke-width: 1.5px;
+	display: none;
+      }
+.protein-vis .node circle {
+	display: block;
+	fill: #eee;
+	stroke-width: 0.5px;
+}
+.protein-vis .node.polar circle {
+	fill: #04A821
+}
+.protein-vis .node.nonpolar circle {
+	fill: #DC8605
+}
+.protein-vis .node.pos circle {
+	fill: #2E6DAF
+}
+.protein-vis .node.neg circle {
+	fill: #DC1505
+}
+
+
+.protein-vis .node text  {
+	font-size: 0.4em;
+	font-weight: 700;
+}
+#seq_tree  text  {
+	font-size: 0.6em;
+	font-weight: 700;
+	font-family: 'Ubuntu mono'
+}
+
+
+.link {
+  fill: none;
+    stroke: #222;
+stroke-width: 1.0px;
+}
+
+.protein-vis .link {
+	stroke-width: 4.0px;
+	stroke: #aaa;
+}
+.link.highlight {
+	fill: none;
+	stroke-width: 4.0px;
+}
+path.arc  {
+  fill: none;
+    stroke: #222;
+stroke-width: 5.0px;
+	display: none;
+}
+text.arc {
+	font-size: 0.7em;
+	display: none;
+}
+path.spec_arc  {
+  fill: none;
+    stroke: #222;
+stroke-width: 5.0px;
+	display: none;
+}
+
+path.spec_arc.minor  {
+  fill: none;
+    stroke: #222;
+stroke-width: 3.0px;
+	display: none;
+}
+text.spec_arc {
+	font-size: 0.7em;
+	display: none;
+}
+text.spec_arc.minor {
+	font-size: 0.3em;
+	display: none;
+}
+path.measure,
+circle.measure {
+	stroke-width: 3.0px;
+	stroke: #222;
+	fill: none;
+	display: none;
+}
+line.dhisbar {
+	stroke-width: 1px;
+	stroke: #444;
+	display: none;
+}
+line.dhisbar.euk {
+	stroke: #DC1505;
+}
+line.dhisbar.prok {
+	stroke: #0E4D8F;
+}
+.reveal figcaption {
+	font-size:0.6em;
+	margin-top:-5px;
+}
+.reveal section#otub1slide video,
+.reveal section#otub1slide img ,
+.reveal section#otub1slide3 video,
+.reveal section#otub1slide3 img.model {
+	position:absolute;
+	left:20px;
+	top: 30px;
+	width: 670px;
+}
+.reveal section#otub1slide2 figure {
+	position:relative;
+	left:20px;
+	margin-top: 30px;
+	width: 320px;
+	float:left;
+}
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
+.reveal h5 {
+	margin-bottom: 0px;
+}

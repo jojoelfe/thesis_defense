@@ -1,0 +1,1605 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Thesis Defense</title>
+
+
+    <meta name="apple-mobile-web-app-capable"
+        content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style"
+        content="black-translucent" />
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet"
+        href="css/spse.css">
+    <link rel="stylesheet"
+        href="css/reveal.css">
+    <link rel="stylesheet"
+        href="css/theme/white.css"
+        id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet"
+        href="lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ?
+            'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+
+</head>
+
+<body>
+
+    <div class="reveal">
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+            <header>
+                <div id="logo"></div>
+            </header>
+            <section>
+                <h1>Using computational and experimental methods to understand protein function:</h1>
+                <h2>Application to proprotein convertases and other disease-related proteins</h2>
+                <p>
+                    Johannes Elferich
+                </p>
+                <p>
+                    June 4<sup>th</sup> 2015
+                </p>
+                <div style="height:300px"></div>
+<!--                <div id="viewer_left"
+                    style="position:absolute;width:350px;height:350px;top:40%;left:0px;z-index:-5"></div>
+                <div id="viewer_right"
+                    style="position:absolute;width:350px;height:350px;top:40%;left:700px;z-index:-5"></div>--!>
+            </section>
+            <section data-state="overview">
+                <style>
+                    .overview header:after {
+                        content: "Overview";
+                    }
+                    .overview section ol {
+                        font-weight:700;
+                    }
+                    .overview section ol li ol {
+                        font-weight: 400;
+                    }
+                </style>
+
+                <ol type="A"
+                    style="list-style-type: upper-alpha;margin-top:150px;">
+                    <li>Using computers to describe proteins
+                        <ol>
+                            <li>Sequence (Sec61 translocon complex)</li>
+                            <li>Structure (Otub1-monoubiquitination)</li>
+                        </ol>
+                    </li>
+                    <li class="fragment">How propeptides of proprotein convertases sense pH
+                        <ol>
+                            <li> Propeptides contain histidines </li>
+                            <li> Histidine protonation destabilizes propeptide structure
+                            </li>
+                            <li> Histidine pKa determines pH of activation </li>
+                        </ol>
+                    </li>
+                    <li class="fragment"> Conclusions & Acknowledgments </li>
+                </ol>
+            </section>
+            <section data-state="proteins">
+                <style>
+                    .proteins header:after {
+                        content: "Proteins: From sequence to structure";
+                    }
+                    
+                    .proteins header {
+                        font-size: 1.4em;
+                    }
+                </style>
+                <svg id="protein-vis"
+                    class="protein-vis"
+                    width=520
+                    height=500
+                    style="position:absolute;left:20px"></svg>
+                <ul style="margin-left:520px;font-size:0.8em;">
+                    <li>Protein sequences can be represented as strings
+                    <pre><code data-trim>
+>Protein
+NLYIQWLKDGGPSSGRPPPS
+                    </code></pre>
+                    
+                    </li>
+                    <li class="fragment"
+                        data-exec="render_protein_vis.apply_force_field();"
+                        data-exec-hide='render_protein_vis.render();'>
+                        Protein structures can be represented as a list of atoms and their coordinates
+                        <pre><code>
+ATOM    1  N   MET A   1   27.340  24.430   2.614
+ATOM    2  CA  MET A   1   26.266  25.413   2.842
+ATOM    3  C   MET A   1   26.913  26.639   3.531
+ATOM    4  O   MET A   1   27.886  26.463   4.263
+ATOM    5  CB  MET A   1   25.112  24.880   3.649
+ATOM    6  CG  MET A   1   25.353  24.860   5.134
+ATOM    7  SD  MET A   1   23.930  23.959   5.904
+ATOM    8  CE  MET A   1   24.447  23.984   7.620
+ATOM    9  N   GLN A   2   26.335  27.770   3.258
+ATOM   10  CA  GLN A   2   26.850  29.021   3.898
+ATOM   11  C   GLN A   2   26.100  29.253   5.202
+ATOM   12  O   GLN A   2   24.865  29.024   5.330
+                        </code></pre></li>
+                </ul>
+            </section>
+            <section data-state="sequences">
+                <style>
+                    .sequences header:after {
+                        content: "Protein sequence comparison";
+                    }
+                    
+                    .sequences header {
+                        font-size: 1.4em;
+                    }
+                </style>
+                <svg id="seq_tree"
+                    width=1000
+                    height=600></svg>
+                <div style="width:950px;position:absolute;top:200px;left:37px;">
+                    <h6 class="fragment"
+                        style="float:left;width:33.333%;text-align:left;font-size:0.6em;">Pairwise comparison</h6>
+                    <div class="fragment"
+                        data-exec-hide='render_seq_tree.pairwise_align_del("#YFWDRG","#YHFWDRP")'
+                
+                        data-exec='render_seq_tree.pairwise_align("#YFWDRG","#YHFWDRP",20,300)'></div>
+                    <div class="fragment"
+                        style="position:absolute;left:90px;top:115px;font-size:0.6em;"
+                
+                        id="ndident">
+                        1/7 14% Identical
+                    </div>
+                    <div class="fragment"
+                        data-exec='d3.select("#YFWDRGc").text("Y-FWDRG").attr("id","old");
+                                   d3.select("#ndident").html("5/7 71% Identical");'
+                
+                        data-exec-hide=''>
+                    </div>
+                    <h6 class="fragment"
+                        style="float:left;width:33.333%;text-align:center;font-size:0.6em">Multiple sequence alignment</h6>
+                    <div class="fragment"
+                        data-exec-hide='render_seq_tree.multiple_align_del()'
+                        data-exec='render_seq_tree.multiple_align(460,250)'></div>
+                    <div class="fragment"
+                        data-exec='d3.select("#YHFWHAGc.oldclonem").text("YHFWH-AG");
+                                   d3.select("#FHFWHKGc.oldclonem").text("FHFWH-KG");
+                                   d3.select("#YHFWDRPc.oldclonem").text("YHFWD-RP");
+                                   d3.select("#YHWWDRGc.oldclonem").text("YHWWD-RG");
+                                   d3.select("#YFWDRGc.oldclonem").text("Y-FWD-RG");'
+                
+                        data-exec-hide=''>
+                    </div>
+                    <div class="fragment"
+                        style="float:left;width:33.333%;text-align:center;font-size:0.6em;">
+                        <h6>Hidden Markov model<br> sequence profiles</h6>
+                        <img src="img/hmm.svg"></img>
+                    </div>
+                </div>
+            </section>
+            <section data-state="sec61">
+                <style>
+                    .sec61 header:after {
+                        content: "Example: Sec61 translocon complex";
+                    }
+                    
+                    .sec61 header {
+                        font-size: 1.4em;
+                    }
+                </style>
+                <figure style="margin-top:50px;">
+                    <img src="img/sec61.png"
+                        width="850px"></img>
+                </figure>
+                <span style="float:right;margin-right: 60px">
+                    <cite>Park and Rapoport. Annual Review of Biophysics 2012</cite>
+                </span>
+            </section>
+            <section data-state="sec61-hypoth">
+                <style>
+                    .sec61-hypoth header:after {
+                        content: "Small folded domains at the N-termini block translocation";
+                    }
+                    
+                    .sec61-hypoth header {
+                        font-size: 1.0em;
+                    }
+                    .sec61-hypoth section {
+                        font-size: 0.75em;
+                    }
+                </style>
+                <figure>
+                    <h5 style="margin-top:40px;">Insertion of a zinc-finger domain blocks translocation in the presence of zinc</h5>
+                    <img src="img/zinc_finger.png"
+                        width="300px"></img>
+                    <img src="img/zinc_finger_blocks.png"
+                        width="300px"></img>
+                </figure>
+                <div class="conclusion fragment"><h5>Hypothesis:</h5>Secreted proteins select against small folded domains at their N-termini</div>
+                <div class="conclusion fragment"><h5>Approach:</h5>Use HMM sequence profiles to quantify the number of secreted and non-secreted proteins with small domains at their N-termini</div>
+                <span style="float:right;margin-right: 60px">
+                    <cite>Conti, Elferich <i>et al.</i> Nature Structural and Molecular Biology 2014</cite>
+                </span>
+            </section>
+            <section data-state="sec61res">
+                <style>
+                    .sec61res header:after {
+                        content: "Do secreted proteins avoid small folded domains at their N-terminus?";
+                    }
+                    
+                    .sec61res header {
+                        font-size: 1.0em;
+                    }
+                </style>
+                <div style="width:90%;margin-left:auto;margin-right:auto;margin-top:100px;" >
+                    <h5>Results</h5>
+                    <figure style="width:95%;margin-left:auto;margin-right:auto;">
+                        <img src="img/sec61_table.png"></img>
+                    </figure>
+                <span style="float:right;margin-right: 60px">
+                    <cite>Conti, Elferich <i>et al.</i> Nature Structural and Molecular Biology 2014</cite>
+                </span>
+            </div>
+
+            </section>
+            <section data-state="sec61res">
+                <style>
+                    .sec61res header:after {
+                        content: "Do secreted proteins avoid small folded domains at their N-terminus?";
+                    }
+                    
+                    .sec61res header {
+                        font-size: 1.0em;
+                    }
+                </style>
+                <div style="margin-top:75px;">
+                    <figure style="width:69%;float:left;margin-left:0px;margin-top:-10px;"
+                        >
+                        <h5>Type of domains</h5>
+                        <img src="img/sec61_type.png"></img>
+                    </figure>
+                    <figure style="width:29%;float:right;margin-right:0px;margin-top:-10px;"
+                        class="fragment">
+                        <h5>Disulfides</h5>
+                        <img src="img/sec61_disulf.png"></img>
+                    </figure>
+
+                    </figure>
+                </div>
+                <span style="float:right;margin-right: 60px">
+                    <cite>Conti, Elferich <i>et al.</i> Nature Structural and Molecular Biology 2014</cite>
+                </span>
+            </section>
+            <section data-state="structure">
+                <style>
+                    .structure header:after {
+                        content: "Algorithms for protein structure exploration";
+                    }
+                    
+                    .structure header {
+                        font-size: 1.2em;
+                    }
+                </style>
+
+                <div style="width:50%;float:left;">
+                    <h5>Molecular dynamics</h5>
+
+                    <svg id="md-vis"
+                        class="protein-vis"
+                        width=420
+                        height=350
+                        style="position:relative;left:20px"></svg>
+                    <div class="fragment"
+                        data-exec='render_md_vis.showvel=true;render_md_vis.render()'
+                
+                        data-exec-hide=''>
+                    </div>
+                    <div class="fragment"
+                        style="font-size:0.8em;margin-top:-100px;margin-left:20px;">
+                        <ul>
+                            <li>Coordinates change according to velocities</li>
+                            <li>Velocities change according to forces</li>
+                            <li>Forces are calculated according to energy function</li>
+                        </ul>
+                    </div>
+                    <div class="fragment"
+                        data-exec='render_md_vis.step=2;render_md_vis.render()'
+                
+                        data-exec-hide='render_md_vis.step=1;render_md_vis.render()'>
+                    </div>
+                    <div class="fragment"
+                        data-exec='render_md_vis.step=3;render_md_vis.render()'
+                
+                        data-exec-hide='render_md_vis.step=2;render_md_vis.render()'>
+                    </div>
+                    <div class="fragment"
+                        data-exec='render_md_vis.step=4;render_md_vis.render()'
+                
+                        data-exec-hide='render_md_vis.step=3;render_md_vis.render()'>
+                    </div>
+                    <div class="fragment"
+                        data-exec='render_md_vis.step=5;render_md_vis.render()'
+                
+                        data-exec-hide='render_md_vis.step=4;render_md_vis.render()'>
+                    </div>
+                    <div class="fragment"
+                        data-exec='render_md_vis.step=6;render_md_vis.render()'
+                
+                        data-exec-hide='render_md_vis.step=5;render_md_vis.render()'>
+                    </div>
+                </div>
+
+                <div style="float:right;width:50%"
+                    class="fragment">
+                    <h5>Monte-Carlo sampling</h5>
+                    <svg id="mc-vis"
+                        class="protein-vis"
+                        width=420
+                        height=350
+                        style="position:relative;left:20px"></svg>
+
+                    <div class="fragment"
+                        style="font-size:0.8em;margin-top:-100px;margin-left:20px;">
+                        <ul>
+                            <li>Structure is modified by a random move</li>
+                            <li>New structure is evaluated by energy function</li>
+                            <li>If the move leads to less favorable energy it is reversed
+                                with a probability based on the energy increase</li>
+                        </ul>
+                    </div>
+                    <div class="fragment"
+                        data-exec='render_mc_vis.rot_move(25,-120)'
+                        data-exec-hide='render_mc_vis.rot_move(25,120)'>
+                    </div>
+                    <div class="fragment"
+                        data-exec='render_mc_vis.rot_move(25,120)'
+                        data-exec-hide='render_mc_vis.rot_move(25,-120)'>
+                    </div>
+                    <div class="fragment"
+                        data-exec='render_mc_vis.rot_move(25,-50)'
+                        data-exec-hide='render_mc_vis.rot_move(25,50)'>
+                    </div>
+                    <div class="fragment"
+                        data-exec='render_mc_vis.rot_moven(15,10)'
+                        data-exec-hide='render_mc_vis.rot_moven(15,-10)'>
+                    </div>
+                </div>
+            </section>
+            <section data-state="otub1intro"
+                id="otub1intro">
+                <style>
+                    .otub1intro header:after {
+                        content: "Example: p53 stabilization by monoubiquitination of Otub1";
+                    }
+                    
+                    .otub1intro header {
+                        font-size: 1.0em;
+                    }
+                    
+                    .otub1intro section h5 {
+                        font-size: 0.7em;
+                        margin-bottom: 0px;
+                    }
+                </style>
+                <div style="width:50%;float:left;margin-top:20px;">
+                    <h5>Otub1 stabilizes p53 by inhibiting the E2-Ligase that polyubiquitinates p53</h5>
+                    <figure style="width:400px;margin-left:auto;margin-right:auto;">
+                        <img src="img/Otub1_p53_mech.png"
+                            style="width:70%"></img>
+                    </figure>
+                </div>
+                <div style="width:48%;margin-right:2%;float:right;margin-top:90px;"
+                    class="fragment">
+                    <h5>Monoubiquitination of Otub1 is critical for p53 stabilization</h5>
+                    <figure style="width:400px;margin-left:auto;margin-right:auto;">
+                        <img src="img/otub_ubq_p53.png"
+                            style="width:100%"></img>
+                    </figure>
+                </div>
+                <div style="width:50%;float:left;"
+                    class="fragment">
+                    <h5>E2-Ligase preferentially binds to monoubiquitinated Otub1</h5>
+                    <figure style="width:500px;margin-left:auto;margin-right:auto;">
+                        <img src="img/otub_ubq_e2pullc.png"
+                            style="width:70%"></img>
+                    </figure>
+                </div>
+
+                <span style="float:right;margin-right:65px;">
+                    <cite>Li, Sun, Elferich <i>et al.</i> Journal of Biological Chemistry 2014</cite>
+                </span>
+            </section>
+            <section data-state="otub1"
+                id="otub1slide"
+                style="height:650px">
+                <style>
+                    .otub1 header:after {
+                        content: "Monoubiquitination of Otub1";
+                    }
+                    
+                    .otub1 header {
+                        font-size: 1.4em;
+                    }
+                </style>
+                <img src="img/e2_ubq.png"></img>
+                <img src="img/e2_ubq_otub1.png"
+                    class="fragment"
+                    data-fragment-index=1></img>
+                <video class="fragment"
+                    data-fragment-index=2>
+                    <source data-src="img/k109_movie.mp4"
+                        type="video/mp4" />
+                </video>
+                <img src="img/otub1_k109_ubq.png"
+                    class="fragment"
+                    data-fragment-index=3></img>
+                <video class="fragment"
+                    loop>
+                    <source data-src="img/k109_movie_ubqclose.mp4"
+                        type="video/mp4" />
+                </video>
+                <video class="fragment">
+                    <source data-src="img/k109_movie_ubqaway.mp4"
+                        type="video/mp4" />
+                </video>
+                <video class="fragment"
+                    loop>
+                    <source data-src="img/k109_movie_ubqaway_steps.mp4"
+                        type="video/mp4" />
+                </video>
+                <ul style="margin-left:750px;margin-top:40px;z-index:5;">
+                    <li class="theme-blue">E2-Ligase</li>
+                    <li class="theme-yellow">Ubiquitin charged to E2-Ligase</li>
+                    <li class="theme-green fragment"
+                        data-fragment-index=1>Otub1</li>
+                    <li class="theme-purple fragment"
+                        data-fragment-index=3>Ubiquitin ligated to Otub1</li>
+                </ul>
+                <span style="position: absolute; bottom: 40px; right: 45px">
+                    <cite>Li, Sun, Elferich <i>et al.</i> Journal of Biological Chemistry 2014</cite>
+                </span>
+                <span style="position: absolute; bottom: 15px; right: 45px">
+                    <cite>Juang, Landry <i>et al.</i> Molecular Cell 2012</cite>
+                </span>
+            </section>
+            <section data-state="otub1slide2"
+                id="otub1slide2">
+                <style>
+                    .otub1slide2 header:after {
+                        content: "Can monoubiquitination account for increased binding?";
+                    }
+                    
+                    .otub1slide2 header {
+                        font-size: 1.1em;
+                    }
+                </style>
+                <figure>
+                    <h5>Lys<sub>59</sub></h5>
+                    <img src="img/supp_k59.png"></img>
+                </figure>
+                <figure>
+                    <h5>Lys<sub>109</sub></h5>
+                    <img src="img/supp_k109.png"></img>
+                </figure>
+                <ul style="margin-left:720px;margin-top:40px;display:block;">
+                    <li class="theme-blue">E2-Ligase</li>
+                    <li class="theme-yellow">Ubiquitin charged to E2-Ligase</li>
+                    <li class="theme-green">Otub1</li>
+                    <li class="theme-purple">Ubiquitin ligated to Otub1</li>
+                </ul>
+                <div class="conclusion fragment">Increased interaction of monoubiquitinated Otub1 with the E2-Ligase
+                    cannot be explained by direct interactions within the known
+                    E2~Ubq/Otub1 complex.</div>
+                <span style="float:right; margin-right: 45px">
+                    <cite>Li, Sun, Elferich <i>et al.</i> Journal of Biological Chemistry 2014</cite>
+                </span>
+            </section>
+            <section data-state="otub1slide3"
+                id="otub1slide3"
+                style="height:650px">
+                <style>
+                    .otub1slide3 header:after {
+                        content: "Alternative hypothesis";
+                    }
+                    
+                    .otub1slide3 header {
+                        font-size: 1.4em;
+                    }
+                    
+                    .otub1slide3 h5 {
+                        font-size: 0.7em;
+                        margin-bottom: -15px;
+                    }
+                </style>
+                <img src="img/otub_alt_ter.png"
+                    class="model"></img>
+                <img src="img/otub_alt_ter_ubqback.png"
+                    class="fragment model"></img>
+                <img src="img/otub_alt_otububq.png"
+                    class="fragment model"></img>
+                <video class="fragment">
+                    <source data-src="img/otub_alt_zoom_to_both.mp4"
+                        type="video/mp4" />
+                </video>
+                <video class="fragment">
+                    <source data-src="img/otub_alt_bringtogether.mp4"
+                        type="video/mp4" />
+                </video>
+                <video class="fragment">
+                    <source data-src="img/otub_alt_zoominterface.mp4"
+                        type="video/mp4" />
+                </video>
+                <img src="img/otub_alt_inter_annot.png"
+                    class="fragment final model"></img>
+                <ul style="margin-left:750px;margin-top:40px;z-index:5;">
+                    <li class="theme-blue">E2-Ligase</li>
+                    <li class="theme-yellow">Ubiquitin</li>
+                    <li class="theme-green">Otub1</li>
+                    <li class="theme-purple">Ubiquitin ligated to Otub1</li>
+                    <li class="theme-red">Ubiquitin bound to E2 backside</li>
+                </ul>
+                <div class="fragment"
+                    data-exec='d3.select("#otub1slide3").selectAll("img.model,video").style("display","none"); 
+                              d3.select("#otub1slide3 img.final").style("display","block").style("width","400px").style("height","300px").style("right","20px").style("left","initial"); 
+                              d3.select("#otub1slide3 ul").style("display","none");'
+            
+                    data-exec-hide=''>
+                </div>
+                <div style="width:560px;position:absolute;left:20px;top:25px"
+                    class="fragment">
+                    <h5>Mutagenesis of Ser<sub>22</sub> blocks binding of monoubiquitinated Otub1 to E2-Ligase</h5>
+                    <figure>
+                        <img src="img/val_mut_E2_cr.png"
+                            style="width:45%"
+                            alt="">
+                        <img src="img/val_mut_E2_cl.png"
+                            style="width:45%"
+                            alt="">
+                        <figcaption></figcaption>
+                    </figure>
+                </div>
+                <div style="width:520px;position:absolute;left:20px;top:310px"
+                    class="fragment">
+                    <h5>Mutagenesis of Ile<sub>44</sub> can rescue binding</h5>
+                    <figure>
+                        <img src="img/val_mut_ubq_c.png"
+                            style="width:55%"
+                            alt="">
+                        <figcaption></figcaption>
+                    </figure>
+                </div>
+                <div class="fragment conclusion"
+                    style="position:absolute;top:420px;left:450px;width:520px;font-size: 0.8em;">Monoubiquitinated Otub1 interacts with E2-Ligase through "backside"
+                    interaction of the conjugated Ubiquitin</div>
+                <span style="position: absolute; bottom: 40px; right: 65px">
+                    <cite>Li, Sun, Elferich <i>et al.</i> Journal of Biological Chemistry 2014</cite>
+                </span>
+                <span style="position: absolute; bottom: 15px; right: 65px">
+                    <cite>Sakata, Satoh <i>et al.</i> Structure 2010</cite>
+                </span>
+            </section>
+            <section data-state="compsummary">
+                <style>
+                    .compsummary header:after {
+                        content: "Summary";
+                    }
+                    
+                    .compsummary header {
+                        font-size: 1.4em;
+                    }
+                </style>
+                <ol style="font-size:0.7em;width:90%;margin-top:50px;">
+                    <li style="font-weight: 700;">Sequences
+                        <ul style="font-weight:400;">
+                            <li>Secreted proteins do not select against small folded domains at their N-terminus</li>
+                            <li class="fragment">Testing of genome-wide hypotheses is possible due to:
+                            <ul>
+                                <li>Abundance of available protein sequences</li>
+                                <li>Homology detection and domain annotation using Hidden Markov model sequence profiles</li>
+                            </ul></li>
+                        </ul>
+                    </li>
+                    <li style="font-weight: 700;"
+                        class="fragment">Structures
+                        <ul style="font-weight: 400;">
+                            <li>Monoubiquitinated Otub1 binds to E2-Ligase through "backside" interaction</li>
+                            <li class="fragment">Visualization of structures is critical for understanding of protein function and for formulating hypotheses</li>
+                            <li class="fragment">Various algorithms can be used to generate structural
+                            ensembles:<ul><li> Molecular Dynamics is biophysically
+                                meaningful</li><li> Monte-Carlo sampling allows for
+                                more extensive exploration of conformational
+                                space</li></ul></li>
+                        </ul>
+                    </li>
+                </ol>
+            </section>
+            <section data-state="kindestcut">
+                <style>
+                    .kindestcut header:after {
+                        content: "The kindest cut";
+                    }
+                    
+                    .kindestcut header {
+                        font-size: 1.4em;
+                    }
+                </style>
+                <div id="comiccrop" style="width:180px;height:400px;overflow:hidden;margin-top:150px;margin-left:100px;">
+                <img src="img/proteins.png"
+                    style="width:800px;max-width:none;max-height:none;"
+                    alt="">
+                </div>
+                <div class="fragment" 
+                    data-exec='d3.select("#comiccrop").style("width","380px");'
+                    data-exec-hide='' >
+                <div class="fragment" 
+                    data-exec='d3.select("#comiccrop").style("width","560px");'
+                    data-exec-hide='' >
+                <div class="fragment" 
+                    data-exec='d3.select("#comiccrop").style("width","810px");'
+                    data-exec-hide='' >
+                </div>
+                </section>
+                <section data-state="prosubsts">
+                    <style>
+                        .prosubsts header:after {
+                            content: "Proteins that require cutting";
+                        }
+                        .prosubsts header {
+                            font-size: 1.4em;
+                        }
+                    </style>
+                <img src="img/insulin.png"
+                    style="width:70%;margin-top:00%;border:none;box-shadow:none;"
+                    alt="">
+                <div class="fragment theme-green"
+                    style="position:absolute;top:100px;left:80px;">POMC</div>
+                <div class="fragment theme-blue"
+                    style="position:absolute;top:300px;left:720px;">Bone morphogenic protein</div>
+                <div class="fragment theme-red"
+                    style="position:absolute;top:500px;left:50px;">Cadherin</div>
+                <div class="fragment theme-purple"
+                    style="position:absolute;top:100px;left:720px;">Matrix metalloprotease</div>
+                <div class="fragment theme-blue"
+                    style="position:absolute;top:300px;left:20px;">Anthrax toxin</div>
+                <div class="fragment theme-red"
+                    style="position:absolute;top:550px;left:820px;">HIV gp160</div>
+                <span style="position: absolute; bottom: 15px; right: 65px">
+                    <cite>The Cell. 4<sup>th</sup> Edition</cite>
+                </span>
+
+            </section>
+            <section data-state="pcs">
+                <style>
+                    .pcs header:after {
+                        content: "Proprotein Convertases";
+                    }
+                    
+                    .pcs header {
+                        font-size: 1.4em;
+                    }
+                </style>
+                <table style="font-size:0.5em;width:80%">
+                    <tr>
+                        <th>Name</th>
+                        <th>Specificity</th>
+                        <th>Cellular localization</th>
+                        <th>Tissue localization</th>
+                        <th>Involved in disease</th>
+                        <th>Knockout phenotype</th>
+                    </tr>
+                    <tr class="fragment highlight-red" data-fragment-index=2>
+                        <td>PC1/3</td>
+                        <td>Dibasic</td>
+                        <td>Secretory granules</td>
+                        <td>Neurons, endocrine cells</td>
+                        <td>Obesity, Diabetes</td>
+                        <td>Growth retardation, abnormal hormone levels</td>
+                    </tr>
+                    <tr>
+                        <td>PC2</td>
+                        <td>Dibasic</td>
+                        <td>Secretory granules</td>
+                        <td>Neurons, endocrine cells</td>
+                        <td>Obesity, Diabetes</td>
+                        <td>Growth retardation, abnormal hormone levels, developmental
+                            abnormalities</td>
+                    </tr>
+                    <tr class="fragment highlight-red" data-fragment-index=1>
+                        <td>Furin</td>
+                        <td>Dibasic</td>
+                        <td>Golgi apparatus, cell surface, extracellular</td>
+                        <td>Ubiquitous</td>
+                        <td>Cancer, Heart disease, Influenza, HIV, Anthrax</td>
+                        <td>Die on embryonic day 11</td>
+                    </tr>
+                    <tr>
+                        <td>PC4</td>
+                        <td>Basic motif</td>
+                        <td>Granules, cell surface</td>
+                        <td>Germ cells</td>
+                        <td>Infertility</td>
+                        <td>Infertile males</td>
+                    </tr>
+                    <tr>
+                        <td>PC5/6</td>
+                        <td>Dibasic</td>
+                        <td>Cell surface</td>
+                        <td>Development, Neurons</td>
+                        <td>Colon tumors</td>
+                        <td>Death at birth, bone defects</td>
+                    </tr>
+                    <tr>
+                        <td>PACE4</td>
+                        <td>Dibasic</td>
+                        <td>Cell surface</td>
+                        <td>Development, neurons, glial cells</td>
+                        <td>Ostheoarthritis</td>
+                        <td>25% death rate before birth, bone defects</td>
+                    </tr>
+                    <tr>
+                        <td>PC7</td>
+                        <td>Dibasic</td>
+                        <td>Secretory pathway</td>
+                        <td>Ubiquitous</td>
+                        <td>Immune defects(?)</td>
+                        <td>None</td>
+                    </tr>
+                </table>
+                <span style="float:right;margin-right:65px;">
+                    <cite>Seidah. Annals of the New York Academy of Science 2011</cite>
+                </span>
+            </section>
+            <section data-state="activation">
+                <style>
+                    .activation header:after {
+                        content: "Activation of Proprotein Convertases";
+                    }
+                    
+                    .activation header {
+                        font-size: 1.4em;
+                    }
+                </style>
+                <img src="img/activ.png"
+                    style="width:90%;padding:10px;border: 0px;box-shadow:none;"
+            
+                    alt="">
+            </section>
+            <section data-state="phsensor">
+                <style>
+                    .phsensor header:after {
+                        content: "What are the residues important for pH-sensing?";
+                    }
+                    
+                    .phsensor header {
+                        font-size: 1.0em;
+                    }
+                    
+                    .phsensor img {
+                        padding: 5px;
+                    }
+                    .phsensor section {
+                        font-size: 0.8em;
+                    }
+                </style>
+                <figure style=" width: 50%; margin-top: 100px; margin-right: auto; float: left; " class="fragment" data-fragment-index=2>
+                    <h5>Mutation of His<sub>69</sub> can block furin activation</h5>
+                    <img src="img/felici.png"
+                        alt="">
+                </figure>
+                <div style="width:50%;float:right;">
+                    <figure><h5>Homology model of furin propeptide</h5><img src="img/felici_structure.png"
+                            style="width:60%"
+                            alt="">
+                    </figure>
+                    <figure class="fragment" data-fragment-index=1>
+                        <h5>Histidine protonation states</h5>
+                        <img src="img/hisequib.png"
+                            style="width:60%"
+                            alt="">
+                    </figure>
+                </div>
+                <span style="position: absolute; bottom: 15px; left: 15px">
+                    <cite>Feliciangeli <i>et al.</i> Journal of Biological Chemistry 2006</cite>
+                </span>
+            </section>
+            <section data-state="HisConservation"
+                id="hisconservation">
+                <style>
+                    .HisConservation header:after {
+                        content: "Is the putative pH sensor conserved?";
+                    }
+                    
+                    .HisConservation header {
+                        font-size: 1.4em;
+                    }
+                </style>
+                <div id="pro_alignment"
+                    style="width:800;"></div>
+                <div style="position:absolute;top:10px;left:648px;transform:rotate(90deg);font-size:32px;">&#9986;</div>
+                <figure style="width:700px;margin-left:auto;margin-right:auto;">
+                    <img src="img/hiscons.png"></img>
+                    <figcaption>Structures of bacterial subtilisins or animal proprotein
+                        convertases in complex with their propeptides. Tube
+                        thickness indicates conservation. Occurence of histidine
+                        at each position is color-coded in blue.</figcaption>
+                </figure>
+            </section>
+            <section data-state="HisEnrichmentHypothesis">
+                <style>
+                    .HisEnrichmentHypothesis header:after {
+                        content: "Hypothesis";
+                    }
+                    
+                    .HisEnrichmentHypothesis header {
+                        font-size: 1.6em;
+                    }
+                </style>
+                <img src="img/activ.png"
+                    style="width:50%;padding:10px;border: 0px;box-shadow:none;"
+            
+                    alt="">
+                <div class="conclusion">
+                    <h5>Hypothesis:</h5>Eukaryotic subtilases that need to sense
+                    pH for activation have more histidines in their propeptides
+                    than prokaryotic subtilases</div>
+                <span style="float:right;margin-right:65px">
+                    <cite>Elferich <i>et al.</i> FASEB 2013</cite>
+                </span>
+            </section>
+            <section data-state="hisenrapproach">
+                <style>
+                    .hisenrapproach header:after {
+                        content: "Approach";
+                    }
+                    
+                    .hisenrapproach header {
+                        font-size: 1.6em;
+                    }
+                    
+                    .hisenrapproach section {
+                        font-size: 0.6em;
+                    }
+                </style>
+
+                <div style="margin-top:75px;">
+                    <h4>PF00082: Subtilase family</h4>
+                    <ul>
+                        <li>Dataset of 6533 sequences with start and end position
+                            of the protease domain</li>
+                    </ul>
+                    <svg width="800"
+                        height="100">
+                        <line x1=10
+                            x2=790
+                            y1=30
+                            y2=30
+                            style="stroke:#586e75;stroke-width:10px;"></line>
+                        <g class="fragment">
+                            <line x1=200
+                                x2=650
+                                y1=30
+                                y2=30
+                                style="stroke: #E8160D;stroke-width:10px;"></line>
+                            <text x=200
+                                y=65
+                                style="fill:#E8160D;">Protease domain (PF00082)</text>
+                        </g>
+                        <g class="fragment">
+                            <line x1=40
+                                x2=200
+                                y1=30
+                                y2=30
+                                style="stroke: #2613FF;stroke-width:10px;"></line>
+                            <text x=40
+                                y=65
+                                style="fill:#2613FF;">Propeptide</text>
+                        </g>
+                    </svg>
+                </div>
+                <div style="margin-top:20px;" class="fragment"><h4 >Calculated values:</h4>
+                    <ul style="list-style-type:none;"><li>[His]<sub>Pro</sub>: Histidine content in propeptide</li>
+                        <li>[His]<sub>Mat</sub>: Histidine content in protease domain</li>
+                        <li>&Delta;[His]=[His]<sub>Pro</sub>-[His]<sub>Mat</sub>: Enrichment of histidines in propeptide</li>
+                </ul>
+                </div>
+                <span style="float:right; margin-right: 65px">
+                    <cite >Elferich <i>et al.</i> FASEB 2013</cite>
+                </span>
+            </section>
+            <section data-state="subttree">
+                <style>
+                    .subttree header:after {
+                        content: "Histidine bias in subtilase propeptides";
+                    }
+                    
+                    .subttree header {
+                        font-size: 1.4em;
+                    }
+                </style>
+                <div id="vis" style="width:800px"></div>
+                <div class="fragment" data-fragment-index=6
+                    style="position:absolute;top:10px;right:10px;font-size:0.5em;">&Delta;[His]=[His]<sub>Pro</sub>-[His]<sub>Mat</sub>: Enrichment of histidines in propeptide<br>
+                    <svg width=250 height=200 style="margin-left:200px;">
+                    <path class="measure" d="M 20 20 A 250 250 0 0 1 150 150" style="display: block;"></path>
+                    <line class="dhisbar" x1=70 y1=50 x2=90 y2=25 style="display:block;"></line>
+                    <text x=95 y=30>Positive &Delta;[His]</text>
+                    <line class="dhisbar" x1=120 y1=100 x2=90 y2=125 style="display:block;"></line>
+                    <text x=0 y=150>Negative &Delta;[His]</text>
+                </svg></div>
+                <span style="position: absolute; bottom: 11px; right: 65px">
+                    <cite>Elferich <i>et al.</i> FASEB 2013</cite>
+                </span>
+                <div class="fragment" data-fragment-index=1
+                    data-exec='tree_render.highlight_family("Subtilisin")'></div>
+                <div class="fragment" data-fragment-index=2
+                    data-exec='tree_render.highlight_family("Kexin/PC")'></div>
+                <div class="fragment" data-fragment-index=3
+                    data-exec='tree_render.highlight_family("Proteinase K")'></div>
+                <div class="fragment" data-fragment-index=4
+                    data-exec='tree_render.highlight_family("Sedolisin")'></div>
+                <div class="fragment" data-fragment-index=5
+                    data-exec='tree_render.highlight_family("Cucumulisin/Pyrolisin")'></div>
+                <div class="fragment" data-fragment-index=6
+                    data-exec='tree_render.highlight_family("");tree_render.show_circle();'></div>
+                <div class="fragment"
+                    data-exec='tree_render.highlight_family("");tree_render.show_dhis();'></div>
+                <div class="fragment"
+                    data-exec='tree_render.highlight_family("");tree_render.color_nodes();'></div>
+                <div class="fragment"
+                    data-exec='tree_render.update_to_species();'
+                    data-exec-hide=''>
+                </div>
+                <div class="fragment"
+                    data-exec='d3.selectAll("#vis #Euka").style("display","block");d3.selectAll("#vis #Prok").style("display","block");'
+            
+                    data-exec-hide=''>
+                </div>
+                <div class="fragment"
+                    data-exec='d3.selectAll("#vis .minor").style("display","block");'
+            
+                    data-exec-hide=''>
+                </div>
+            </section>
+            <section data-state="hisenrstats">
+                <style>
+                    .hisenrstats header:after {
+                        content: "Is this unique to histidine?";
+                    }
+                    
+                    .hisenrstats header {
+                        font-size: 1.4em;
+                    }
+                    .hisenrstats section img {
+                        padding:5px;
+                        width:50%;
+                        
+                    }
+                    .hisenrstats section figure {
+                        
+                        width:50%;
+                        float:left;
+                        font-size:0.8em;
+                    }
+                </style>
+                    <figure style="width:100%;margin-top:150px;margin-bottom:50px;">
+                        <h5>Difference of &Delta;[AA] between prokaryotes and eukaryotes for all residues</h5>
+                        <img src="img/Effect_size_new.png" style="width:800px;" alt="">
+                    </figure>
+                <span style="float:right; margin-right: 15px">
+                    <cite>Elferich <i>et al.</i> FASEB 2013</cite>
+                </span>
+            </section><!---
+            <section data-state="hisother">
+                <style>
+                    .hisother header:after {
+                        content: "Is this unique to subtilases?";
+                    }
+                    
+                    .hisother header {
+                        font-size: 1.4em;
+                    }
+                </style>
+                <span style="position: absolute; bottom: 15px; right: 15px">
+                    <cite>Elferich <i>et al.</i> 2014</cite>
+                </span>
+            </section>--->
+            <section data-state="hismech">
+                <style>
+                    .hismech header:after {
+                        content: "How does this difference in histidine content affect structure?";
+                    }
+                    
+                    .hismech header {
+                        font-size: 1.0em;
+                    }
+                    .hismech section img {
+                        padding:5px;
+                        width:70%;
+                        
+                    }
+                    .hismech section figure {
+                        
+                        width:50%;
+                        float:left;
+                        font-size:0.8em;
+                    }
+                </style>
+                <figure>
+                    <h5 style="margin-top:50px;">Secondary structure content of various subtilase propeptides is similar at neutral pH</h5>
+                    <img src="img/cd_spectra.png" alt="">
+                    <figcaption>Far-UV circular dichroism spectra of the propeptide of subtilisin, aqualysin, PC1/3 and furin</figcaption>
+                </figure>
+                <figure>
+                    <h5 style="margin-top:50px;">Only histidine containing propeptides show structure loss at acidic pH</h5>
+                    <img src="img/cd_titration.png" alt="">
+                    <figcaption>Ellipticity at 222nm as a function of pH</figcaption>
+                </figure>
+                <span style="float:right;margin-right:65px;">
+                    <cite>Dillon, Williamson, Elferich <i>et al.</i> Journal of Molecular Biology 2012</cite>
+                </span>
+            </section>
+            <section data-state="proexch" style="height:550px;">
+                <style>
+                    .proexch header:after {
+                        content: "Propeptides are responsible for sensing pH";
+                    }
+                    
+                    .proexch header {
+                        font-size: 1.2em;
+                    }
+                </style>
+                <figure style="height:550px;">
+                    <img src="img/proexch_2.png" class="fragment fade-out" data-fragment-index=1 alt="" style="position:absolute;left:200px;width:60%;padding: 5px;">
+                    <img src="img/proexch_3.png" class="fragment" alt="" data-fragment-index=1 style="position:absolute;left:200px;width:60%;padding: 5px;">
+                    <figcaption style="padding-top:500px;">Activity of propeptide:protease complexes after incubation at various pH values</figcaption>
+                </figure>
+                <span style="float:right;margin-right:65px;">
+                    <cite>Dillon, Williamson, Elferich <i>et al.</i> Journal of Molecular Biology 2012</cite>
+                </span>
+            </section>
+            <section data-state="hismd" style="height:668px;">
+                <style>
+                    .hismd header:after {
+                        content: "Histidine protonation can explain loss of structure";
+                    }
+                    
+                    .hismd header {
+                        font-size: 1.2em;
+                    }
+                </style>
+                <div style="float:left;width:50%;margin-top:0px;">
+                    <img src="img/hishsd.png" style="position: absolute;top:30px;left:50px;z-index:5;width:100px;border:none;box-shadow:none;" alt="">
+                
+                <video class="fragment highlight-red" style="width:95%;z-index:1"
+                    >
+                    <source data-src="img/ph7_final.mp4"
+                        type="video/mp4" />
+                </video>
+	    </div>
+                <div style="float:right;width:50%;margin-top:0px;">
+                    <img src="img/hishsp.png" style="position: absolute;top:30px;left:562px;z-index:5;width:100px;border:none;box-shadow:none;" alt="">
+                
+                <video class="fragment highlight-red" style="width:95%;z-index:1"
+                    >
+                    <source data-src="img/ph6_final.mp4"
+                        type="video/mp4" />
+                </video>
+	    </div>
+                    <img src="img/fimc_rmsd.png" style="width:47%;margin-top:-5px;" class="fragment" alt="">
+                <span style="float:right;margin-right:65px;">
+                    <cite>Dillon, Williamson, Elferich <i>et al.</i> Journal of Molecular Biology 2012</cite>
+                </span>
+            </section><!--
+            <section data-state="primsensmut">
+                <style>
+                    .primsensmut header:after {
+                        content: "How does the H69L mutation work?";
+                    }
+                    
+                    .primsensmut header {
+                        font-size: 1.4em;
+                    }
+                </style>
+                <span style="position: absolute; bottom: 15px; right: 15px">
+                    <cite>Elferich <i>et al.</i> 2014</cite>
+                </span>
+            </section>
+            <section data-state="multhis">
+                <style>
+                    .multhis header:after {
+                        content: "Is H69 the only pH sensor?";
+                    }
+                    
+                    .multhis header {
+                        font-size: 1.4em;
+                    }
+                </style>
+                <span style="position: absolute; bottom: 15px; right: 15px">
+                    <cite>Elferich <i>et al.</i> 2014</cite>
+                </span>
+	</section>--!>
+            <section data-state="phactmodul">
+                <style>
+                    .phactmodul header:after {
+                        content: "Why do furin and PC1/3 activate at different pH?";
+                    }
+                    
+                    .phactmodul header {
+                        font-size: 1.2em;
+                    }
+                </style>
+                <figure style="width:75%;margin-left:auto;margin-right:auto;"><img src="img/his_pc1.png" alt=""></figure>
+                <div class="conclusion" style="font-size:0.9em;"><h5>Hypothesis:</h5> Furin and PC1/3 activate at different pH values due to differences in histidine pKa values within their propeptides</div>
+                <span style="float:right;margin-right:65px;">
+                    <cite>Paroutis <em>et. al.</em> Physiology 2004</cite>
+                </span>
+            </section>
+            <section data-state="hdxanimation" style="height:650px;">
+                <style>
+                    .hdxanimation header:after {
+                        content: "Measuring histidine pKa values with hydrogen-deuterium exchange";
+                    }
+                    
+                    .hdxanimation header {
+                        font-size: 1.0em;
+                    }
+                    .hdxanimation section img {
+                        border: 0px;
+                        box-shadow: none;
+                        background: none;
+                    }
+                    .hdxanimation section  h5{
+                        font-size:0.5em;
+
+                        margin-bottom:-10px;
+                        margin-top:-15px;
+                    }
+                </style>
+		<div style="float:left;width:50%" >
+		<img src="img/pep_water.png" style="z-index:1;position:absolute;width:50%;top:120px;left:0px;max-height:none;" />
+		<img class = "fragment" src="img/pep_d2o.png" style="z-index:1;position:absolute;width:50%;top:120px;left:0px;max-height:none;transition: all 1.2s ease;" />
+		<img class = "fragment" src="img/pep_polar_d2o.png" style="z-index:1;position:absolute;width:50%;top:120px;left:0px;max-height:none;transition: all 1.2s ease;" />
+		<img class = "fragment" src="img/pep_amide_d2o.png" style="z-index:1;position:absolute;width:50%;top:120px;left:0px;max-height:none;transition: all 1.2s ease;" />
+		<img class = "fragment" src="img/pep_c2_d2o.png" style="z-index:1;position:absolute;width:50%;top:120px;left:0px;max-height:none;transition: all 1.2s ease;" />
+		<img class = "fragment" src="img/pep_c2_water.png" style="z-index:1;position:absolute;width:50%;top:120px;left:0px;max-height:none;transition: all 1.2s ease;" />
+		<img class = "fragment" src="img/pep_c2only_water.png" style="z-index:1;position:absolute;width:50%;top:120px;left:0px;max-height:none;transition: all 1.2s ease;" />
+		</div>
+
+		<div style="float:right;width:50%" class="fragment" data-exec="$('#Startmz').load('data/YHF_4.svg');">
+            <h5>m/z profile of peptide YHF</h5>
+            <div id="Startmz" ></div>
+            <div class="fragment" data-exec="$('#YHF_9').load('data/YHF_9.svg');$('#title').text('pH 9.0');$('#ex_9_0').attr('display','block');">
+                <h5>m/z profile after exchange at <span id="title"> pH 9.0</span></h5>
+                    <div id="YHF_9" > </div></div>
+        <div class="fragment">
+            <h5>Rate constant of deuterium uptake</h5>
+<svg width="400" height="220"><g transform="translate(40,10)"><g class="x axis" transform="translate(0,170)"><g class="tick" transform="translate(9.687500000000009,0)" style="opacity: 1;"><line y2="6" x2="0"></line><text y="9" x="0" dy=".71em" style="text-anchor: middle;">3.0</text></g><g class="tick" transform="translate(33.90625000000001,0)" style="opacity: 1;"><line y2="6" x2="0"></line><text y="9" x="0" dy=".71em" style="text-anchor: middle;">3.5</text></g><g class="tick" transform="translate(58.12500000000001,0)" style="opacity: 1;"><line y2="6" x2="0"></line><text y="9" x="0" dy=".71em" style="text-anchor: middle;">4.0</text></g><g class="tick" transform="translate(82.34375,0)" style="opacity: 1;"><line y2="6" x2="0"></line><text y="9" x="0" dy=".71em" style="text-anchor: middle;">4.5</text></g><g class="tick" transform="translate(106.5625,0)" style="opacity: 1;"><line y2="6" x2="0"></line><text y="9" x="0" dy=".71em" style="text-anchor: middle;">5.0</text></g><g class="tick" transform="translate(130.78125,0)" style="opacity: 1;"><line y2="6" x2="0"></line><text y="9" x="0" dy=".71em" style="text-anchor: middle;">5.5</text></g><g class="tick" transform="translate(155,0)" style="opacity: 1;"><line y2="6" x2="0"></line><text y="9" x="0" dy=".71em" style="text-anchor: middle;">6.0</text></g><g class="tick" transform="translate(179.21875,0)" style="opacity: 1;"><line y2="6" x2="0"></line><text y="9" x="0" dy=".71em" style="text-anchor: middle;">6.5</text></g><g class="tick" transform="translate(203.4375,0)" style="opacity: 1;"><line y2="6" x2="0"></line><text y="9" x="0" dy=".71em" style="text-anchor: middle;">7.0</text></g><g class="tick" transform="translate(227.65625,0)" style="opacity: 1;"><line y2="6" x2="0"></line><text y="9" x="0" dy=".71em" style="text-anchor: middle;">7.5</text></g><g class="tick" transform="translate(251.875,0)" style="opacity: 1;"><line y2="6" x2="0"></line><text y="9" x="0" dy=".71em" style="text-anchor: middle;">8.0</text></g><g class="tick" transform="translate(276.09375,0)" style="opacity: 1;"><line y2="6" x2="0"></line><text y="9" x="0" dy=".71em" style="text-anchor: middle;">8.5</text></g><g class="tick" transform="translate(300.3125,0)" style="opacity: 1;"><line y2="6" x2="0"></line><text y="9" x="0" dy=".71em" style="text-anchor: middle;">9.0</text></g><path class="domain" d="M0,-170V0H310V-170"></path><text y="20" x="155" dy=".71em" style="text-anchor: middle;">pH</text></g><g class="y axis" transform="translate(0,0)"><g class="tick" transform="translate(0,170)" style="opacity: 1;"><line x2="-6" y2="0"></line><text x="-9" y="0" dy=".32em" style="text-anchor: end;">0.000</text></g><g class="tick" transform="translate(0,127.5)" style="opacity: 1;"><line x2="-6" y2="0"></line><text x="-9" y="0" dy=".32em" style="text-anchor: end;">0.005</text></g><g class="tick" transform="translate(0,85)" style="opacity: 1;"><line x2="-6" y2="0"></line><text x="-9" y="0" dy=".32em" style="text-anchor: end;">0.010</text></g><g class="tick" transform="translate(0,42.5)" style="opacity: 1;"><line x2="-6" y2="0"></line><text x="-9" y="0" dy=".32em" style="text-anchor: end;">0.015</text></g><g class="tick" transform="translate(0,0)" style="opacity: 1;"><line x2="-6" y2="0"></line><text x="-9" y="0" dy=".32em" style="text-anchor: end;">0.020</text></g><path class="domain" d="M310,0H0V170H310"></path><text transform="rotate(-90)" x="-85" y="-30" style="text-anchor: middle;"></text></g><g style="fill: #1f77b4;">
+<g id="ex_9_0" display="none">
+<circle cx="300.3125" cy="117.65367387256313" r="3"></circle>
+<circle cx="300.3125" cy="113.86641284890779" r="3"></circle>
+<circle cx="300.3125" cy="113.61659034242521" r="3"></circle>
+</g>
+<g id="ex_3_5" display="none">
+<circle cx="33.90625000000001" cy="169.82948103748467" r="3"></circle>
+<circle cx="33.90625000000001" cy="169.72529863887823" r="3"></circle>
+<circle cx="33.90625000000001" cy="170" r="3"></circle>
+</g>
+<g id="ex_6_0" display="none">
+<circle cx="155" cy="142.08550386576485" r="3"></circle>
+<circle cx="155" cy="141.73299147125513" r="3"></circle>
+<circle cx="155" cy="142.16966759077292" r="3"></circle>
+</g>
+<g id="ex_4_0" display="none">
+<circle cx="58.12500000000001" cy="169.04862982717256" r="3"></circle>
+<circle cx="58.12500000000001" cy="169.1918017218403" r="3"></circle>
+<circle cx="58.12500000000001" cy="169.434394935586" r="3"></circle>
+</g>
+<g id="ex_4_5" display="none">
+<circle cx="82.34375" cy="166.2503045291527" r="3"></circle>
+<circle cx="82.34375" cy="166.51425620197693" r="3"></circle>
+<circle cx="82.34375" cy="167.466727379683" r="3"></circle>
+</g>
+<g id="ex_5_0" display="none">
+<circle cx="106.5625" cy="164.23239313783375" r="3"></circle>
+<circle cx="106.5625" cy="164.41285654689065" r="3"></circle>
+<circle cx="106.5625" cy="164.4890551858222" r="3"></circle>
+</g>
+<g id="ex_5_5" display="none">
+<circle cx="130.78125" cy="156.31933048100606" r="3"></circle>
+<circle cx="130.78125" cy="156.17285984283026" r="3"></circle>
+<circle cx="130.78125" cy="156.07302723079266" r="3"></circle>
+</g>
+<g id="ex_6_5" display="none">
+<circle cx="179.21875" cy="123.92126392584491" r="3"></circle>
+<circle cx="179.21875" cy="122.7682362313787" r="3"></circle>
+<circle cx="179.21875" cy="123.0580437028703" r="3"></circle>
+</g>
+<g id="ex_7_0" display="none">
+<circle cx="203.4375" cy="114.01947220283202" r="3"></circle>
+<circle cx="203.4375" cy="112.37887978147529" r="3"></circle>
+<circle cx="203.4375" cy="112.67095149543833" r="3"></circle>
+</g>
+<g id="ex_7_5" display="none">
+<circle cx="227.65625" cy="113.39322205327645" r="3"></circle>
+<circle cx="227.65625" cy="110.18747221176397" r="3"></circle>
+<circle cx="227.65625" cy="111.04556758389458" r="3"></circle>
+</g>
+<g id="ex_8_0" display="none">
+<circle cx="251.875" cy="112.2193518909142" r="3"></circle>
+<circle cx="251.875" cy="111.8508079054473" r="3"></circle>
+<circle cx="251.875" cy="111.46149273713777" r="3"></circle>
+</g>
+<g id="ex_8_5" display="none">
+<circle cx="276.09375" cy="111.92184701271592" r="3"></circle>
+<circle cx="276.09375" cy="111.36513294605729" r="3"></circle>
+<circle cx="276.09375" cy="111.76343794133717" r="3"></circle>
+</g>
+</g></g></svg>
+</div>
+		<div class="fragment" id="Y9" data-exec="$('#YHF_9').load('data/YHF_8_5.svg');$('#title').text('pH 8.5');$('#ex_8_5').attr('display','block');"> </div>
+		<div class="fragment" id="Y9" data-exec="$('#YHF_9').load('data/YHF_8.svg');$('#title').text('pH 8.0');$('#ex_8_0').attr('display','block');"> </div>
+		<div class="fragment" id="Y9" data-exec="$('#YHF_9').load('data/YHF_7_5.svg');$('#title').text('pH 7.5');$('#ex_7_5').attr('display','block');"> </div>
+		<div class="fragment" id="Y9" data-exec="$('#YHF_9').load('data/YHF_7.svg');$('#title').text('pH 7.0');$('#ex_7_0').attr('display','block');"> </div>
+		<div class="fragment" id="Y9" data-exec="$('#YHF_9').load('data/YHF_6_5.svg');$('#title').text('pH 6.5');$('#ex_6_5').attr('display','block');"> </div>
+		<div class="fragment" id="Y9" data-exec="$('#YHF_9').load('data/YHF_6.svg');$('#title').text('pH 6.0');$('#ex_6_0').attr('display','block');"> </div>
+		<div class="fragment" id="YHF_9" data-exec="$('#YHF_9').load('data/YHF_5_5.svg');$('#title').text('pH 5.5');$('#ex_5_5').attr('display','block');"> </div>
+		<div class="fragment" id="YHF_9" data-exec="$('#YHF_9').load('data/YHF_5.svg');$('#title').text('pH 5.0');$('#ex_5_0').attr('display','block');" > </div>
+		<div class="fragment" id="HF_9" data-exec="$('#YHF_9').load('data/YHF_4_5.svg');$('#title').text('pH 4.5');$('#ex_4_5').attr('display','block');" > </div>
+		<div class="fragment" id="YHF_9" data-exec="$('#YHF_9').load('data/YHF_4.svg');$('#title').text('pH 4.0');$('#ex_4_0').attr('display','block');"> </div>
+        </div>
+            </section>
+            <section data-state="hdx_results">
+                <style>
+                    .hdx_results header:after {
+                        content: "Histidine pKa values in the propeptides of furin and PC1/3";
+                    }
+                    .hdx_results header {
+                        font-size: 1.0em;
+                    }
+                </style>
+                <figure style="width:50%;float:left;">
+                    <h5>Furin</h5>
+                    <img src="img/fur_pka.png" alt="" style="width:70%;">
+                    <figcaption></figcaption>
+                    <table style="font-size:0.6em;">
+                        <tr>
+                            <th>Histidine</th>
+                            <th>pKa</th>
+                            <th>k<sub>max</sub></th>
+                        </tr>
+                        <tr>
+                            <td>H52</td>
+                            <td>6.07&#177;0.02</td>
+                            <td>0.0124&#177;0.0001</td>
+                        </tr>
+                        <tr>
+                            <td>H66</td>
+                            <td>5.98&#177;0.03</td>
+                            <td>0.0069&#177;0.0001</td>
+                        </tr>
+                        <tr>
+                            <td>H69</td>
+                            <td>6.04&#177;0.05</td>
+                            <td>0.0063&#177;0.0002</td>
+                        </tr>
+                        <tr>
+                            <td>H80</td>
+                            <td>6.02&#177;0.03</td>
+                            <td>0.0094&#177;0.0002</td>
+                        </tr>
+                        <tr>
+                            <td>H84</td>
+                            <td>6.04&#177;0.07</td>
+                            <td>0.0073&#177;0.0002</td>
+                        </tr>
+                    </table>
+                </figure>
+                <figure style="width:50%;float:left;">
+                <h5>PC1/3</h5>
+                    <img src="img/pc1_pka.png" alt="" style="width:70%;">
+                    <figcaption></figcaption>
+                    <table style="font-size:0.6em;">
+                        <tr>
+                            <th>Histidine</th>
+                            <th>pKa</th>
+                            <th>k<sub>max</sub></th>
+                        </tr>
+                        <tr>
+                            <td>H67</td>
+                            <td>6.31&#177;0.03</td>
+                            <td>0.0068&#177;0.0001</td>
+                        </tr>
+                        <tr>
+                            <td>H72</td>
+                            <td>5.61&#177;0.06</td>
+                            <td>0.0034&#177;0.0001</td>
+                        </tr>
+                        <tr>
+                            <td>H75</td>
+                            <td>5.97&#177;0.03</td>
+                            <td>0.0057&#177;0.0001</td>
+                        </tr>
+                        <tr>
+                            <td>H85</td>
+                            <td>5.85&#177;0.04</td>
+                            <td>0.0052&#177;0.0001</td>
+                        </tr>
+                    </table>
+                </figure>
+                <img src="img/hisalign.png">
+                <span style="float:right;margin-right:65px;margin-top:-10px;">
+                    <cite>Elferich <i>et al.</i> under review 2015</cite>
+                </span>
+            </section>
+            <section data-state="mechmodelanim">
+                <style>
+                    .mechmodelanim header:after {
+                        content: "Comparison with predicted pKA values in PC1/3";
+                    }
+                    .mechmodelanim header {
+                        font-size: 1.0em;
+                    }
+                </style>
+                    <div style="width:50%;float:left;">
+                        <h5>NMR structure of PC1/3 propeptide</h5>
+                    <img src="img/pc1nmr.png" style="width:70%" alt="">
+                    </div>
+                    <div style="width:50%;float:right">
+                        <h5>Predicted pKa values for all 20 structures</h5>
+                        <img src="img/pc1pkapredict.png" style="width:80%;" alt=""></div>
+                <span style="float:right;margin-right:65px;">
+                    <cite>Elferich <i>et al.</i> under review 2015</cite>
+                </span>
+            </section>
+            <section data-state="sumprop" style="height:668px;">
+                <style>
+                    .sumprop header:after {
+                        content: "pH sensing in proprotein convertases - Conclusion";
+                    }
+                    
+                    .sumprop header {
+                        font-size: 1.2em;
+                    }
+                </style>
+                <ul style="width:45%;float:left;margin-top:30px;margin-left:35px;font-size:0.8em;">
+                    <li class="fragment" data-fragment-index=1>Propeptides encode histidines</li>
+                    <li class="fragment" data-fragment-index=2>Upon reaching the correct pH for activation the conserved histidine is protonated<ul><li>Furin: H69 (pH 6)</li><li>PC1/3: H72 (pH 5.5)</li></ul></li>
+                    <li class="fragment" data-fragment-index=3>This triggers a conformational change, exposing the cleavage loop</li>
+                    <li class="fragment" data-fragment-index=4>Cleavage of the loop in cis or in trans results in activation</li>
+                </ul>
+                <img src="img/finalanimstart.png" style="position:absolute;left:512px;top: 0px;z-index:1">
+                <img class="fragment" src="img/finalanimhis.png" style="position:absolute;left:512px;top: 0px;z-index:1" data-fragment-index=1>
+                <video class="fragment" style="position:absolute;left:512px;top: 0px;z-index:1" data-fragment-index=2 >
+                    <source data-src="img/hisout.mp4"
+                        type="video/mp4" />
+                </video>
+                <video class="fragment" style="position:absolute;left:512px;top:0px;z-index:1" data-fragment-index=3 >
+                    <source data-src="img/loopout.mp4"
+                        type="video/mp4" />
+                </video>
+            </section>
+            <section data-state="acknowledgments">
+                <style>
+                    .acknowledgments header:after {
+                        content: "Acknowledgments";
+                    }
+                    
+                    .acknowledgments header {
+                        font-size: 1.4em;
+                    }
+                    .acknowledgments section h5 {
+                        margin-top: 5px;
+                    }
+                </style>
+               	<div style="float:left;width:33%;font-size:0.7em;text-align:left;margin-top:10px;">
+		<h5>Shinde Lab</h5>
+		<ul ><li>Ujwal Shinde</li>
+		<li>Danielle Williamson</li>
+        <li>Stephanie Dillon</li>
+		</ul>
+		<h5>Committee</h5>
+		<ul>	
+		<li>Larry David</li>
+		<li>Caroline Enns</li>
+		<li>David Farrens</li>
+		<li>Eric Gouaux</li>
+        <li>Mike Harms</li>
+		</ul>	 
+		<h5>Collaborators</h5>
+		<ul>
+		<li>Mushui Dai</li>
+		<li>Yuhuang Li</li>
+		<li>Bill Skach</li>
+		<li>Brian Conti</li>
+		</ul>
+		</div>
+               	<div style="float:left;width:33%;font-size:0.7em;text-align:left;margin-top:10px;">
+                    <h5>Collaborators</h5>
+                    <ul>
+                        <li>Buddy Ullman</li>
+                        <li>Peter Rotwein</li>
+                        <li>Scott Landfear</li>
+                        <li>Monika Davare</li>
+                        <li>Gary Thomas</li>
+                        <li>Jimmy Dikeakos</li>
+                    </ul>
+                    <h5>Biochemistry Department</h5>
+                    <ul>
+                        <li>Amber Jones Brunette</li>
+                        <li>Christopher Schafer</li>
+                        <li>Jon Fay</li>
+                        <li>Jessica Martin</li>
+                        <li>Gregory Martin</li>
+                        <li>Jean Summerton</li>
+                        <li>Tony Caps</li>
+                        <li>Susan Kozak</li>
+                        <li>Valerie Scott</li>
+                    </ul>
+                </div>
+               	<div style="float:left;width:33%;font-size:0.7em;text-align:left;margin-top:10px;">
+                    <h5>Funding</h5>
+                    <ul>
+                        <li>American Heart Association</li>
+                        <li>Tartar Fund</li>
+                        <li>Vertex Pharmaceuticals</li>
+                    </ul>
+                    <h5>Family</h5>
+                    <ul>
+                        <li>Henrike Elferich</li>
+                        <li>Christa Elferich</li>
+                        <li>Werner Elferich</li>
+                        <li>Nick Javidi-Sharifi</li>
+                        <li>Mirjam Javidi-Sharifi</li>
+                        <li>Bijan Javidi-Sharifi</li>
+                        <li>Nathalie Javidi-Sharifi</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+        // Full list of configuration options available at:
+        // https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            controls: false,
+            progress: true,
+            history: true,
+            center: false,
+            slideNumber: true,
+            width: 1024,
+            height: 768,
+            minScale: 1.0,
+            maxScale: 1.0,
+            transition: 'none', // none/fade/slide/convex/concave/zoom
+  keyboard: {
+    40: 'next', // go to the next slide when the ENTER key is pressed
+    38: function() {Reveal.left();}, // go to the next slide when the ENTER key is pressed
+    27: function() {location.reload();} // do something custom when ESC is pressed
+  },
+
+            // Optional reveal.js plugins
+            dependencies: [{
+                src: 'lib/js/classList.js',
+                condition: function() {
+                    return !document.body.classList;
+                }
+            }, {
+                src: 'lib/js/jquery-2.0.2.min.js',
+            }, {
+                src: 'lib/js/bio-pv.rel.js',
+            }, {
+                src: 'lib/js/d3.v3.min.js',
+            }, {
+                src: 'lib/js/newick.js',
+            }, {
+                src: 'lib/js/msa.min.gz.js',
+            }, {
+                src: 'lib/js/queue.min.js',
+            }, {
+                src: 'plugin/markdown/marked.js',
+                condition: function() {
+                    return !!document.querySelector(
+                        '[data-markdown]');
+                }
+            }, {
+                src: 'plugin/markdown/markdown.js',
+                condition: function() {
+                    return !!document.querySelector(
+                        '[data-markdown]');
+                }
+            }, {
+                src: 'plugin/highlight/highlight.js',
+                async: true,
+                condition: function() {
+                    return !!document.querySelector(
+                        'pre code');
+                },
+                callback: function() {
+                    hljs.initHighlightingOnLoad();
+                }
+            }, {
+                src: 'plugin/zoom-js/zoom.js',
+                async: true
+            }, {
+                src: 'plugin/notes/notes.js',
+                async: true
+            }, {
+                src: 'js/render_subtilase_tree.js',
+                async: true
+            }, {
+                src: 'js/render_protein_vis.js',
+                async: true
+            }, {
+                src: 'js/render_pro_alignment.js',
+                async: true
+            }, {
+                src: 'js/render_md_vis.js',
+                async: true
+            }, {
+                src: 'js/render_mc_vis.js',
+                async: true
+            }, {
+                src: 'js/render_seq_tree.js',
+                async: true
+            }]
+        });
+        Reveal.addEventListener('slidechanged', function(event) {
+            //Check if current slide has div-gl elemen
+            if (event.currentSlide.getAttribute("data-exec")) {
+                eval(event.currentSlide.getAttribute("data-exec"));
+            }
+        });
+
+        Reveal.addEventListener('fragmentshown', function(element) {
+            if (element.fragment.getAttribute("data-exec")) {
+                eval(element.fragment.getAttribute("data-exec"));
+            }
+            var video = event.fragment;
+            if (video.tagName == 'VIDEO') {
+                video.play();
+            }
+
+            if (event.fragments.length > 1) {
+            var video = event.fragments[1];
+            if (video.tagName == 'VIDEO') {
+                video.play();
+            }
+            if (element.fragments[1].getAttribute("data-exec")) {
+                eval(element.fragments[1].getAttribute("data-exec"));
+            }
+
+            }
+        });
+        Reveal.addEventListener('fragmenthidden', function(element) {
+            if (element.fragment.getAttribute("data-exec-hide")) {
+                eval(element.fragment.getAttribute(
+                    "data-exec-hide"));
+            }
+            var video = event.fragment;
+            if (video.tagName == 'VIDEO') {
+                video.pause();
+            }
+        });
+    </script>
+
+</body>
+
+</html>
